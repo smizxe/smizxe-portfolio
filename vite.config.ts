@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
-    base: '/smizxe-portfolio/', // Updated for GitHub Pages
+    base: '/', // Updated for Custom Domain (yangai.click)
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './src'),
