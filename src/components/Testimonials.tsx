@@ -1,4 +1,5 @@
 
+
 const testimonials = [
     {
         text: "Ban đầu mình chỉ tính làm cái web đơn giản thôi, mà Giang tư vấn kỹ quá, 'moi' ra được bao nhiêu vấn đề vận hành mình không để ý. Cuối cùng chốt làm luôn hệ thống quản lý, giờ nhàn tênh.",
@@ -38,20 +39,35 @@ const testimonials = [
     }
 ];
 
+import { feedbackImages } from "../data/feedbackImages";
+import { motion } from 'framer-motion';
+
 export default function Testimonials() {
     return (
         <section className="py-24 bg-surface border-b border-white/5 overflow-hidden">
-            <div className="max-w-6xl mx-auto px-6 mb-16 text-center">
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="max-w-6xl mx-auto px-6 mb-16 text-center"
+            >
                 <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-white mb-6">
                     Chuyện người thật, việc thật
                 </h2>
                 <p className="text-secondary text-base md:text-lg font-light">
                     Niềm tin được xây dựng từ kết quả thực tế.
                 </p>
-            </div>
+            </motion.div>
 
-            {/* Marquee Container */}
-            <div className="relative flex overflow-x-hidden group">
+            {/* Text Testimonials Marquee */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1 }}
+                className="relative flex overflow-x-hidden group mb-12"
+            >
                 {/* Gradient Masks */}
                 <div className="absolute top-0 bottom-0 left-0 w-32 z-10 bg-gradient-to-r from-surface to-transparent pointer-events-none"></div>
                 <div className="absolute top-0 bottom-0 right-0 w-32 z-10 bg-gradient-to-l from-surface to-transparent pointer-events-none"></div>
@@ -77,7 +93,34 @@ export default function Testimonials() {
                         </div>
                     ))}
                 </div>
-            </div>
+            </motion.div>
+
+            {/* Image Evidence Marquee */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.2 }}
+                className="relative flex overflow-x-hidden group"
+            >
+                {/* Gradient Masks */}
+                <div className="absolute top-0 bottom-0 left-0 w-32 z-10 bg-gradient-to-r from-surface to-transparent pointer-events-none"></div>
+                <div className="absolute top-0 bottom-0 right-0 w-32 z-10 bg-gradient-to-l from-surface to-transparent pointer-events-none"></div>
+
+                <div className="py-4 animate-marquee whitespace-nowrap flex gap-4 group-hover:[animation-play-state:paused]" style={{ animationDirection: 'reverse' }}>
+                    {/* Using a subset or duplicating to fill screen. With 47 images, simpler to just map them all. */}
+                    {[...feedbackImages, ...feedbackImages].map((src, idx) => (
+                        <div key={idx} className="w-[180px] flex-shrink-0 rounded-xl overflow-hidden border border-white/10 hover:border-white/30 transition-all duration-300">
+                            <img
+                                src={src}
+                                alt="Feedback proof"
+                                className="w-full h-auto object-cover opacity-80 hover:opacity-100 transition-opacity duration-300"
+                                loading="lazy"
+                            />
+                        </div>
+                    ))}
+                </div>
+            </motion.div>
         </section>
     );
 }

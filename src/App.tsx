@@ -19,7 +19,12 @@ function App() {
             <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.07] bg-grid bg-grid-pattern"></div>
 
             {/* Navbar */}
-            <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-background/80 backdrop-blur-md">
+            <motion.nav
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-background/80 backdrop-blur-md"
+            >
                 <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
                     <a href="#" className="flex items-center gap-2 group">
                         <img src={logo} alt="VHG Logo" className="h-10 w-auto object-contain scale-125 group-hover:opacity-80 transition-opacity" />
@@ -36,7 +41,7 @@ function App() {
                         </a>
                     </div>
                 </div>
-            </nav>
+            </motion.nav>
 
             {/* Hero Section */}
             <main className="relative z-10 pt-24 pb-16 md:pt-36 md:pb-24 px-6 overflow-hidden">
@@ -101,7 +106,13 @@ function App() {
                     </div>
 
                     {/* Quick Trust Indicators */}
-                    <div className="mt-16 pt-8 border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-6 text-xs md:text-sm text-secondary">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        className="mt-16 pt-8 border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-6 text-xs md:text-sm text-secondary"
+                    >
                         <div className="flex items-center gap-3 justify-start">
                             <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-white shrink-0">
                                 <Layers width={16} strokeWidth={1.5} />
@@ -120,7 +131,7 @@ function App() {
                             </div>
                             <span>Hỗ trợ lâu dài,<br />không bỏ dở dự án</span>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </main>
 
@@ -128,16 +139,26 @@ function App() {
             <section className="py-20 bg-surface border-y border-white/5 relative">
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-start">
-                        <div className="md:sticky md:top-32">
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="md:sticky md:top-32"
+                        >
                             <h2 className="text-2xl md:text-3xl font-medium tracking-tight mb-4">Tại sao nên chọn Giang?</h2>
                             <p className="text-secondary font-light text-sm md:text-base leading-relaxed mb-6">
                                 Tôi tập trung xây giải pháp có thể sử dụng lâu dài, bền vững và dễ dàng mở rộng, không phải sản phẩm "mì ăn liền" làm cho xong.
                             </p>
                             <div className="h-px w-20 bg-white/20"></div>
-                        </div>
+                        </motion.div>
 
                         <div className="space-y-8">
                             <motion.div
+                                initial={{ opacity: 0, x: 30 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6 }}
                                 whileHover={{ scale: 1.02 }}
                                 className="group hover:bg-white/5 p-6 rounded-lg transition-all duration-300 border border-transparent hover:border-white/5"
                             >
@@ -147,6 +168,10 @@ function App() {
                             </motion.div>
 
                             <motion.div
+                                initial={{ opacity: 0, x: 30 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: 0.1 }}
                                 whileHover={{ scale: 1.02 }}
                                 className="group hover:bg-white/5 p-6 rounded-lg transition-all duration-300 border border-transparent hover:border-white/5"
                             >
@@ -156,6 +181,10 @@ function App() {
                             </motion.div>
 
                             <motion.div
+                                initial={{ opacity: 0, x: 30 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: 0.2 }}
                                 whileHover={{ scale: 1.02 }}
                                 className="group hover:bg-white/5 p-6 rounded-lg transition-all duration-300 border border-transparent hover:border-white/5"
                             >
@@ -173,7 +202,13 @@ function App() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 auto-rows-min">
 
                     {/* About Block */}
-                    <div className="lg:col-span-7 bg-surface border border-border p-8 md:p-10 rounded-xl flex flex-col justify-between">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="lg:col-span-7 bg-surface border border-border p-8 md:p-10 rounded-xl flex flex-col justify-between"
+                    >
                         <div>
                             <h2 className="text-xs font-medium uppercase tracking-widest text-secondary mb-6">Về Vương Hoàng Giang</h2>
                             <p className="text-lg md:text-xl font-light text-white/90 leading-relaxed mb-6">
@@ -194,10 +229,14 @@ function App() {
                                 Nhiệt tình, trọn đời
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Service 1 */}
                     <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
                         whileHover={{ y: -5 }}
                         className="lg:col-span-5 bg-neutral-900 border border-border p-8 rounded-xl hover:border-white/20 transition-colors group"
                     >
@@ -216,6 +255,10 @@ function App() {
 
                     {/* Service 2 */}
                     <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
                         whileHover={{ y: -5 }}
                         className="lg:col-span-6 bg-neutral-900 border border-border p-8 rounded-xl hover:border-indigo-500/30 transition-colors group relative overflow-hidden"
                     >
@@ -233,6 +276,10 @@ function App() {
 
                     {/* Service 3 */}
                     <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
                         whileHover={{ y: -5 }}
                         className="lg:col-span-6 bg-neutral-900 border border-border p-8 rounded-xl hover:border-emerald-500/30 transition-colors group relative overflow-hidden"
                     >
@@ -253,7 +300,13 @@ function App() {
             {/* Projects Section */}
             <section id="projects" className="py-20 bg-background border-t border-white/5">
                 <div className="max-w-6xl mx-auto px-6">
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
+                    >
                         <div>
                             <h2 className="text-3xl font-medium tracking-tight text-white mb-4">Dự án Demo & Practice</h2>
                             <p className="text-secondary text-sm max-w-lg">
@@ -262,12 +315,18 @@ function App() {
                         </div>
                         <div className="hidden md:block h-px flex-1 bg-white/10 mx-8 mb-2"></div>
                         <span className="text-xs font-mono text-secondary/50 border border-white/10 px-2 py-1 rounded">Selected Works 2023-2024</span>
-                    </div>
+                    </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
                         {/* Project 1 */}
-                        <div className="group cursor-pointer">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="group cursor-pointer"
+                        >
                             <div className="h-64 bg-surface rounded-lg border border-white/5 overflow-hidden relative mb-6">
                                 <div className="absolute inset-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
                                     <div className="w-3/4 h-3/4 border border-white/10 rounded bg-[#0f0f0f] relative overflow-hidden">
@@ -295,10 +354,16 @@ function App() {
                                 <span className="text-[10px] uppercase tracking-wider border border-white/10 px-2 py-0.5 rounded text-secondary">Web</span>
                                 <span className="text-[10px] uppercase tracking-wider border border-emerald-500/20 px-2 py-0.5 rounded text-emerald-400">AI Chatbot</span>
                             </div>
-                        </div>
+                        </motion.div>
 
                         {/* Project 2 */}
-                        <div className="group cursor-pointer">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.1 }}
+                            className="group cursor-pointer"
+                        >
                             <div className="h-64 bg-surface rounded-lg border border-white/5 overflow-hidden relative mb-6">
                                 <div className="absolute inset-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
                                     <div className="w-3/4 h-3/4 border border-white/10 rounded bg-[#0f0f0f] relative overflow-hidden p-6 flex flex-col items-center justify-center">
@@ -323,10 +388,16 @@ function App() {
                                 <span className="text-[10px] uppercase tracking-wider border border-white/10 px-2 py-0.5 rounded text-secondary">Landing Page</span>
                                 <span className="text-[10px] uppercase tracking-wider border border-indigo-500/20 px-2 py-0.5 rounded text-indigo-400">Automation</span>
                             </div>
-                        </div>
+                        </motion.div>
 
                         {/* Project 3 */}
-                        <div className="group cursor-pointer">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="group cursor-pointer"
+                        >
                             <div className="h-64 bg-surface rounded-lg border border-white/5 overflow-hidden relative mb-6">
                                 <div className="absolute inset-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
                                     <div className="w-3/4 h-3/4 border border-white/10 rounded bg-[#0f0f0f] relative overflow-hidden p-4">
@@ -356,10 +427,16 @@ function App() {
                                 <span className="text-[10px] uppercase tracking-wider border border-white/10 px-2 py-0.5 rounded text-secondary">Tool</span>
                                 <span className="text-[10px] uppercase tracking-wider border border-blue-500/20 px-2 py-0.5 rounded text-blue-400">GPT-4</span>
                             </div>
-                        </div>
+                        </motion.div>
 
                         {/* Project 4 */}
-                        <div className="group cursor-pointer">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                            className="group cursor-pointer"
+                        >
                             <div className="h-64 bg-surface rounded-lg border border-white/5 overflow-hidden relative mb-6">
                                 <div className="absolute inset-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
                                     <div className="w-3/4 h-3/4 border border-white/10 rounded bg-[#0f0f0f] relative overflow-hidden grid grid-cols-2 gap-2 p-4">
@@ -386,7 +463,7 @@ function App() {
                                 <span className="text-[10px] uppercase tracking-wider border border-white/10 px-2 py-0.5 rounded text-secondary">Dashboard</span>
                                 <span className="text-[10px] uppercase tracking-wider border border-purple-500/20 px-2 py-0.5 rounded text-purple-400">Data Analysis</span>
                             </div>
-                        </div>
+                        </motion.div>
 
                     </div>
                 </div>
@@ -403,7 +480,13 @@ function App() {
             <ContactForm />
 
             {/* Footer */}
-            <footer className="py-12 px-6 border-t border-white/5 bg-black text-center md:text-left">
+            <motion.footer
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="py-12 px-6 border-t border-white/5 bg-black text-center md:text-left"
+            >
                 <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
                     <div>
                         <p className="text-xs text-white/40 uppercase tracking-widest font-medium mb-2">Vương Hoàng Giang</p>
@@ -413,7 +496,7 @@ function App() {
                         <p>Một số dự án trên website là demo/practice nhằm thể hiện năng lực và quy trình làm việc.</p>
                     </div>
                 </div>
-            </footer>
+            </motion.footer>
 
         </div>
     );

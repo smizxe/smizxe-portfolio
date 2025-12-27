@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { ArrowRight, Mail, MessageCircle, Facebook, Loader2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function ContactForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -18,16 +19,28 @@ export default function ContactForm() {
     return (
         <section id="contact" className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-transparent to-neutral-900/50">
             <div className="max-w-4xl mx-auto relative z-10">
-                <div className="text-center mb-12">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-12"
+                >
                     <h2 className="text-3xl md:text-5xl font-medium tracking-tighter text-white mb-6">
                         Bạn cần Web/App trọn gói<br />với chi phí tốt nhất?
                     </h2>
                     <p className="text-secondary text-lg font-light">
                         Để lại thông tin, Giang sẽ liên hệ tư vấn giải pháp tối ưu cho bạn ngay.
                     </p>
-                </div>
+                </motion.div>
 
-                <div className="bg-surface/50 backdrop-blur-sm border border-white/5 rounded-2xl p-8 md:p-12 shadow-2xl">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="bg-surface/50 backdrop-blur-sm border border-white/5 rounded-2xl p-8 md:p-12 shadow-2xl"
+                >
                     {!submitted ? (
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -100,9 +113,15 @@ export default function ContactForm() {
                             </p>
                         </div>
                     )}
-                </div>
+                </motion.div>
 
-                <div className="flex justify-center gap-8 mt-12 border-t border-white/5 pt-8 max-w-lg mx-auto">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    className="flex justify-center gap-8 mt-12 border-t border-white/5 pt-8 max-w-lg mx-auto"
+                >
                     <a href="mailto:contact@vuonghoanggiang.com" className="text-secondary hover:text-white transition-colors flex items-center gap-2 text-sm group">
                         <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
                             <Mail width={14} />
@@ -121,7 +140,7 @@ export default function ContactForm() {
                         </div>
                         <span className="hidden sm:inline">Facebook</span>
                     </a>
-                </div>
+                </motion.div>
             </div>
         </section>
     );
