@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { ArrowRight, Mail, MessageCircle, Facebook, Phone, Loader2 } from 'lucide-react';
+import { ArrowRight, Mail, MessageCircle, Facebook, Loader2 } from 'lucide-react';
 
 export default function ContactForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);

@@ -2,8 +2,8 @@
 import { motion } from 'framer-motion';
 import {
     ArrowDownRight, Layers, Cpu, Lightbulb, Search, Zap,
-    HeartHandshake, Monitor, Check, Bot, Workflow, ArrowUpRight,
-    Users, BarChart2, Calendar, ArrowRight, Mail, MessageCircle, Facebook, Smartphone
+    HeartHandshake, Monitor, Check, Bot, ArrowUpRight,
+    Users, BarChart2, Calendar, Smartphone
 } from 'lucide-react';
 import avatar from './assets/smizxe-chu-tich.jpg';
 import logo from './assets/logo.png';
