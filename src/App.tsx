@@ -3,10 +3,12 @@ import { motion } from 'framer-motion';
 import {
     ArrowDownRight, Layers, Cpu, Lightbulb, Search, Zap,
     HeartHandshake, Monitor, Check, Bot, Workflow, ArrowUpRight,
-    Users, BarChart2, Calendar, ArrowRight, Mail, MessageCircle, Facebook
+    Users, BarChart2, Calendar, ArrowRight, Mail, MessageCircle, Facebook, Smartphone
 } from 'lucide-react';
 import avatar from './assets/smizxe-chu-tich.jpg';
 import logo from './assets/logo.png';
+import Testimonials from './components/Testimonials';
+import ContactForm from './components/ContactForm';
 import MinimalWorkflow from './components/MinimalWorkflow';
 
 function App() {
@@ -57,13 +59,13 @@ function App() {
                             </div>
 
                             <h1 className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tighter text-white leading-[1.1] mb-8 text-glow">
-                                Xây dựng website & <br className="hidden md:block" />
-                                <span className="text-white/60">ứng dụng AI giúp doanh nghiệp</span> <br />
-                                vận hành thông minh hơn.
+                                Xây dựng Website & <br className="hidden md:block" />
+                                <span className="text-white/60">Mobile App chất lượng cao,</span> <br />
+                                tối ưu chi phí vận hành.
                             </h1>
 
                             <p className="text-base md:text-lg text-secondary font-light max-w-2xl leading-relaxed mb-10 md:pr-10 mx-auto md:mx-0">
-                                Tôi là Vương Hoàng Giang – Fullstack Developer, chuyên phát triển website, landing page và các giải pháp ứng dụng AI nhằm tự động hoá quy trình, cải thiện trải nghiệm người dùng và tối ưu hiệu quả kinh doanh.
+                                Tôi là Vương Hoàng Giang – Fullstack Developer. Tôi mang đến giải pháp Website và Mobile App trọn gói: từ tư vấn, thiết kế đến lập trình, với mức phí khởi điểm hợp lý và cam kết đồng hành dài hạn.
                             </p>
 
                             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
@@ -104,19 +106,19 @@ function App() {
                             <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-white shrink-0">
                                 <Layers width={16} strokeWidth={1.5} />
                             </div>
-                            <span>Fullstack Developer<br />định hướng sản phẩm</span>
+                            <span>Xây dựng trọn gói<br />Web & Mobile App</span>
                         </div>
                         <div className="flex items-center gap-3 justify-start">
                             <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-white shrink-0">
                                 <Cpu width={16} strokeWidth={1.5} />
                             </div>
-                            <span>Kinh nghiệm xây dựng<br />Web + AI Automation</span>
+                            <span>Chi phí tối ưu,<br />chất lượng cam kết</span>
                         </div>
                         <div className="flex items-center gap-3 justify-start">
                             <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-white shrink-0">
                                 <Lightbulb width={16} strokeWidth={1.5} />
                             </div>
-                            <span>Tư duy giải pháp,<br />không chỉ code rập khuôn</span>
+                            <span>Hỗ trợ lâu dài,<br />không bỏ dở dự án</span>
                         </div>
                     </div>
                 </div>
@@ -126,7 +128,7 @@ function App() {
             <section className="py-20 bg-surface border-y border-white/5 relative">
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-start">
-                        <div className="sticky top-32">
+                        <div className="md:sticky md:top-32">
                             <h2 className="text-2xl md:text-3xl font-medium tracking-tight mb-4">Tại sao nên chọn Giang?</h2>
                             <p className="text-secondary font-light text-sm md:text-base leading-relaxed mb-6">
                                 Tôi tập trung xây giải pháp có thể sử dụng lâu dài, bền vững và dễ dàng mở rộng, không phải sản phẩm "mì ăn liền" làm cho xong.
@@ -140,8 +142,8 @@ function App() {
                                 className="group hover:bg-white/5 p-6 rounded-lg transition-all duration-300 border border-transparent hover:border-white/5"
                             >
                                 <Search className="text-white mb-4" width={24} strokeWidth={1.5} />
-                                <h3 className="text-lg font-medium text-white mb-2">Hiểu bài toán trước khi xây giải pháp</h3>
-                                <p className="text-sm text-secondary leading-relaxed">Không bắt đầu code ngay. Tôi dành thời gian phân tích vấn đề của bạn để đảm bảo công nghệ được áp dụng đúng chỗ, đúng mục đích.</p>
+                                <h3 className="text-lg font-medium text-white mb-2">Chi phí hợp lý - Chất lượng cao</h3>
+                                <p className="text-sm text-secondary leading-relaxed">Bạn không cần ngân sách "khủng" để có sản phẩm công nghệ xịn. Tôi tối ưu quy trình để mang lại mức giá cạnh tranh nhất mà vẫn đảm bảo hiệu năng và thẩm mỹ.</p>
                             </motion.div>
 
                             <motion.div
@@ -149,8 +151,8 @@ function App() {
                                 className="group hover:bg-white/5 p-6 rounded-lg transition-all duration-300 border border-transparent hover:border-white/5"
                             >
                                 <Zap className="text-white mb-4" width={24} strokeWidth={1.5} />
-                                <h3 className="text-lg font-medium text-white mb-2">Web + AI: Tiết kiệm thời gian & chi phí</h3>
-                                <p className="text-sm text-secondary leading-relaxed">Tích hợp AI không phải để "làm màu". Tôi dùng AI để tự động hóa những việc lặp lại, giúp bạn giảm chi phí nhân sự vận hành.</p>
+                                <h3 className="text-lg font-medium text-white mb-2">Đa nền tảng: Web & App</h3>
+                                <p className="text-sm text-secondary leading-relaxed">Đáp ứng mọi nhu cầu số hoá. Từ Website giới thiệu, Landing Page bán hàng đến Mobile App (iOS/Android) mượt mà.</p>
                             </motion.div>
 
                             <motion.div
@@ -158,8 +160,8 @@ function App() {
                                 className="group hover:bg-white/5 p-6 rounded-lg transition-all duration-300 border border-transparent hover:border-white/5"
                             >
                                 <HeartHandshake className="text-white mb-4" width={24} strokeWidth={1.5} />
-                                <h3 className="text-lg font-medium text-white mb-2">Hỗ trợ & đồng hành dài hạn</h3>
-                                <p className="text-sm text-secondary leading-relaxed">Bàn giao không phải là kết thúc. Tôi hướng dẫn chi tiết cách sử dụng và luôn sẵn sàng hỗ trợ kỹ thuật khi hệ thống cần cập nhật.</p>
+                                <h3 className="text-lg font-medium text-white mb-2">Cam kết hỗ trợ trọn đời</h3>
+                                <p className="text-sm text-secondary leading-relaxed">Sản phẩm bàn giao là tâm huyết của tôi. Tôi cam kết bảo hành, bảo trì và hỗ trợ bạn trong suốt quá trình vận hành sau này.</p>
                             </motion.div>
                         </div>
                     </div>
@@ -175,21 +177,21 @@ function App() {
                         <div>
                             <h2 className="text-xs font-medium uppercase tracking-widest text-secondary mb-6">Về Vương Hoàng Giang</h2>
                             <p className="text-lg md:text-xl font-light text-white/90 leading-relaxed mb-6">
-                                Tôi là Fullstack Developer với định hướng phát triển sản phẩm web hiện đại và ứng dụng AI vào các bài toán thực tế. Tôi đặc biệt quan tâm tới việc <span className="text-white font-normal underline decoration-white/20 underline-offset-4">tự động hoá & tối ưu quy trình</span>.
+                                Tôi là Fullstack Developer chuyên kiến tạo <span className="text-white font-normal underline decoration-white/20 underline-offset-4">Website và Mobile App</span> chất lượng cao. Tôi đề cao <span className="text-white font-medium">Hiệu quả thực tế</span>: tư vấn giải pháp tinh gọn, tập trung ngân sách vào các tính năng cốt lõi mang lại giá trị, giúp bạn sở hữu sản phẩm công nghệ bền vững với chi phí tối ưu nhất.
                             </p>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-white/5">
                             <div className="text-xs text-secondary">
-                                <span className="block text-white font-medium mb-1">Giao tiếp</span>
-                                Rõ ràng, minh bạch
+                                <span className="block text-white font-medium mb-1">Chi phí</span>
+                                Hợp lý, vừa túi tiền
                             </div>
                             <div className="text-xs text-secondary">
-                                <span className="block text-white font-medium mb-1">Tư duy</span>
-                                Chủ động đề xuất
+                                <span className="block text-white font-medium mb-1">Tiến độ</span>
+                                Giao nhanh, đúng hẹn
                             </div>
                             <div className="text-xs text-secondary">
-                                <span className="block text-white font-medium mb-1">Trách nhiệm</span>
-                                Cam kết deadline
+                                <span className="block text-white font-medium mb-1">Hỗ trợ</span>
+                                Nhiệt tình, trọn đời
                             </div>
                         </div>
                     </div>
@@ -202,11 +204,13 @@ function App() {
                         <div className="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-white mb-6 group-hover:bg-white group-hover:text-black transition-colors">
                             <Monitor width={20} strokeWidth={1.5} />
                         </div>
-                        <h3 className="text-lg font-medium text-white mb-2">Website & Landing Page</h3>
+                        <h3 className="text-lg font-medium text-white mb-2">Thiết kế Website</h3>
                         <ul className="space-y-2 mt-4 text-sm text-secondary">
-                            <li className="flex items-center gap-2"><Check width={14} /> Website doanh nghiệp</li>
-                            <li className="flex items-center gap-2"><Check width={14} /> Landing page bán hàng / thu lead</li>
-                            <li className="flex items-center gap-2"><Check width={14} /> Portfolio cá nhân chuyên nghiệp</li>
+                            <li className="flex items-center gap-2"><Check width={14} /> Website Doanh nghiệp (Corporate)</li>
+                            <li className="flex items-center gap-2"><Check width={14} /> Landing Page bán hàng (High convert)</li>
+                            <li className="flex items-center gap-2"><Check width={14} /> Trang thương mại điện tử (E-commerce)</li>
+                            <li className="flex items-center gap-2"><Check width={14} /> Website theo yêu cầu (Custom)</li>
+                            <li className="flex items-center gap-2"><Check width={14} /> Đồ án, bài tập lớn cho sinh viên</li>
                         </ul>
                     </motion.div>
 
@@ -217,13 +221,13 @@ function App() {
                     >
                         <div className="absolute -right-10 -top-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl group-hover:bg-indigo-500/20 transition-colors"></div>
                         <div className="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-white mb-6 relative z-10 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
-                            <Bot width={20} strokeWidth={1.5} />
+                            <Smartphone width={20} strokeWidth={1.5} />
                         </div>
-                        <h3 className="text-lg font-medium text-white mb-2 relative z-10">Ứng dụng AI vào Website</h3>
+                        <h3 className="text-lg font-medium text-white mb-2 relative z-10">Lập trình Mobile App</h3>
                         <ul className="space-y-2 mt-4 text-sm text-secondary relative z-10">
-                            <li className="flex items-center gap-2"><Check width={14} /> Chatbot CSKH 24/7 thông minh</li>
-                            <li className="flex items-center gap-2"><Check width={14} /> AI xử lý form, phân loại dữ liệu</li>
-                            <li className="flex items-center gap-2"><Check width={14} /> Tích hợp OpenAI/GPT vào sản phẩm</li>
+                            <li className="flex items-center gap-2"><Check width={14} /> App bán hàng, đặt lịch (iOS/Android)</li>
+                            <li className="flex items-center gap-2"><Check width={14} /> Ứng dụng quản lý nội bộ</li>
+                            <li className="flex items-center gap-2"><Check width={14} /> Tích hợp thông báo đẩy (Notification)</li>
                         </ul>
                     </motion.div>
 
@@ -234,13 +238,13 @@ function App() {
                     >
                         <div className="absolute -right-10 -top-10 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-colors"></div>
                         <div className="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-white mb-6 relative z-10 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
-                            <Workflow width={20} strokeWidth={1.5} />
+                            <Bot width={20} strokeWidth={1.5} />
                         </div>
-                        <h3 className="text-lg font-medium text-white mb-2 relative z-10">AI Automation Tool</h3>
+                        <h3 className="text-lg font-medium text-white mb-2 relative z-10">Giải pháp AI & Automation</h3>
                         <ul className="space-y-2 mt-4 text-sm text-secondary relative z-10">
-                            <li className="flex items-center gap-2"><Check width={14} /> Tool nội bộ cho Startup/SME</li>
-                            <li className="flex items-center gap-2"><Check width={14} /> Tự động hoá viết content, email</li>
-                            <li className="flex items-center gap-2"><Check width={14} /> Kết nối dữ liệu đa kênh (n8n/Make)</li>
+                            <li className="flex items-center gap-2"><Check width={14} /> Chatbot tư vấn tự động 24/7</li>
+                            <li className="flex items-center gap-2"><Check width={14} /> Tích hợp ChatGPT/OpenAI</li>
+                            <li className="flex items-center gap-2"><Check width={14} /> Tool tự động hoá quy trình (RPA)</li>
                         </ul>
                     </motion.div>
                 </div>
@@ -393,76 +397,17 @@ function App() {
             <MinimalWorkflow />
 
             {/* Testimonials */}
-            <section className="py-24 px-6 bg-surface border-b border-white/5">
-                <div className="max-w-6xl mx-auto">
-                    <h2 className="text-xl font-medium text-center mb-16 text-white">Khách hàng nói gì?</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div className="p-6 bg-white/5 rounded border border-white/5">
-                            <p className="text-sm text-secondary italic mb-4">"Giang có tư duy hệ thống rất tốt, không chỉ làm theo yêu cầu mà còn tư vấn ngược lại cho mình."</p>
-                            <div className="flex items-center gap-2">
-                                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gray-500 to-gray-700"></div>
-                                <span className="text-xs text-white">Founder, Start-up Edu</span>
-                            </div>
-                        </div>
-                        <div className="p-6 bg-white/5 rounded border border-white/5">
-                            <p className="text-sm text-secondary italic mb-4">"Giải pháp AI đơn giản nhưng giúp bên mình tiết kiệm rất nhiều thời gian xử lý email khách hàng."</p>
-                            <div className="flex items-center gap-2">
-                                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-blue-700"></div>
-                                <span className="text-xs text-white">Manager, Logistics Co.</span>
-                            </div>
-                        </div>
-                        <div className="p-6 bg-white/5 rounded border border-white/5">
-                            <p className="text-sm text-secondary italic mb-4">"Làm việc rõ ràng, chủ động, các mốc tiến độ đều được cập nhật đầy đủ."</p>
-                            <div className="flex items-center gap-2">
-                                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700"></div>
-                                <span className="text-xs text-white">Marketing Lead, Agency</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <Testimonials />
 
-            {/* CTA Section */}
-            <section id="contact" className="py-24 px-6 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-neutral-900 pointer-events-none"></div>
-                <div className="max-w-3xl mx-auto text-center relative z-10">
-                    <h2 className="text-3xl md:text-5xl font-medium tracking-tighter text-white mb-6">
-                        Bạn đang cần website hoặc<br />giải pháp AI cho doanh nghiệp?
-                    </h2>
-                    <p className="text-secondary text-lg font-light mb-10">
-                        Hãy trao đổi với Giang để tìm ra phương án tối ưu nhất.
-                    </p>
-
-                    <div className="flex flex-col items-center gap-6">
-                        <a href="mailto:contact@vuonghoanggiang.com" className="group relative inline-flex items-center justify-center px-8 py-4 bg-white text-black text-base font-medium rounded-full overflow-hidden transition-all hover:scale-105">
-                            <span className="relative z-10 flex items-center gap-2">
-                                Trao đổi dự án với Giang
-                                <ArrowRight width={18} />
-                            </span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-white opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        </a>
-
-                        <div className="flex items-center gap-8 mt-4">
-                            <a href="#" className="text-secondary hover:text-white transition-colors flex items-center gap-2 text-sm">
-                                <Mail width={16} /> Email
-                            </a>
-                            <a href="#" className="text-secondary hover:text-blue-400 transition-colors flex items-center gap-2 text-sm">
-                                <MessageCircle width={16} /> Zalo
-                            </a>
-                            <a href="#" className="text-secondary hover:text-blue-600 transition-colors flex items-center gap-2 text-sm">
-                                <Facebook width={16} /> Facebook
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            {/* CTA / Contact Section */}
+            <ContactForm />
 
             {/* Footer */}
             <footer className="py-12 px-6 border-t border-white/5 bg-black text-center md:text-left">
                 <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
                     <div>
                         <p className="text-xs text-white/40 uppercase tracking-widest font-medium mb-2">Vương Hoàng Giang</p>
-                        <p className="text-xs text-secondary">© 2024 Fullstack Developer & AI Solutions.</p>
+                        <p className="text-xs text-secondary">© 2024 Web & Mobile App Solutions.</p>
                     </div>
                     <div className="text-xs text-secondary/50 max-w-md text-center md:text-right">
                         <p>Một số dự án trên website là demo/practice nhằm thể hiện năng lực và quy trình làm việc.</p>

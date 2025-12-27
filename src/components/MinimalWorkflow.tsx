@@ -6,36 +6,36 @@ import { cn } from '../lib/utils'; // Assuming this exists, based on clsx/tailwi
 const steps = [
     {
         id: "01",
-        title: "Thấu hiểu & Tư vấn",
+        title: "Tư vấn & Tối ưu Ngân sách",
         icon: Search,
-        description: "Mình không bắt tay vào làm ngay. Mình lắng nghe sâu để tìm ra 'nỗi đau' thực sự của doanh nghiệp, từ đó đề xuất giải pháp công nghệ 'gãi đúng chỗ ngứa'.",
+        description: "Hiểu rõ bài toán tài chính của bạn. Mình tư vấn giải pháp 'đáng tiền' nhất, loại bỏ tính năng thừa thãi để giảm chi phí đầu tư ban đầu mà vẫn đảm bảo hiệu quả cốt lõi.",
         color: "text-blue-400",
         bgcolor: "bg-blue-400/10",
         border: "border-blue-400/20"
     },
     {
         id: "02",
-        title: "Giải pháp & Lộ trình",
+        title: "Giải pháp Web & App Toàn diện",
         icon: Lightbulb,
-        description: "Một bản kế hoạch chi tiết, minh bạch từng đầu mục công việc và chi phí. Không mập mờ, không phát sinh vô lý. Bạn nắm quyền kiểm soát hoàn toàn.",
+        description: "Dù là Website giới thiệu hay Mobile App phức tạp, mình đều có lộ trình triển khai minh bạch, rõ ràng. Cam kết chi phí trọn gói, không phát sinh vô lý.",
         color: "text-amber-400",
         bgcolor: "bg-amber-400/10",
         border: "border-amber-400/20"
     },
     {
         id: "03",
-        title: "Thực thi & Tinh chỉnh",
+        title: "Chất lượng đặt lên hàng đầu",
         icon: Code2,
-        description: "Code logic, giao diện mượt. Trong quá trình làm, mình liên tục cập nhật demo để bạn 'chạm' vào sản phẩm, tinh chỉnh ngay lập tức nếu cần.",
+        description: "Giá hợp lý không có nghĩa là code ẩu. Mình chăm chút từng dòng code, tối ưu tốc độ và trải nghiệm người dùng (UX/UI) để sản phẩm vận hành mượt mà, ổn định.",
         color: "text-emerald-400",
         bgcolor: "bg-emerald-400/10",
         border: "border-emerald-400/20"
     },
     {
         id: "04",
-        title: "Bàn giao & Hậu mãi",
+        title: "Hỗ trợ trọn đời & Nâng cấp",
         icon: Rocket,
-        description: "Không chỉ gửi source code là xong. Mình hướng dẫn team bạn làm chủ công nghệ và luôn ở đó khi hệ thống cần nâng cấp. Đồng hành đường dài.",
+        description: "Mình không 'đem con bỏ chợ'. Cam kết bảo hành, bảo trì lâu dài và sẵn sàng hỗ trợ nâng cấp tính năng bất cứ khi nào bạn cần mở rộng quy mô.",
         color: "text-purple-400",
         bgcolor: "bg-purple-400/10",
         border: "border-purple-400/20"
@@ -55,7 +55,7 @@ export default function MinimalWorkflow() {
                         Quy trình làm việc tối giản
                     </h2>
                     <p className="text-secondary text-base md:text-lg font-light max-w-2xl mx-auto">
-                        Đơn giản hóa mọi phức tạp. Mình tập trung vào kết quả cuối cùng: sản phẩm hoạt động trơn tru và mang lại giá trị thực.
+                        Tối ưu chi phí - Hiệu năng vượt trội. Dù bạn cần Website hay Mobile App, quy trình của mình đều hướng tới sự tinh gọn, chất lượng cao và đồng hành dài hạn.
                     </p>
                 </div>
 

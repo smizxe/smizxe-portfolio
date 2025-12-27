@@ -21,6 +21,15 @@ export default {
             },
             backgroundImage: {
                 'grid-pattern': "linear-gradient(to right, #262626 1px, transparent 1px), linear-gradient(to bottom, #262626 1px, transparent 1px)",
+            },
+            animation: {
+                marquee: 'marquee 50s linear infinite',
+            },
+            keyframes: {
+                marquee: {
+                    '0%': { transform: 'translateX(0%)' },
+                    '100%': { transform: 'translateX(-50%)' },
+                }
             }
         },
     },
