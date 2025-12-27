@@ -9,9 +9,10 @@ interface LeadFormProps {
     className?: string;
     title?: string;
     description?: string;
+    formId?: string;
 }
 
-export default function LeadForm({ className, title, description }: LeadFormProps) {
+export default function LeadForm({ className, title, description, formId = 'lead-form' }: LeadFormProps) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
 
@@ -26,7 +27,7 @@ export default function LeadForm({ className, title, description }: LeadFormProp
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormData({
             ...formData,
-            [e.target.id]: e.target.value
+            [e.target.name]: e.target.value
         });
     };
 
@@ -72,10 +73,11 @@ export default function LeadForm({ className, title, description }: LeadFormProp
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                            <label htmlFor="name" className="text-sm font-medium text-secondary">Họ và tên</label>
+                            <label htmlFor={`${formId}-name`} className="text-sm font-medium text-secondary">Họ và tên</label>
                             <input
                                 type="text"
-                                id="name"
+                                id={`${formId}-name`}
+                                name="name"
                                 value={formData.name}
                                 onChange={handleChange}
                                 required
@@ -84,10 +86,11 @@ export default function LeadForm({ className, title, description }: LeadFormProp
                             />
                         </div>
                         <div className="space-y-2">
-                            <label htmlFor="contact" className="text-sm font-medium text-secondary">Số điện thoại / Zalo</label>
+                            <label htmlFor={`${formId}-contact`} className="text-sm font-medium text-secondary">Số điện thoại / Zalo</label>
                             <input
                                 type="text"
-                                id="contact"
+                                id={`${formId}-contact`}
+                                name="contact"
                                 value={formData.contact}
                                 onChange={handleChange}
                                 required
@@ -98,9 +101,10 @@ export default function LeadForm({ className, title, description }: LeadFormProp
                     </div>
 
                     <div className="space-y-2">
-                        <label htmlFor="needs" className="text-sm font-medium text-secondary">Nhu cầu của bạn</label>
+                        <label htmlFor={`${formId}-needs`} className="text-sm font-medium text-secondary">Nhu cầu của bạn</label>
                         <select
-                            id="needs"
+                            id={`${formId}-needs`}
+                            name="needs"
                             value={formData.needs}
                             onChange={handleChange}
                             className="w-full bg-neutral-900/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white/30 transition-colors appearance-none"
@@ -114,9 +118,10 @@ export default function LeadForm({ className, title, description }: LeadFormProp
                     </div>
 
                     <div className="space-y-2">
-                        <label htmlFor="message" className="text-sm font-medium text-secondary">Lời nhắn (Không bắt buộc)</label>
+                        <label htmlFor={`${formId}-message`} className="text-sm font-medium text-secondary">Lời nhắn (Không bắt buộc)</label>
                         <textarea
-                            id="message"
+                            id={`${formId}-message`}
+                            name="message"
                             value={formData.message}
                             onChange={handleChange}
                             rows={4}

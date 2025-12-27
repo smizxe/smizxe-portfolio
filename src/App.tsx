@@ -11,6 +11,7 @@ import Testimonials from './components/Testimonials';
 import ContactForm from './components/ContactForm';
 import MinimalWorkflow from './components/MinimalWorkflow';
 import LeadForm from './components/LeadForm';
+import ContactLinks from './components/ContactLinks';
 
 function App() {
     return (
@@ -39,6 +40,9 @@ function App() {
                         <a href="#projects" className="hover:text-white transition-colors">Dự án</a>
                         <a href="#contact" className="px-4 py-2 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all duration-300">
                             Liên hệ
+                        </a>
+                        <a href="tel:0388307551" className="hover:text-white transition-colors">
+                            0388 307 551
                         </a>
                     </div>
                 </div>
@@ -147,6 +151,7 @@ function App() {
                             title="Xây dựng nền tảng công nghệ vững chắc ngay hôm nay"
                             description="Chia sẻ ý tưởng hoặc vấn đề bạn đang gặp phải. Giang sẽ phân tích và đề xuất giải pháp Web/App tối ưu chi phí & hiệu quả nhất cho riêng bạn."
                         />
+                        <ContactLinks className="mt-8" />
                     </motion.div>
                 </div>
             </main>
@@ -505,8 +510,8 @@ function App() {
             >
                 <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
                     <div>
-                        <p className="text-xs text-white/40 uppercase tracking-widest font-medium mb-2">Vương Hoàng Giang</p>
-                        <p className="text-xs text-secondary">© 2024 Web & Mobile App Solutions.</p>
+                        <p className="text-xs text-white/40 uppercase tracking-widest font-medium mb-2">yangai</p>
+                        <p className="text-xs text-secondary">© 2025 yangai, All Right Reserved.</p>
                     </div>
                     <div className="text-xs text-secondary/50 max-w-md text-center md:text-right">
                         <p>Một số dự án trên website là demo/practice nhằm thể hiện năng lực và quy trình làm việc.</p>

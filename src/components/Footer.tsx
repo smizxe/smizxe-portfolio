@@ -50,7 +50,7 @@ export default function Footer({ lang }: FooterProps) {
         <footer className="py-8 bg-black/50 border-t border-white/5 text-center">
             <div className="container mx-auto px-4">
                 <p className="text-gray-400 text-sm mb-2">
-                    © {year} Vuong Hoang Giang. All rights reserved.
+                    © 2025 yangai, All Right Reserved.
                 </p>
                 <p className="text-gray-600 text-xs">
                     {t.disclaimer}

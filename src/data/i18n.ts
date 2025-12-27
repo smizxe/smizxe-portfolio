@@ -75,7 +75,7 @@ export const i18n = {
             or: "Hoặc liên hệ qua",
         },
         footer: {
-            copyright: "© 2024 Vuong Hoang Giang. All rights reserved.",
+            copyright: "© 2025 yangai, All Right Reserved.",
             disclaimer: "Một số dự án là demo/practice để showcase UI/UX & code.",
         }
     },
@@ -155,7 +155,7 @@ export const i18n = {
             or: "Or contact via",
         },
         footer: {
-            copyright: "© 2024 Vuong Hoang Giang. All rights reserved.",
+            copyright: "© 2025 yangai, All Right Reserved.",
             disclaimer: "Some projects are demo/practice to showcase UI/UX & code.",
         }
     }
