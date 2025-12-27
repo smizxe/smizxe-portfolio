@@ -6,6 +6,8 @@ import {
     Users, BarChart2, Calendar, ArrowRight, Mail, MessageCircle, Facebook
 } from 'lucide-react';
 import avatar from './assets/smizxe-chu-tich.jpg';
+import logo from './assets/logo.png';
+import MinimalWorkflow from './components/MinimalWorkflow';
 
 function App() {
     return (
@@ -17,8 +19,11 @@ function App() {
             {/* Navbar */}
             <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-background/80 backdrop-blur-md">
                 <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-                    <a href="#" className="text-sm tracking-widest font-medium uppercase text-white/90 hover:text-white transition-colors">
-                        Vương Hoàng Giang
+                    <a href="#" className="flex items-center gap-2 group">
+                        <img src={logo} alt="VHG Logo" className="h-10 w-auto object-contain scale-125 group-hover:opacity-80 transition-opacity" />
+                        <span className="text-sm tracking-widest font-medium uppercase text-white/90 group-hover:text-white transition-colors hidden sm:block pt-1">
+                            Vương Hoàng Giang
+                        </span>
                     </a>
                     <div className="hidden md:flex items-center gap-8 text-xs font-medium tracking-wide text-secondary">
                         <a href="#about" className="hover:text-white transition-colors">Giới thiệu</a>
@@ -95,20 +100,20 @@ function App() {
 
                     {/* Quick Trust Indicators */}
                     <div className="mt-16 pt-8 border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-6 text-xs md:text-sm text-secondary">
-                        <div className="flex items-center gap-3 justify-center md:justify-start">
-                            <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-white">
+                        <div className="flex items-center gap-3 justify-start">
+                            <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-white shrink-0">
                                 <Layers width={16} strokeWidth={1.5} />
                             </div>
                             <span>Fullstack Developer<br />định hướng sản phẩm</span>
                         </div>
-                        <div className="flex items-center gap-3 justify-center md:justify-start">
-                            <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-white">
+                        <div className="flex items-center gap-3 justify-start">
+                            <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-white shrink-0">
                                 <Cpu width={16} strokeWidth={1.5} />
                             </div>
                             <span>Kinh nghiệm xây dựng<br />Web + AI Automation</span>
                         </div>
-                        <div className="flex items-center gap-3 justify-center md:justify-start">
-                            <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-white">
+                        <div className="flex items-center gap-3 justify-start">
+                            <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-white shrink-0">
                                 <Lightbulb width={16} strokeWidth={1.5} />
                             </div>
                             <span>Tư duy giải pháp,<br />không chỉ code rập khuôn</span>
@@ -383,32 +388,15 @@ function App() {
                 </div>
             </section>
 
-            {/* Process & Feedback */}
-            <section className="py-24 px-6 bg-surface border-y border-white/5">
+
+            {/* Process Section */}
+            <MinimalWorkflow />
+
+            {/* Testimonials */}
+            <section className="py-24 px-6 bg-surface border-b border-white/5">
                 <div className="max-w-6xl mx-auto">
-                    <h2 className="text-xl font-medium text-center mb-16 text-white">Quy trình làm việc tối giản</h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-5 gap-4 relative">
-                        {/* Line connector for desktop */}
-                        <div className="hidden md:block absolute top-6 left-10 right-10 h-0.5 bg-gradient-to-r from-transparent via-white/10 to-transparent z-0"></div>
-
-                        {[1, 2, 3, 4, 5].map((step, index) => (
-                            <div key={step} className="relative z-10 text-center group">
-                                <div className="w-12 h-12 mx-auto bg-neutral-900 border border-white/10 rounded-full flex items-center justify-center text-white mb-4 group-hover:border-white transition-colors shadow-lg shadow-black/50">
-                                    {step}
-                                </div>
-                                <h4 className="text-sm font-medium text-white">
-                                    {['Phân tích', 'Đề xuất', 'Triển khai', 'Review', 'Bàn giao'][index]}
-                                </h4>
-                                <p className="text-xs text-secondary mt-2">
-                                    {['Nhu cầu & bài toán', 'Giải pháp Web/AI', 'Cập nhật tiến độ', 'Tinh chỉnh chi tiết', 'Hỗ trợ sử dụng'][index]}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Mini Testimonials */}
-                    <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <h2 className="text-xl font-medium text-center mb-16 text-white">Khách hàng nói gì?</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div className="p-6 bg-white/5 rounded border border-white/5">
                             <p className="text-sm text-secondary italic mb-4">"Giang có tư duy hệ thống rất tốt, không chỉ làm theo yêu cầu mà còn tư vấn ngược lại cho mình."</p>
                             <div className="flex items-center gap-2">
