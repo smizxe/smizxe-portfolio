@@ -6,10 +6,11 @@ import {
     Users, BarChart2, Calendar, Smartphone
 } from 'lucide-react';
 import avatar from './assets/smizxe-chu-tich.jpg';
-import logo from './assets/logo.png';
+
 import Testimonials from './components/Testimonials';
 import ContactForm from './components/ContactForm';
 import MinimalWorkflow from './components/MinimalWorkflow';
+import LeadForm from './components/LeadForm';
 
 function App() {
     return (
@@ -26,10 +27,10 @@ function App() {
                 className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-background/80 backdrop-blur-md"
             >
                 <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-                    <a href="#" className="flex items-center gap-2 group">
-                        <img src={logo} alt="VHG Logo" className="h-10 w-auto object-contain scale-125 group-hover:opacity-80 transition-opacity" />
+                    <a href="#" className="flex items-center gap-3 group">
+                        <img src={`${import.meta.env.BASE_URL}logo.png`} alt="yangai" className="h-14 w-auto object-contain group-hover:opacity-80 transition-opacity" />
                         <span className="text-sm tracking-widest font-medium uppercase text-white/90 group-hover:text-white transition-colors hidden sm:block pt-1">
-                            Vương Hoàng Giang
+                            Vương Hoàng Giang <span className="opacity-50 normal-case tracking-normal">(yangai)</span>
                         </span>
                     </a>
                     <div className="hidden md:flex items-center gap-8 text-xs font-medium tracking-wide text-secondary">
@@ -70,7 +71,7 @@ function App() {
                             </h1>
 
                             <p className="text-base md:text-lg text-secondary font-light max-w-2xl leading-relaxed mb-10 md:pr-10 mx-auto md:mx-0">
-                                Tôi là Vương Hoàng Giang – Fullstack Developer. Tôi mang đến giải pháp Website và Mobile App trọn gói: từ tư vấn, thiết kế đến lập trình, với mức phí khởi điểm hợp lý và cam kết đồng hành dài hạn.
+                                Tôi là Vương Hoàng Giang (yangai) – Fullstack Developer. Tôi mang đến giải pháp Website và Mobile App trọn gói: từ tư vấn, thiết kế đến lập trình, với mức phí khởi điểm hợp lý và cam kết đồng hành dài hạn.
                             </p>
 
                             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
@@ -131,6 +132,21 @@ function App() {
                             </div>
                             <span>Hỗ trợ lâu dài,<br />không bỏ dở dự án</span>
                         </div>
+                    </motion.div>
+
+                    {/* Quick Contact Form */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.6 }}
+                        className="mt-16"
+                    >
+                        <LeadForm
+                            className="max-w-3xl mx-auto"
+                            title="Xây dựng nền tảng công nghệ vững chắc ngay hôm nay"
+                            description="Chia sẻ ý tưởng hoặc vấn đề bạn đang gặp phải. Giang sẽ phân tích và đề xuất giải pháp Web/App tối ưu chi phí & hiệu quả nhất cho riêng bạn."
+                        />
                     </motion.div>
                 </div>
             </main>

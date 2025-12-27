@@ -63,8 +63,8 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-dark/80 backdrop-blur-md border-b border-white/10">
             <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-                <a href="#" onClick={(e) => { e.preventDefault(); scrollTo('hero'); }} className="text-2xl font-bold font-sans text-gradient">
-                    Giang.dev
+                <a href="#" onClick={(e) => { e.preventDefault(); scrollTo('hero'); }} className="block">
+                    <img src={`${import.meta.env.BASE_URL}logo.png`} alt="yangai" className="h-8 w-auto" />
                 </a>
 
                 {/* Desktop Menu */}

@@ -110,13 +110,15 @@ export default function Testimonials() {
                 <div className="py-4 animate-marquee whitespace-nowrap flex gap-4 group-hover:[animation-play-state:paused]" style={{ animationDirection: 'reverse' }}>
                     {/* Using a subset or duplicating to fill screen. With 47 images, simpler to just map them all. */}
                     {[...feedbackImages, ...feedbackImages].map((src, idx) => (
-                        <div key={idx} className="w-[180px] flex-shrink-0 rounded-xl overflow-hidden border border-white/10 hover:border-white/30 transition-all duration-300">
+                        <div key={idx} className="w-[180px] flex-shrink-0 rounded-xl overflow-hidden relative">
                             <img
                                 src={src}
                                 alt="Feedback proof"
-                                className="w-full h-auto object-cover opacity-80 hover:opacity-100 transition-opacity duration-300"
+                                className="w-full h-auto object-cover opacity-60 hover:opacity-100 transition-opacity duration-300"
                                 loading="lazy"
                             />
+                            {/* Inner shadow for feathering effect */}
+                            <div className="absolute inset-0 shadow-[inset_0_0_20px_5px_#171717] pointer-events-none rounded-xl"></div>
                         </div>
                     ))}
                 </div>
