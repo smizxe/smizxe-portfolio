@@ -39,7 +39,7 @@ function App() {
             </nav>
 
             {/* Hero Section */}
-            <main className="relative z-10 pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
+            <main className="relative z-10 pt-24 pb-16 md:pt-36 md:pb-24 px-6 overflow-hidden">
                 <div className="max-w-6xl mx-auto relative">
 
                     {/* Abstract Deco Element */}
@@ -86,7 +86,7 @@ function App() {
                             transition={{ duration: 0.8, delay: 0.2 }}
                             className="flex-1 relative flex justify-center md:justify-end"
                         >
-                            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/5 shadow-2xl shadow-indigo-500/20">
+                            <div className="relative w-64 h-80 md:w-80 md:h-[450px] rounded-2xl overflow-hidden border-4 border-white/5 shadow-2xl shadow-indigo-500/20">
                                 <img
                                     src={avatar}
                                     alt="Vương Hoàng Giang"
