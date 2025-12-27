@@ -44,7 +44,7 @@ export function BackToTop() {
 
 export default function Footer({ lang }: FooterProps) {
     const t = i18n[lang].footer;
-    const year = new Date().getFullYear();
+
 
     return (
         <footer className="py-8 bg-black/50 border-t border-white/5 text-center">
