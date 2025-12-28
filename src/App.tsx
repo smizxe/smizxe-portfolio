@@ -17,6 +17,15 @@ import ContactLinks from './components/ContactLinks';
 function App() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+        e.preventDefault();
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+        setIsMobileMenuOpen(false);
+    };
+
     return (
         <div className="bg-background text-primary font-sans antialiased selection:bg-white/20 selection:text-white min-h-screen">
 
@@ -39,9 +48,9 @@ function App() {
                     </a>
                     <div className="hidden md:flex items-center gap-8 text-xs font-medium tracking-wide text-secondary">
                         <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-white transition-colors">Giới thiệu</a>
-                        <a href="#services" className="hover:text-white transition-colors">Dịch vụ</a>
-                        <a href="#projects" className="hover:text-white transition-colors">Dự án</a>
-                        <a href="#contact" className="px-4 py-2 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all duration-300">
+                        <a href="#services" onClick={(e) => handleScroll(e, 'services')} className="hover:text-white transition-colors">Dịch vụ</a>
+                        <a href="#projects" onClick={(e) => handleScroll(e, 'projects')} className="hover:text-white transition-colors">Dự án</a>
+                        <a href="#contact" onClick={(e) => handleScroll(e, 'contact')} className="px-4 py-2 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all duration-300">
                             Liên hệ
                         </a>
                         <a href="tel:0388307551" className="hover:text-white transition-colors">
@@ -76,9 +85,9 @@ function App() {
 
                         <nav className="flex flex-col items-center gap-8 text-xl font-medium">
                             <a href="#" onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-white/70 hover:text-white transition-colors">Giới thiệu</a>
-                            <a href="#services" onClick={() => setIsMobileMenuOpen(false)} className="text-white/70 hover:text-white transition-colors">Dịch vụ</a>
-                            <a href="#projects" onClick={() => setIsMobileMenuOpen(false)} className="text-white/70 hover:text-white transition-colors">Dự án</a>
-                            <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="text-emerald-400 hover:text-emerald-300 transition-colors">Liên hệ</a>
+                            <a href="#services" onClick={(e) => handleScroll(e, 'services')} className="text-white/70 hover:text-white transition-colors">Dịch vụ</a>
+                            <a href="#projects" onClick={(e) => handleScroll(e, 'projects')} className="text-white/70 hover:text-white transition-colors">Dự án</a>
+                            <a href="#contact" onClick={(e) => handleScroll(e, 'contact')} className="text-emerald-400 hover:text-emerald-300 transition-colors">Liên hệ</a>
                         </nav>
 
                         <div className="mt-12 pt-12 border-t border-white/10 w-full max-w-xs text-center space-y-6">
@@ -120,11 +129,11 @@ function App() {
                             </p>
 
                             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
-                                <a href="#projects" className="w-full sm:w-auto px-6 py-3 bg-white text-black text-sm font-medium rounded hover:bg-white/90 transition-colors flex items-center justify-center gap-2">
+                                <a href="#projects" onClick={(e) => handleScroll(e, 'projects')} className="w-full sm:w-auto px-6 py-3 bg-white text-black text-sm font-medium rounded hover:bg-white/90 transition-colors flex items-center justify-center gap-2">
                                     Xem dự án đã thực hiện
                                     <ArrowDownRight width={16} strokeWidth={2} />
                                 </a>
-                                <a href="#contact" className="w-full sm:w-auto px-6 py-3 border border-white/10 text-white text-sm font-medium rounded hover:bg-white/5 transition-colors text-center">
+                                <a href="#contact" onClick={(e) => handleScroll(e, 'contact')} className="w-full sm:w-auto px-6 py-3 border border-white/10 text-white text-sm font-medium rounded hover:bg-white/5 transition-colors text-center">
                                     Liên hệ trao đổi
                                 </a>
                             </div>
