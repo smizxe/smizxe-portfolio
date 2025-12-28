@@ -217,7 +217,7 @@ function App() {
                             transition={{ duration: 0.6 }}
                             className="md:sticky md:top-32"
                         >
-                            <h2 className="text-2xl md:text-3xl font-medium tracking-tight mb-4">Tại sao nên chọn Giang?</h2>
+                            <h2 className="text-2xl md:text-3xl font-medium tracking-tight mb-4">Tại sao nên chọn Yangai?</h2>
                             <p className="text-secondary font-light text-sm md:text-base leading-relaxed mb-6">
                                 Tôi tập trung xây giải pháp có thể sử dụng lâu dài, bền vững và dễ dàng mở rộng, không phải sản phẩm "mì ăn liền" làm cho xong.
                             </p>
