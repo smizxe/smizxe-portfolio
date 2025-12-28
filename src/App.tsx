@@ -1,9 +1,10 @@
 
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
     ArrowDownRight, Layers, Cpu, Lightbulb, Search, Zap,
     HeartHandshake, Monitor, Check, Bot, ArrowUpRight,
-    Users, BarChart2, Calendar, Smartphone
+    Users, BarChart2, Calendar, Smartphone, X, Menu
 } from 'lucide-react';
 import avatar from './assets/smizxe-chu-tich.jpg';
 
@@ -14,6 +15,8 @@ import LeadForm from './components/LeadForm';
 import ContactLinks from './components/ContactLinks';
 
 function App() {
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
     return (
         <div className="bg-background text-primary font-sans antialiased selection:bg-white/20 selection:text-white min-h-screen">
 
@@ -35,7 +38,7 @@ function App() {
                         </span>
                     </a>
                     <div className="hidden md:flex items-center gap-8 text-xs font-medium tracking-wide text-secondary">
-                        <a href="#about" className="hover:text-white transition-colors">Giới thiệu</a>
+                        <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-white transition-colors">Giới thiệu</a>
                         <a href="#services" className="hover:text-white transition-colors">Dịch vụ</a>
                         <a href="#projects" className="hover:text-white transition-colors">Dự án</a>
                         <a href="#contact" className="px-4 py-2 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all duration-300">
@@ -45,8 +48,46 @@ function App() {
                             0388 307 551
                         </a>
                     </div>
+                    {/* Mobile Menu Toggle */}
+                    <button
+                        className="md:hidden p-2 text-white/70 hover:text-white transition-colors"
+                        onClick={() => setIsMobileMenuOpen(true)}
+                    >
+                        <Menu width={24} />
+                    </button>
                 </div>
-            </motion.nav>
+            </motion.nav >
+
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, x: '100%' }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: '100%' }}
+                        transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                        className="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center p-8"
+                    >
+                        <button
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="absolute top-6 right-6 p-2 text-white/50 hover:text-white transition-colors"
+                        >
+                            <X width={32} />
+                        </button>
+
+                        <nav className="flex flex-col items-center gap-8 text-xl font-medium">
+                            <a href="#" onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-white/70 hover:text-white transition-colors">Giới thiệu</a>
+                            <a href="#services" onClick={() => setIsMobileMenuOpen(false)} className="text-white/70 hover:text-white transition-colors">Dịch vụ</a>
+                            <a href="#projects" onClick={() => setIsMobileMenuOpen(false)} className="text-white/70 hover:text-white transition-colors">Dự án</a>
+                            <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="text-emerald-400 hover:text-emerald-300 transition-colors">Liên hệ</a>
+                        </nav>
+
+                        <div className="mt-12 pt-12 border-t border-white/10 w-full max-w-xs text-center space-y-6">
+                            <p className="text-secondary text-sm">Kết nối trực tiếp</p>
+                            <a href="tel:0388307551" className="block text-2xl font-light text-white">0388 307 551</a>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* Hero Section */}
             <main className="relative z-10 pt-24 pb-16 md:pt-36 md:pb-24 px-6 overflow-hidden">
@@ -498,7 +539,7 @@ function App() {
             <Testimonials />
 
             {/* CTA / Contact Section */}
-            <ContactForm />
+            <ContactForm onOpenMenu={() => setIsMobileMenuOpen(true)} />
 
             {/* Footer */}
             <motion.footer
@@ -519,7 +560,7 @@ function App() {
                 </div>
             </motion.footer>
 
-        </div>
+        </div >
     );
 }
 

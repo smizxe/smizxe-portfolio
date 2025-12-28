@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yangai.site/sitemap.xml

@@ -3,7 +3,11 @@ import { motion } from 'framer-motion';
 import LeadForm from './LeadForm';
 import ContactLinks from './ContactLinks';
 
-export default function ContactForm() {
+interface ContactFormProps {
+    onOpenMenu?: () => void;
+}
+
+export default function ContactForm({ onOpenMenu }: ContactFormProps) {
 
     return (
         <section id="contact" className="py-24 px-6 relative overflow-hidden bg-gradient-to-b from-transparent to-neutral-900/50 scroll-mt-0">
@@ -38,7 +42,11 @@ export default function ContactForm() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                    <ContactLinks className="mt-12 border-t border-white/5 pt-8" />
+                    <ContactLinks
+                        className="mt-12 border-t border-white/5 pt-8"
+                        mobileLayout="vertical"
+                        onOpenMenu={onOpenMenu}
+                    />
                 </motion.div>
             </div>
         </section>

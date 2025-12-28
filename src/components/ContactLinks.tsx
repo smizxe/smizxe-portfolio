@@ -1,30 +1,39 @@
 import { useState } from 'react';
-import { Mail, MessageCircle, Facebook, Phone, X } from 'lucide-react';
+import { Mail, MessageCircle, Facebook, Phone, X, Menu } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import zaloQr from '../assets/anh-zalo.jpg';
-import { cn } from '../lib/utils'; // Assuming this exists or I'll just use template literals if not found, but it was in Footer.tsx
+import { cn } from '../lib/utils';
 
 interface ContactLinksProps {
     className?: string;
+    mobileLayout?: 'default' | 'vertical';
+    onOpenMenu?: () => void;
 }
 
-export default function ContactLinks({ className }: ContactLinksProps) {
+export default function ContactLinks({ className, mobileLayout = 'default', onOpenMenu }: ContactLinksProps) {
     const [isZaloOpen, setIsZaloOpen] = useState(false);
+    const isVertical = mobileLayout === 'vertical';
 
     return (
         <>
-            <div className={cn("flex flex-wrap justify-center gap-6 md:gap-8 max-w-2xl mx-auto", className)}>
+            <div className={cn(
+                "flex",
+                isVertical
+                    ? "flex-col items-start gap-4 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-8 sm:w-full"
+                    : "flex-wrap justify-center gap-6 md:gap-8 max-w-2xl mx-auto",
+                className
+            )}>
                 <a href="tel:0388307551" className="text-secondary hover:text-green-400 transition-colors flex items-center gap-2 text-sm group">
                     <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-green-400/20 transition-colors">
                         <Phone width={14} />
                     </div>
-                    <span className="hidden sm:inline">0388 307 551</span>
+                    <span className={isVertical ? "inline" : "hidden sm:inline"}>0388 307 551</span>
                 </a>
                 <a href="mailto:vuonghoanggiang0811@gmail.com" className="text-secondary hover:text-white transition-colors flex items-center gap-2 text-sm group">
                     <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
                         <Mail width={14} />
                     </div>
-                    <span className="hidden sm:inline">Email</span>
+                    <span className={isVertical ? "inline" : "hidden sm:inline"}>Email</span>
                 </a>
                 <button
                     onClick={() => setIsZaloOpen(true)}
@@ -33,13 +42,13 @@ export default function ContactLinks({ className }: ContactLinksProps) {
                     <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-blue-400/20 transition-colors">
                         <MessageCircle width={14} />
                     </div>
-                    <span className="hidden sm:inline">Zalo</span>
+                    <span className={isVertical ? "inline" : "hidden sm:inline"}>Zalo</span>
                 </button>
                 <a href="https://www.facebook.com/smizxe/" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-blue-600 transition-colors flex items-center gap-2 text-sm group">
                     <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-blue-600/20 transition-colors">
                         <Facebook width={14} />
                     </div>
-                    <span className="hidden sm:inline">Facebook</span>
+                    <span className={isVertical ? "inline" : "hidden sm:inline"}>Facebook</span>
                 </a>
             </div>
 
