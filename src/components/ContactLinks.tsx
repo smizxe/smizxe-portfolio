@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, MessageCircle, Facebook, Phone, X, Menu } from 'lucide-react';
+import { Mail, MessageCircle, Facebook, Phone, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import zaloQr from '../assets/anh-zalo.jpg';
 import { cn } from '../lib/utils';
@@ -10,7 +10,7 @@ interface ContactLinksProps {
     onOpenMenu?: () => void;
 }
 
-export default function ContactLinks({ className, mobileLayout = 'default', onOpenMenu }: ContactLinksProps) {
+export default function ContactLinks({ className, mobileLayout = 'default' }: ContactLinksProps) {
     const [isZaloOpen, setIsZaloOpen] = useState(false);
     const isVertical = mobileLayout === 'vertical';
 
