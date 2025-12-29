@@ -37,8 +37,16 @@ export default function Projects({ lang }: ProjectsProps) {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                         >
-                            {/* Thumbnail Placeholder */}
-                            <div className={cn("h-48 w-full bg-gradient-to-br", project.color)} />
+                            {/* Thumbnail or Placeholder */}
+                            {(project as any).image ? (
+                                <img
+                                    src={(project as any).image}
+                                    alt={project.title}
+                                    className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                />
+                            ) : (
+                                <div className={cn("h-48 w-full bg-gradient-to-br", project.color)} />
+                            )}
 
                             <div className="p-6">
                                 <div className="flex justify-between items-start mb-4">

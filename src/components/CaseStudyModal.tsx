@@ -37,8 +37,16 @@ export default function CaseStudyModal({ project, t }: CaseStudyModalProps) {
     return (
         <div className="flex flex-col">
             {/* Hero format within modal */}
-            <div className={cn("h-64 sm:h-80 w-full bg-gradient-to-br flex items-end p-8", project.color)}>
-                <div className="w-full">
+            {/* Hero format within modal */}
+            <div className={cn("h-64 sm:h-80 w-full bg-gradient-to-br flex items-end p-8 relative overflow-hidden", project.color)}>
+                {(project as any).image && (
+                    <img
+                        src={(project as any).image}
+                        alt={project.title}
+                        className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-50"
+                    />
+                )}
+                <div className="w-full relative z-10">
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">{project.title}</h2>
                     <p className="text-white/80 text-xl">{project.category}</p>
                 </div>

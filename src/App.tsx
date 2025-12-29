@@ -4,15 +4,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
     ArrowDownRight, Layers, Cpu, Lightbulb, Search, Zap,
     HeartHandshake, Monitor, Check, Bot, ArrowUpRight,
-    Users, BarChart2, Calendar, Smartphone, X, Menu
+    Smartphone, X, Menu
 } from 'lucide-react';
 import avatar from './assets/smizxe-chu-tich.jpg';
 
 import Testimonials from './components/Testimonials';
 import ContactForm from './components/ContactForm';
-import MinimalWorkflow from './components/MinimalWorkflow';
 import LeadForm from './components/LeadForm';
+import BackgroundDecoration from './components/BackgroundDecoration';
 import ContactLinks from './components/ContactLinks';
+import Story from './components/Story';
 
 function App() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -31,6 +32,9 @@ function App() {
 
             {/* Background Grid Effect */}
             <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.07] bg-grid bg-grid-pattern"></div>
+
+            {/* Global Scattered Shapes */}
+            <BackgroundDecoration />
 
             {/* Navbar */}
             <motion.nav
@@ -385,7 +389,7 @@ function App() {
                             </p>
                         </div>
                         <div className="hidden md:block h-px flex-1 bg-white/10 mx-8 mb-2"></div>
-                        <span className="text-xs font-mono text-secondary/50 border border-white/10 px-2 py-1 rounded">Selected Works 2023-2024</span>
+                        <span className="text-xs font-mono text-secondary/50 border border-white/10 px-2 py-1 rounded">Selected Works 2024-2025</span>
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -397,33 +401,29 @@ function App() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
                             className="group cursor-pointer"
+                            onClick={() => window.open('https://rentino.vn', '_blank')}
                         >
                             <div className="h-64 bg-surface rounded-lg border border-white/5 overflow-hidden relative mb-6">
-                                <div className="absolute inset-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-                                    <div className="w-3/4 h-3/4 border border-white/10 rounded bg-[#0f0f0f] relative overflow-hidden">
-                                        <div className="absolute top-0 w-full h-8 border-b border-white/10 flex items-center px-3 gap-2">
-                                            <div className="w-2 h-2 rounded-full bg-red-500/50"></div>
-                                            <div className="w-2 h-2 rounded-full bg-yellow-500/50"></div>
-                                        </div>
-                                        <div className="p-4 space-y-3">
-                                            <div className="w-1/2 h-4 bg-white/10 rounded"></div>
-                                            <div className="w-full h-20 bg-white/5 rounded flex items-center justify-center text-xs text-emerald-400/80">
-                                                AI Booking Active...
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-500">
+                                    <img
+                                        src="/images/rentino-preview.png"
+                                        alt="Rentino"
+                                        className="w-full h-full object-cover"
+                                    />
+                                    {/* Overlay gradient for better text contrast if needed, but image is cover */}
+                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
                                 </div>
                             </div>
                             <div className="flex justify-between items-start">
                                 <div>
-                                    <h3 className="text-lg font-medium text-white group-hover:text-emerald-400 transition-colors">Lotus Spa – Booking Assistant</h3>
-                                    <p className="text-sm text-secondary mt-1">Website giới thiệu + AI Chatbot đặt lịch tự động</p>
+                                    <h3 className="text-lg font-medium text-white group-hover:text-orange-500 transition-colors">Rentino - Cầm Thuê Nâng đời điện thoại</h3>
+                                    <p className="text-sm text-secondary mt-1">Nền tảng tài chính thông minh: Cầm, Thuê, Nâng đời điện thoại</p>
                                 </div>
                                 <ArrowUpRight className="text-white/30 group-hover:text-white transition-colors" width={20} />
                             </div>
                             <div className="flex gap-2 mt-3">
-                                <span className="text-[10px] uppercase tracking-wider border border-white/10 px-2 py-0.5 rounded text-secondary">Web</span>
-                                <span className="text-[10px] uppercase tracking-wider border border-emerald-500/20 px-2 py-0.5 rounded text-emerald-400">AI Chatbot</span>
+                                <span className="text-[10px] uppercase tracking-wider border border-white/10 px-2 py-0.5 rounded text-secondary">Fintech</span>
+                                <span className="text-[10px] uppercase tracking-wider border border-orange-500/20 px-2 py-0.5 rounded text-orange-500">AI Integration</span>
                             </div>
                         </motion.div>
 
@@ -434,24 +434,22 @@ function App() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.1 }}
                             className="group cursor-pointer"
+                            onClick={() => window.open('https://smizxe.github.io/namnguyenlandingpage/', '_blank')}
                         >
                             <div className="h-64 bg-surface rounded-lg border border-white/5 overflow-hidden relative mb-6">
-                                <div className="absolute inset-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-                                    <div className="w-3/4 h-3/4 border border-white/10 rounded bg-[#0f0f0f] relative overflow-hidden p-6 flex flex-col items-center justify-center">
-                                        <div className="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center mb-4">
-                                            <Users className="text-indigo-400" width={20} />
-                                        </div>
-                                        <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                                            <div className="h-full w-2/3 bg-indigo-500"></div>
-                                        </div>
-                                        <span className="text-[10px] text-indigo-300 mt-2">Processing Leads...</span>
-                                    </div>
+                                <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-500">
+                                    <img
+                                        src="/images/content-mastery-preview.png"
+                                        alt="Content Mastery"
+                                        className="w-full h-full object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
                                 </div>
                             </div>
                             <div className="flex justify-between items-start">
                                 <div>
-                                    <h3 className="text-lg font-medium text-white group-hover:text-indigo-400 transition-colors">Khóa học tiếng Anh – AI Lead</h3>
-                                    <p className="text-sm text-secondary mt-1">Landing page + AI phân loại & phản hồi học viên</p>
+                                    <h3 className="text-lg font-medium text-white group-hover:text-indigo-400 transition-colors">Mẫu landing page Khóa học xây kênh - Auto Lead</h3>
+                                    <p className="text-sm text-secondary mt-1">Landing page giáo dục + Automation Funnel</p>
                                 </div>
                                 <ArrowUpRight className="text-white/30 group-hover:text-white transition-colors" width={20} />
                             </div>
@@ -470,37 +468,29 @@ function App() {
                             className="group cursor-pointer"
                         >
                             <div className="h-64 bg-surface rounded-lg border border-white/5 overflow-hidden relative mb-6">
-                                <div className="absolute inset-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-                                    <div className="w-3/4 h-3/4 border border-white/10 rounded bg-[#0f0f0f] relative overflow-hidden p-4">
-                                        <div className="space-y-2">
-                                            <div className="flex gap-2">
-                                                <div className="w-8 h-8 rounded bg-white/10"></div>
-                                                <div className="flex-1 space-y-1">
-                                                    <div className="w-20 h-2 bg-white/20 rounded"></div>
-                                                    <div className="w-full h-2 bg-white/5 rounded"></div>
-                                                </div>
-                                            </div>
-                                            <div className="p-2 bg-blue-500/10 border border-blue-500/20 rounded text-[10px] text-blue-300">
-                                                AI generated response based on client query...
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-500">
+                                    <img
+                                        src="/images/personal-agent-preview.png"
+                                        alt="Personal Life AI Agent"
+                                        className="w-full h-full object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
                                 </div>
                             </div>
                             <div className="flex justify-between items-start">
                                 <div>
-                                    <h3 className="text-lg font-medium text-white group-hover:text-blue-400 transition-colors">AI Email Assistant</h3>
-                                    <p className="text-sm text-secondary mt-1">Tool viết & gửi email tự động theo kịch bản CSKH</p>
+                                    <h3 className="text-lg font-medium text-white group-hover:text-blue-400 transition-colors">Personal Life AI Agent</h3>
+                                    <p className="text-sm text-secondary mt-1">Trợ lý AI quản lý công việc, lịch trình & tài chính cá nhân</p>
                                 </div>
                                 <ArrowUpRight className="text-white/30 group-hover:text-white transition-colors" width={20} />
                             </div>
                             <div className="flex gap-2 mt-3">
-                                <span className="text-[10px] uppercase tracking-wider border border-white/10 px-2 py-0.5 rounded text-secondary">Tool</span>
-                                <span className="text-[10px] uppercase tracking-wider border border-blue-500/20 px-2 py-0.5 rounded text-blue-400">GPT-4</span>
+                                <span className="text-[10px] uppercase tracking-wider border border-white/10 px-2 py-0.5 rounded text-secondary">n8n</span>
+                                <span className="text-[10px] uppercase tracking-wider border border-blue-500/20 px-2 py-0.5 rounded text-blue-400">OpenAI</span>
                             </div>
                         </motion.div>
 
-                        {/* Project 4 */}
+
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -509,30 +499,25 @@ function App() {
                             className="group cursor-pointer"
                         >
                             <div className="h-64 bg-surface rounded-lg border border-white/5 overflow-hidden relative mb-6">
-                                <div className="absolute inset-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-                                    <div className="w-3/4 h-3/4 border border-white/10 rounded bg-[#0f0f0f] relative overflow-hidden grid grid-cols-2 gap-2 p-4">
-                                        <div className="bg-white/5 rounded border border-white/5 flex items-center justify-center">
-                                            <BarChart2 className="text-white/20" width={24} />
-                                        </div>
-                                        <div className="bg-white/5 rounded border border-white/5 flex items-center justify-center">
-                                            <Calendar className="text-white/20" width={24} />
-                                        </div>
-                                        <div className="col-span-2 h-8 bg-purple-500/10 rounded border border-purple-500/20 flex items-center px-2 text-[10px] text-purple-300">
-                                            Analyzing Data...
-                                        </div>
-                                    </div>
+                                <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-500">
+                                    <img
+                                        src="/images/gotaste-preview.png"
+                                        alt="GoTaste"
+                                        className="w-full h-full object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
                                 </div>
                             </div>
                             <div className="flex justify-between items-start">
                                 <div>
-                                    <h3 className="text-lg font-medium text-white group-hover:text-purple-400 transition-colors">Event Management System</h3>
-                                    <p className="text-sm text-secondary mt-1">Web quản lý sự kiện + AI phân tích dữ liệu đăng ký</p>
+                                    <h3 className="text-lg font-medium text-white group-hover:text-amber-400 transition-colors">GoTaste - Website đặt đồ ăn & thức uống (Đồ án)</h3>
+                                    <p className="text-sm text-secondary mt-1">Website đặt món từ các quán cafe</p>
                                 </div>
                                 <ArrowUpRight className="text-white/30 group-hover:text-white transition-colors" width={20} />
                             </div>
                             <div className="flex gap-2 mt-3">
-                                <span className="text-[10px] uppercase tracking-wider border border-white/10 px-2 py-0.5 rounded text-secondary">Dashboard</span>
-                                <span className="text-[10px] uppercase tracking-wider border border-purple-500/20 px-2 py-0.5 rounded text-purple-400">Data Analysis</span>
+                                <span className="text-[10px] uppercase tracking-wider border border-white/10 px-2 py-0.5 rounded text-secondary">E-commerce</span>
+                                <span className="text-[10px] uppercase tracking-wider border border-amber-500/20 px-2 py-0.5 rounded text-amber-400">NodeJS</span>
                             </div>
                         </motion.div>
 
@@ -541,8 +526,8 @@ function App() {
             </section>
 
 
-            {/* Process Section */}
-            <MinimalWorkflow />
+            {/* Story Section (Replaces Process) */}
+            <Story />
 
             {/* Testimonials */}
             <Testimonials />

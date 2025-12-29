@@ -43,24 +43,25 @@ export const portfolio = {
     ],
     projects: [
         {
-            id: "lotus-spa",
-            title: "Lotus Spa",
-            category: "Booking Landing",
-            tech: ["React", "Tailwind", "Framer Motion"],
-            color: "from-pink-500 to-rose-500",
+            id: "rentino",
+            title: "Rentino - Cầm Thuê Nâng đời điện thoại",
+            category: "Fintech / E-commerce",
+            tech: ["React", "Vite", "Tailwind", "AI Integration"],
+            color: "from-orange-500 to-red-600",
+            image: "/images/rentino-preview.png",
             stats: {
                 role: "Frontend Developer",
-                timeline: "1 week",
+                timeline: "2 weeks",
             },
-            highlights: ["Interactive Booking Form", "Smooth Scroll Animations"],
+            highlights: ["AI Smart Check", "Định giá nhanh", "Minh bạch"],
             caseStudy: {
-                problem: "Client needed a modern way for customers to book appointments online.",
-                solution: "High-performance landing page with integrated booking form (mock).",
-                features: ["Responsive Design", "Service Menu", "Contact Integration"],
-                outcome: "Increased user engagement potential by 40%.",
+                problem: "Người dùng gặp khó khăn trong việc định giá và tìm kiếm giải pháp tài chính nhanh cho thiết bị di động.",
+                solution: "Nền tảng Rentino cung cấp giải pháp Cầm, Thuê, Nâng đời với công nghệ AI định giá chuẩn xác.",
+                features: ["AI Smart Check", "Định giá tự động", "Booking dịch vụ tận nơi"],
+                outcome: "Giúp người dùng tiếp cận dịch vụ tài chính an toàn, minh bạch và nhanh chóng.",
             },
             links: {
-                demo: "#",
+                demo: "https://rentino.vn",
                 source: "#"
             }
         },
@@ -87,21 +88,45 @@ export const portfolio = {
             }
         },
         {
-            id: "english-master",
-            title: "English Master",
-            category: "Course Landing",
-            tech: ["React", "Tailwind"],
+            id: "content-mastery",
+            title: "Mẫu landing page Khóa học xây kênh - Auto Lead",
+            category: "Landing Page / Education",
+            tech: ["React", "Tailwind", "Automation"],
             color: "from-blue-400 to-indigo-500",
+            image: "/images/content-mastery-preview.png",
             stats: {
-                role: "Frontend Developer",
-                timeline: "5 days",
+                role: "Full Stack Developer",
+                timeline: "1 week",
             },
-            highlights: ["Curriculum Accordion", "Testimonials Slider"],
+            highlights: ["High Conversion", "Automation Funnel", "SEO Optimized"],
             caseStudy: {
-                problem: "Old site was slow and not mobile responsive.",
-                solution: "Complete redesign with mobile-first approach.",
+                problem: "Conversion rate for the old course landing page was low.",
+                solution: "Redesigned with a focus on value proposition and automated lead capture.",
                 features: ["Fast Loading", "Clear CTA", "SEO Optimized"],
-                outcome: "Page speed score increased to 98/100.",
+                outcome: "Increased lead generation by 60%.",
+            },
+            links: {
+                demo: "https://smizxe.github.io/namnguyenlandingpage/",
+                source: "#"
+            }
+        },
+        {
+            id: "personal-agent",
+            title: "Personal Life AI Agent",
+            category: "Automation / AI Assistant",
+            tech: ["n8n", "OpenAI", "Google Workspace", "Telegram"],
+            color: "from-blue-400 to-indigo-500",
+            image: "/images/personal-agent-preview.png",
+            stats: {
+                role: "Automation Engineer",
+                timeline: "3 weeks",
+            },
+            highlights: ["Task Orchestration", "Smart Decision Making", "Multi-Service Integration"],
+            caseStudy: {
+                problem: "Managing personal tasks, calendar, emails, and finances across multiple apps is fragmented and time-consuming.",
+                solution: "A centralized AI agent that communicates via Telegram to orchestrate all personal life aspects.",
+                features: ["Context Aware Memory", "Expense Tracking", "Auto-Scheduling"],
+                outcome: "Saved 10+ hours per week on life admin tasks.",
             },
             links: {
                 demo: "#",
@@ -109,21 +134,22 @@ export const portfolio = {
             }
         },
         {
-            id: "cafe-beans",
-            title: "Cafe Beans",
-            category: "Mini E-commerce",
-            tech: ["React", "Zustand", "Tailwind"],
-            color: "from-emerald-400 to-teal-500",
+            id: "gotaste",
+            title: "GoTaste - Website đặt đồ ăn & thức uống (Đồ án)",
+            category: "E-commerce / Food Delivery",
+            tech: ["React", "NodeJS", "MongoDB", "Express"],
+            color: "from-amber-400 to-orange-500",
+            image: "/images/gotaste-preview.png",
             stats: {
-                role: "Full Implementation",
-                timeline: "10 days",
+                role: "Full Stack Developer",
+                timeline: "4 weeks",
             },
-            highlights: ["Cart Logic", "Product Filtering"],
+            highlights: ["Real-time Order", "Location Based", "Payment Integration"],
             caseStudy: {
-                problem: "Coffee shop wanted to sell beans online.",
-                solution: "Single page shop with cart functionality.",
-                features: ["Add to Cart", "Category Filter", "Checkout Simulation"],
-                outcome: "Ready for payment gateway integration.",
+                problem: "Students and office workers need a quick way to order from nearby cafes.",
+                solution: "A food delivery platform specifically for cafes with real-time tracking.",
+                features: ["Menu Customization", "Real-time Tracking", "Reviews & Ratings"],
+                outcome: "Successfully deployed as a university capstone project.",
             },
             links: {
                 demo: "#",

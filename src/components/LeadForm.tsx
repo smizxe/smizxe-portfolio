@@ -138,7 +138,7 @@ export default function LeadForm({ className, title, description, formId = 'lead
                         {isSubmitting ? (
                             <> <Loader2 className="animate-spin" width={20} /> Đang gửi... </>
                         ) : (
-                            <> Gửi thông tin <ArrowRight width={18} className="group-hover:translate-x-1 transition-transform" /> </>
+                            <> Nhận tư vấn ngay <ArrowRight width={18} className="group-hover:translate-x-1 transition-transform" /> </>
                         )}
                     </button>
                 </form>
