@@ -3,7 +3,7 @@ import { ArrowRight, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 // Replace this with your actual Google Apps Script Web App URL
-const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwhAdyRHUoDWb8edNbGXwHymzy66H2V8HCPI_nSpmKmMzrDvDbjs6-80TtkIckR4cq0/exec";
+const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbz6dakmk79skVct-ppVYdQ804EsbtjHsTeC50p-RVHx-_AuqyhBG4hL_RUC0ULG7qhX/exec";
 
 interface LeadFormProps {
     className?: string;
