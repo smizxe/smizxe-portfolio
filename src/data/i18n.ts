@@ -12,31 +12,31 @@ export const i18n = {
             bookCall: "Book a Call",
         },
         hero: {
-            headline: "Mình build website nhanh, đẹp, chuẩn SEO, tập trung chuyển đổi.",
-            subheadline: "Sinh viên FPT • Nhận làm landing page / website doanh nghiệp / portfolio. UI xịn, tải nhanh, responsive.",
+            headline: "yangai - Thiết kế website & lập trình mobile app chuyên nghiệp, giá tốt nhất",
+            subheadline: "yangai (Vương Hoàng Giang) - Fullstack Developer chuyên thiết kế website doanh nghiệp, landing page và lập trình mobile app iOS/Android. Tối ưu chi phí, hỗ trợ trọn đời.",
             ctaPrimary: "Xem dự án",
             ctaSecondary: "Liên hệ ngay",
             stats: {
-                delivery: "5-10 ngày",
-                tech: "React / Vite",
-                quality: "SEO + Responsive",
+                delivery: "Giao nhanh 5-10 ngày",
+                tech: "React/Vite/Node",
+                quality: "Chuẩn SEO, Responsive",
             }
         },
         trust: {
             label: "Practice builds for:",
         },
         about: {
-            title: "Về mình",
-            description: "Mình là Giang, sinh viên FPT University với niềm đam mê tạo ra những sản phẩm web chất lượng cao.",
+            title: "Về yangai",
+            description: "yangai (Vương Hoàng Giang) - Fullstack Developer chuyên thiết kế website và lập trình mobile app chất lượng cao. Tập trung xây dựng giải pháp Web/App bền vững, dễ mở rộng.",
             skills: "Kỹ năng chính",
         },
         services: {
-            title: "Dịch vụ",
+            title: "Dịch vụ của yangai",
             items: [
-                { title: "Landing Page Conversion", desc: "Tối ưu tỷ lệ chuyển đổi, thiết kế bắt mắt." },
-                { title: "Website Doanh Nghiệp", desc: "Chuyên nghiệp, khẳng định thương hiệu." },
-                { title: "Portfolio/CV Website", desc: "Cá nhân hóa, ấn tượng nhà tuyển dụng." },
-                { title: "Tối ưu & SEO cơ bản", desc: "Tăng tốc độ tải trang và thứ hạng tìm kiếm." },
+                { title: "Thiết kế Website Doanh Nghiệp", desc: "yangai chuyên thiết kế website doanh nghiệp chuyên nghiệp, khẳng định thương hiệu." },
+                { title: "Landing Page Tối ưu Chuyển đổi", desc: "Thiết kế landing page bắt mắt, tối ưu tỉ lệ chuyển đổi khách hàng." },
+                { title: "Lập trình Mobile App iOS/Android", desc: "Thiết kế và lập trình mobile app đa nền tảng, mượt mà, hiệu năng cao." },
+                { title: "Tối ưu SEO & Hiệu suất", desc: "Tăng tốc độ tải trang, cải thiện thứ hạng Google, tăng traffic tự nhiên." },
             ]
         },
         projects: {
@@ -63,7 +63,7 @@ export const i18n = {
             title: "Câu hỏi thường gặp",
         },
         contact: {
-            title: "Liên hệ",
+            title: "Liên hệ yangai",
             form: {
                 name: "Họ và tên",
                 email: "Email",
