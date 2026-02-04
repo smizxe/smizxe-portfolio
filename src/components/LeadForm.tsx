@@ -5,14 +5,18 @@ import { motion } from 'framer-motion';
 // Replace this with your actual Google Apps Script Web App URL
 const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbz6dakmk79skVct-ppVYdQ804EsbtjHsTeC50p-RVHx-_AuqyhBG4hL_RUC0ULG7qhX/exec";
 
+import { i18n } from '../data/i18n';
+
 interface LeadFormProps {
+    lang: 'vi' | 'en';
     className?: string;
     title?: string;
     description?: string;
     formId?: string;
 }
 
-export default function LeadForm({ className, title, description, formId = 'lead-form' }: LeadFormProps) {
+export default function LeadForm({ lang, className, title, description, formId = 'lead-form' }: LeadFormProps) {
+    const t = i18n[lang].leadForm;
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
 
@@ -54,7 +58,7 @@ export default function LeadForm({ className, title, description, formId = 'lead
             setSubmitted(true);
         } catch (error) {
             console.error("Error submitting form:", error);
-            alert("Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau.");
+            alert(lang === 'vi' ? "Có lỗi xảy ra khi gửi thông tin. Vui lòng thử lại sau." : "An error occurred. Please try again later.");
         } finally {
             setIsSubmitting(false);
         }
@@ -73,7 +77,7 @@ export default function LeadForm({ className, title, description, formId = 'lead
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                            <label htmlFor={`${formId}-name`} className="text-sm font-medium text-secondary">Họ và tên</label>
+                            <label htmlFor={`${formId}-name`} className="text-sm font-medium text-secondary">{t.name}</label>
                             <input
                                 type="text"
                                 id={`${formId}-name`}
@@ -82,11 +86,11 @@ export default function LeadForm({ className, title, description, formId = 'lead
                                 onChange={handleChange}
                                 required
                                 className="w-full bg-neutral-900/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white/30 transition-colors placeholder:text-white/20"
-                                placeholder="VD: Nguyễn Văn A"
+                                placeholder={t.namePlaceholder}
                             />
                         </div>
                         <div className="space-y-2">
-                            <label htmlFor={`${formId}-contact`} className="text-sm font-medium text-secondary">Số điện thoại / Zalo</label>
+                            <label htmlFor={`${formId}-contact`} className="text-sm font-medium text-secondary">{t.contact}</label>
                             <input
                                 type="text"
                                 id={`${formId}-contact`}
@@ -95,13 +99,13 @@ export default function LeadForm({ className, title, description, formId = 'lead
                                 onChange={handleChange}
                                 required
                                 className="w-full bg-neutral-900/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white/30 transition-colors placeholder:text-white/20"
-                                placeholder="0912 345 xxx"
+                                placeholder={t.contactPlaceholder}
                             />
                         </div>
                     </div>
 
                     <div className="space-y-2">
-                        <label htmlFor={`${formId}-needs`} className="text-sm font-medium text-secondary">Nhu cầu của bạn</label>
+                        <label htmlFor={`${formId}-needs`} className="text-sm font-medium text-secondary">{t.needs}</label>
                         <select
                             id={`${formId}-needs`}
                             name="needs"
@@ -109,16 +113,16 @@ export default function LeadForm({ className, title, description, formId = 'lead
                             onChange={handleChange}
                             className="w-full bg-neutral-900/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white/30 transition-colors appearance-none"
                         >
-                            <option value="" className="bg-neutral-900">Chọn dịch vụ quan tâm...</option>
-                            <option value="web" className="bg-neutral-900">Thiết kế Website</option>
-                            <option value="app" className="bg-neutral-900">Lập trình Mobile App</option>
-                            <option value="ai" className="bg-neutral-900">Giải pháp AI & Chatbot</option>
-                            <option value="other" className="bg-neutral-900">Khác / Cần tư vấn chung</option>
+                            <option value="" className="bg-neutral-900">{t.needsOptions.default}</option>
+                            <option value="web" className="bg-neutral-900">{t.needsOptions.web}</option>
+                            <option value="app" className="bg-neutral-900">{t.needsOptions.app}</option>
+                            <option value="ai" className="bg-neutral-900">{t.needsOptions.ai}</option>
+                            <option value="other" className="bg-neutral-900">{t.needsOptions.other}</option>
                         </select>
                     </div>
 
                     <div className="space-y-2">
-                        <label htmlFor={`${formId}-message`} className="text-sm font-medium text-secondary">Lời nhắn (Không bắt buộc)</label>
+                        <label htmlFor={`${formId}-message`} className="text-sm font-medium text-secondary">{t.message}</label>
                         <textarea
                             id={`${formId}-message`}
                             name="message"
@@ -126,7 +130,7 @@ export default function LeadForm({ className, title, description, formId = 'lead
                             onChange={handleChange}
                             rows={4}
                             className="w-full bg-neutral-900/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-white/30 transition-colors placeholder:text-white/20 resize-none"
-                            placeholder="Mô tả sơ qua về ý tưởng của bạn..."
+                            placeholder={t.messagePlaceholder}
                         ></textarea>
                     </div>
 
@@ -136,9 +140,9 @@ export default function LeadForm({ className, title, description, formId = 'lead
                         className="w-full bg-white text-black font-medium py-4 rounded-lg hover:bg-white/90 transition-all flex items-center justify-center gap-2 mt-4 group disabled:opacity-70 disabled:cursor-not-allowed"
                     >
                         {isSubmitting ? (
-                            <> <Loader2 className="animate-spin" width={20} /> Đang gửi... </>
+                            <> <Loader2 className="animate-spin" width={20} /> {t.submitting} </>
                         ) : (
-                            <> Nhận tư vấn ngay <ArrowRight width={18} className="group-hover:translate-x-1 transition-transform" /> </>
+                            <> {t.submit} <ArrowRight width={18} className="group-hover:translate-x-1 transition-transform" /> </>
                         )}
                     </button>
                 </form>
@@ -151,9 +155,9 @@ export default function LeadForm({ className, title, description, formId = 'lead
                     <div className="w-16 h-16 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6 border border-green-500/20">
                         <ArrowRight width={32} className="rotate-[-45deg]" />
                     </div>
-                    <h3 className="text-2xl font-medium text-white">Đã nhận thông tin!</h3>
+                    <h3 className="text-2xl font-medium text-white">{t.successTitle}</h3>
                     <p className="text-secondary max-w-md mx-auto">
-                        Cảm ơn bạn đã quan tâm. Giang sẽ liên hệ lại qua Số điện thoại/Zalo trong thời gian sớm nhất (thường trong vòng 2 giờ làm việc).
+                        {t.successDesc}
                     </p>
                 </motion.div>
             )}

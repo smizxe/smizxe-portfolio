@@ -1,15 +1,14 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../lib/utils';
 import { i18n } from '../data/i18n';
 
 interface NavbarProps {
     lang: 'vi' | 'en';
-    setLang: (lang: 'vi' | 'en') => void;
 }
 
-export default function Navbar({ lang, setLang }: NavbarProps) {
+export default function Navbar({ lang }: NavbarProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('home');
     const t = i18n[lang].nav;
@@ -18,10 +17,8 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
         { id: 'about', label: t.about },
         { id: 'services', label: t.services },
         { id: 'projects', label: t.projects },
-        { id: 'process', label: t.process },
+        { id: 'story', label: t.story },
         { id: 'testimonials', label: t.testimonials },
-        { id: 'pricing', label: t.pricing },
-        { id: 'faq', label: t.faq },
         { id: 'contact', label: t.contact },
     ], [t]);
 
@@ -61,7 +58,7 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
     };
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-dark/80 backdrop-blur-md border-b border-white/10">
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
             <div className="container mx-auto px-4 h-16 flex items-center justify-between">
                 <a href="#" onClick={(e) => { e.preventDefault(); scrollTo('hero'); }} className="block">
                     <img src={`${import.meta.env.BASE_URL}logo.png`} alt="yangai" className="h-8 w-auto" />
@@ -82,13 +79,7 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
                         </button>
                     ))}
 
-                    <button
-                        onClick={() => setLang(lang === 'vi' ? 'en' : 'vi')}
-                        className="flex items-center gap-1 text-sm font-medium text-gray-300 hover:text-white"
-                    >
-                        <Globe className="w-4 h-4" />
-                        {lang.toUpperCase()}
-                    </button>
+
 
                     <button
                         onClick={() => scrollTo('contact')}
@@ -100,13 +91,7 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
 
                 {/* Mobile Toggle */}
                 <div className="flex items-center gap-4 xl:hidden">
-                    <button
-                        onClick={() => setLang(lang === 'vi' ? 'en' : 'vi')}
-                        className="flex items-center gap-1 text-sm font-medium text-gray-300 hover:text-white"
-                    >
-                        <Globe className="w-4 h-4" />
-                        {lang.toUpperCase()}
-                    </button>
+
                     <button
                         onClick={() => setIsOpen(!isOpen)}
                         className="p-2 text-gray-300 hover:text-white"

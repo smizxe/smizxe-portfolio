@@ -1,48 +1,16 @@
 
 
-const testimonials = [
-    {
-        text: "Ban đầu mình chỉ tính làm cái web đơn giản thôi, mà Giang tư vấn kỹ quá, 'moi' ra được bao nhiêu vấn đề vận hành mình không để ý. Cuối cùng chốt làm luôn hệ thống quản lý, giờ nhàn tênh.",
-        author: "Anh Tuấn",
-        role: "CEO, Chuỗi F&B Hà Nội",
-        color: "from-orange-400 to-red-500" // Warm/Energetic
-    },
-    {
-        text: "Ưng nhất là cái khoản support. Web bàn giao xong 3 tháng rồi, mình nhắn nhờ sửa lại cái banner lúc 10h đêm mà Giang vẫn rep và xử lý luôn trong đêm. Trách nhiệm thực sự!",
-        author: "Chị Lan Anh",
-        role: "Founder, Thời trang thiết kế",
-        color: "from-pink-400 to-rose-500" // Sophisticated
-    },
-    {
-        text: "Mình từng thuê team khác làm app mà bug tùm lum, gọi không nghe máy. Gặp Giang đúng kiểu cứu tinh, fix bug 'thần tốc', app giờ chạy mượt, khách khen quá trời.",
-        author: "Huy Hoàng",
-        role: "Project Manager, Tech Startup",
-        color: "from-blue-400 to-cyan-500" // Tech/Stability
-    },
-    {
-        text: "Chi phí rất hợp lý so với chất lượng nhận được. Giang code kỹ, logic chặt chẽ, không vẽ vời thêm tính năng để thu tiền. Rất đáng tin cậy để hợp tác đường dài.",
-        author: "Văn Minh",
-        role: "Giám đốc, Công ty Vận tải",
-        color: "from-emerald-400 to-green-500" // Trust/Growth
-    },
-    {
-        text: "Giải pháp AI chatbot của Giang tư vấn giúp bên mình giảm được 60% lượng tin nhắn hỏi đáp cơ bản. Nhân viên chỉ cần tập trung chốt đơn thôi, hiệu quả thấy rõ.",
-        author: "Thanh Hằng",
-        role: "Head of Sales, Mỹ phẩm Organic",
-        color: "from-purple-400 to-indigo-500" // AI/Innovation
-    },
-    {
-        text: "Làm việc chuyên nghiệp, rõ ràng từng đầu mục. Web chạy nhanh, chuẩn SEO, mới chạy 2 tuần mà từ khóa đã bắt đầu lên top. Rất hài lòng!",
-        author: "Quốc Đạt",
-        role: "Marketing Manager, BĐS",
-        color: "from-yellow-400 to-amber-500" // Success/Result
-    }
-];
 
 import { feedbackImages } from "../data/feedbackImages";
 import { motion } from 'framer-motion';
+import { i18n } from '../data/i18n';
 
-export default function Testimonials() {
+interface TestimonialsProps {
+    lang: 'vi' | 'en';
+}
+
+export default function Testimonials({ lang }: TestimonialsProps) {
+    const t = i18n[lang].testimonials;
     return (
         <section className="py-24 bg-surface border-b border-white/5 overflow-hidden">
             <motion.div
@@ -53,10 +21,10 @@ export default function Testimonials() {
                 className="max-w-6xl mx-auto px-6 mb-16 text-center"
             >
                 <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-white mb-6">
-                    Chuyện người thật, việc thật
+                    {t.title}
                 </h2>
                 <p className="text-secondary text-base md:text-lg font-light">
-                    Niềm tin được xây dựng từ kết quả thực tế.
+                    {t.subtitle}
                 </p>
             </motion.div>
 
@@ -73,7 +41,7 @@ export default function Testimonials() {
                 <div className="absolute top-0 bottom-0 right-0 w-32 z-10 bg-gradient-to-l from-surface to-transparent pointer-events-none"></div>
 
                 <div className="py-4 animate-marquee whitespace-nowrap flex gap-6 group-hover:[animation-play-state:paused]">
-                    {[...testimonials, ...testimonials].map((item, idx) => ( // Duplicate for seamless loop
+                    {[...t.items, ...t.items].map((item, idx) => ( // Duplicate for seamless loop
                         <div key={idx} className="w-[350px] md:w-[450px] flex-shrink-0 p-8 rounded-2xl bg-neutral-900/50 border border-white/5 hover:border-white/20 transition-all duration-300 hover:bg-white/5 whitespace-normal flex flex-col justify-between h-auto min-h-[220px]">
                             <div className="mb-6">
                                 <div className="flex gap-1 mb-3">

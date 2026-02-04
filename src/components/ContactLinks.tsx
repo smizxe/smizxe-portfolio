@@ -4,13 +4,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import zaloQr from '../assets/anh-zalo.jpg';
 import { cn } from '../lib/utils';
 
+import { i18n } from '../data/i18n';
+
 interface ContactLinksProps {
+    lang: 'vi' | 'en';
     className?: string;
     mobileLayout?: 'default' | 'vertical';
     onOpenMenu?: () => void;
 }
 
-export default function ContactLinks({ className, mobileLayout = 'default' }: ContactLinksProps) {
+export default function ContactLinks({ lang, className, mobileLayout = 'default' }: ContactLinksProps) {
+    const t = i18n[lang].contact;
     const [isZaloOpen, setIsZaloOpen] = useState(false);
     const isVertical = mobileLayout === 'vertical';
 
@@ -74,12 +78,12 @@ export default function ContactLinks({ className, mobileLayout = 'default' }: Co
                             >
                                 <X width={20} />
                             </button>
-                            <h3 className="text-xl font-medium text-white mb-4 text-center">Kết nối qua Zalo</h3>
+                            <h3 className="text-xl font-medium text-white mb-4 text-center">{t.zalo.title}</h3>
                             <div className="flex justify-center mb-4">
                                 <img src={zaloQr} alt="Zalo QR Code" className="w-full max-w-[280px] h-auto rounded-lg object-contain" />
                             </div>
                             <p className="text-center text-secondary text-sm">
-                                Quét mã QR hoặc tìm số điện thoại:<br />
+                                {t.zalo.instruction}<br />
                                 <span className="text-white font-medium select-all">0388 307 551</span>
                             </p>
                         </motion.div>
