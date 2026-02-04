@@ -15,9 +15,7 @@ export default function Navbar({ lang }: NavbarProps) {
 
     const menuItems = useMemo(() => [
         { id: 'about', label: t.about },
-        { id: 'services', label: t.services },
         { id: 'projects', label: t.projects },
-        { id: 'story', label: t.story },
         { id: 'testimonials', label: t.testimonials },
         { id: 'contact', label: t.contact },
     ], [t]);
@@ -58,14 +56,21 @@ export default function Navbar({ lang }: NavbarProps) {
     };
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
-            <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-                <a href="#" onClick={(e) => { e.preventDefault(); scrollTo('hero'); }} className="block">
-                    <img src={`${import.meta.env.BASE_URL}logo.png`} alt="yangai" className="h-8 w-auto" />
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-md border-b border-white/5">
+            <div className="container mx-auto px-4 h-20 flex items-center justify-between">
+                <a href="#" onClick={(e) => { e.preventDefault(); scrollTo('hero'); }} className="flex items-center gap-3 group">
+                    <img src={`${import.meta.env.BASE_URL}logo.png`} alt="yangai" className="h-10 w-auto group-hover:scale-105 transition-transform" />
+                    <div className="hidden sm:flex flex-col items-start leading-none">
+                        <span className="text-white font-bold text-sm tracking-tight group-hover:text-primary transition-colors">Vương Hoàng Giang</span>
+                        <span className="text-[10px] font-mono text-indigo-400 mt-1 flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                            yangai
+                        </span>
+                    </div>
                 </a>
 
                 {/* Desktop Menu */}
-                <div className="hidden xl:flex items-center gap-6">
+                <div className="hidden xl:flex items-center gap-10">
                     {menuItems.map((item) => (
                         <button
                             key={item.id}
@@ -78,15 +83,6 @@ export default function Navbar({ lang }: NavbarProps) {
                             {item.label}
                         </button>
                     ))}
-
-
-
-                    <button
-                        onClick={() => scrollTo('contact')}
-                        className="px-4 py-2 bg-primary hover:bg-primary/90 text-white text-sm font-medium rounded-full transition-colors"
-                    >
-                        {t.bookCall}
-                    </button>
                 </div>
 
                 {/* Mobile Toggle */}
@@ -108,7 +104,7 @@ export default function Navbar({ lang }: NavbarProps) {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="xl:hidden bg-dark border-b border-white/10 overflow-hidden"
+                        className="xl:hidden bg-background/95 border-b border-white/5 overflow-hidden"
                     >
                         <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
                             {menuItems.map((item) => (
@@ -123,12 +119,6 @@ export default function Navbar({ lang }: NavbarProps) {
                                     {item.label}
                                 </button>
                             ))}
-                            <button
-                                onClick={() => scrollTo('contact')}
-                                className="w-full py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg text-center mt-2"
-                            >
-                                {t.bookCall}
-                            </button>
                         </div>
                     </motion.div>
                 )}
