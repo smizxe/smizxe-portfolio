@@ -43,3 +43,263 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #404040;
 }
+
+.hero-monitor-shell {
+  filter: drop-shadow(0 28px 60px rgba(79, 70, 229, 0.2));
+}
+
+.hero-monitor {
+  position: relative;
+  border-radius: 28px;
+  padding: 12px 12px 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.03)),
+    linear-gradient(135deg, #a1a1aa, #27272a 42%, #d4d4d8 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -16px 30px rgba(0, 0, 0, 0.2),
+    0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.hero-monitor__header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 10px 10px;
+}
+
+.hero-monitor__traffic {
+  display: flex;
+  gap: 6px;
+}
+
+.hero-monitor__traffic span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.hero-monitor__camera {
+  width: 78px;
+  height: 10px;
+  justify-self: center;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(39, 39, 42, 0.95));
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.08);
+}
+
+.hero-monitor__label,
+.hero-monitor__chin {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.hero-monitor__label {
+  justify-self: end;
+}
+
+.hero-monitor__screen {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.18), transparent 30%),
+    radial-gradient(circle at 80% 20%, rgba(129, 140, 248, 0.2), transparent 28%),
+    #020617;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+    inset 0 -30px 60px rgba(0, 0, 0, 0.5);
+}
+
+.hero-monitor__video,
+.hero-monitor__overlay,
+.hero-monitor__scanlines,
+.hero-monitor__noise,
+.hero-monitor__glow {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-monitor__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-monitor__overlay {
+  background:
+    radial-gradient(circle at center, transparent 45%, rgba(3, 7, 18, 0.22) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.25));
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.hero-monitor__scanlines {
+  pointer-events: none;
+  opacity: 0.2;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
+  background-size: 100% 4px;
+}
+
+.hero-monitor__noise {
+  pointer-events: none;
+  opacity: 0.08;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.55) 0 0.8px, transparent 1px),
+    radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.35) 0 1px, transparent 1.2px),
+    radial-gradient(circle at 35% 70%, rgba(255, 255, 255, 0.28) 0 1px, transparent 1.3px),
+    radial-gradient(circle at 65% 80%, rgba(255, 255, 255, 0.3) 0 0.9px, transparent 1.2px);
+  animation: hero-noise-drift 0.35s steps(2) infinite;
+}
+
+.hero-monitor__glow {
+  pointer-events: none;
+  inset: auto 10% -18%;
+  height: 45%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.28), transparent 68%);
+  filter: blur(24px);
+}
+
+.hero-monitor__chin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 6px 0;
+}
+
+.hero-monitor__stand {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -2px;
+}
+
+.hero-monitor__neck {
+  width: 72px;
+  height: 42px;
+  border-radius: 0 0 20px 20px;
+  background: linear-gradient(180deg, #d4d4d8, #737373 55%, #3f3f46);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.hero-monitor__base {
+  width: 180px;
+  height: 18px;
+  margin-top: -4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f5f5f5, #71717a 52%, #27272a);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.hero-monitor--glitch .hero-monitor__screen::before,
+.hero-monitor--glitch .hero-monitor__screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-monitor--glitch .hero-monitor__screen::before {
+  background:
+    linear-gradient(90deg, rgba(255, 0, 102, 0.28), transparent 26%, transparent 74%, rgba(0, 238, 255, 0.26)),
+    linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.18) 50%, transparent 100%);
+  mix-blend-mode: screen;
+}
+
+.hero-monitor--glitch .hero-monitor__screen::after {
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0 18px,
+      rgba(255, 255, 255, 0.14) 18px 24px,
+      transparent 24px 44px
+    );
+  opacity: 0.65;
+}
+
+.hero-monitor--glitch .hero-monitor__video {
+  animation: hero-glitch-shift 180ms steps(2) 4;
+}
+
+.hero-monitor--beat-1 {
+  transform: translate3d(-3px, 0, 0) skewX(0.8deg);
+}
+
+.hero-monitor--beat-2 {
+  transform: translate3d(5px, -2px, 0) skewX(-1.2deg);
+}
+
+.hero-monitor--beat-3 {
+  transform: translate3d(-4px, 2px, 0) skewX(1.4deg);
+}
+
+.hero-monitor--beat-4 {
+  transform: translate3d(6px, 0, 0) skewX(-1deg);
+}
+
+.hero-monitor--beat-5 {
+  transform: translate3d(-2px, -1px, 0) skewX(0.6deg);
+}
+
+@keyframes hero-glitch-shift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: saturate(1) contrast(1);
+  }
+  20% {
+    transform: translate3d(-8px, 2px, 0) scale(1.015);
+    filter: saturate(1.5) contrast(1.2) hue-rotate(-12deg);
+  }
+  40% {
+    transform: translate3d(10px, -3px, 0) scale(0.99);
+    filter: saturate(1.8) contrast(1.35) hue-rotate(10deg);
+  }
+  60% {
+    transform: translate3d(-6px, 3px, 0) scale(1.02);
+    filter: saturate(1.35) contrast(1.28) hue-rotate(-6deg);
+  }
+  80% {
+    transform: translate3d(5px, -2px, 0) scale(1);
+    filter: saturate(1.2) contrast(1.12);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: saturate(1) contrast(1);
+  }
+}
+
+@keyframes hero-noise-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-1%, 1%, 0);
+  }
+  100% {
+    transform: translate3d(1%, -1%, 0);
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-monitor__label,
+  .hero-monitor__chin {
+    font-size: 9px;
+    letter-spacing: 0.16em;
+  }
+
+  .hero-monitor__base {
+    width: 140px;
+  }
+}

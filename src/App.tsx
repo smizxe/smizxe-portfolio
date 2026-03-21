@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
     ArrowDownRight, Layers, Cpu, Lightbulb, Search, Zap,
@@ -17,8 +17,18 @@ import Story from './components/Story';
 import Navbar from './components/Navbar';
 import { i18n } from './data/i18n';
 
+const heroVideos = [
+    new URL('../video hero/2026-03-21 23-22-14.mp4', import.meta.url).href,
+    new URL('../video hero/2026-03-21 23-22-49.mp4', import.meta.url).href,
+    new URL('../video hero/2026-03-21 23-24-13.mp4', import.meta.url).href,
+    new URL('../video hero/2026-03-21 23-24-43.mp4', import.meta.url).href,
+    new URL('../video hero/2026-03-21 23-25-48.mp4', import.meta.url).href,
+];
+
 function App() {
     const [lang, setLang] = useState<'vi' | 'en'>('vi');
+    const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+    const [glitchBeat, setGlitchBeat] = useState(0);
     const t = i18n[lang];
 
     const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
@@ -28,6 +38,35 @@ function App() {
             element.scrollIntoView({ behavior: 'smooth' });
         }
     };
+
+    useEffect(() => {
+        const transitionGapMs = 6400;
+        let timeoutIds: number[] = [];
+
+        const cycleVideo = () => {
+            [1, 2, 3, 4, 5].forEach((beat, index) => {
+                const timeoutId = window.setTimeout(() => {
+                    setGlitchBeat(beat);
+                }, index * 85);
+                timeoutIds.push(timeoutId);
+            });
+
+            timeoutIds.push(window.setTimeout(() => {
+                setCurrentVideoIndex((prev) => (prev + 1) % heroVideos.length);
+            }, 260));
+
+            timeoutIds.push(window.setTimeout(() => {
+                setGlitchBeat(0);
+            }, 720));
+        };
+
+        const intervalId = window.setInterval(cycleVideo, transitionGapMs);
+
+        return () => {
+            window.clearInterval(intervalId);
+            timeoutIds.forEach((id) => window.clearTimeout(id));
+        };
+    }, []);
 
     return (
         <div className="bg-background text-primary font-sans antialiased selection:bg-white/20 selection:text-white min-h-screen">
@@ -98,14 +137,14 @@ function App() {
                             </div>
                         </motion.div>
 
-                        {/* User Image Area */}
+                        {/* Hero Display Area */}
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
                             className="flex-1 relative flex justify-center md:justify-end"
                         >
-                            <div className="relative w-64 h-80 md:w-80 md:h-[450px] rounded-2xl overflow-hidden border-4 border-white/5 shadow-2xl shadow-indigo-500/20">
+                            <div className="hidden">
                                 <img
                                     src={avatar}
                                     alt="Vương Hoàng Giang"
@@ -113,7 +152,48 @@ function App() {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
                             </div>
-                            {/* Deco circles around image */}
+                            <div className="hero-monitor-shell relative w-[330px] md:w-[520px]">
+                                <div className={`hero-monitor ${glitchBeat > 0 ? `hero-monitor--glitch hero-monitor--beat-${glitchBeat}` : ''}`}>
+                                    <div className="hero-monitor__header">
+                                        <div className="hero-monitor__traffic">
+                                            <span className="bg-[#ff5f57]" />
+                                            <span className="bg-[#ffbd2f]" />
+                                            <span className="bg-[#28c840]" />
+                                        </div>
+                                        <div className="hero-monitor__camera" />
+                                        <div className="hero-monitor__label">yangai.display</div>
+                                    </div>
+
+                                    <div className="hero-monitor__screen">
+                                        <video
+                                            key={heroVideos[currentVideoIndex]}
+                                            src={heroVideos[currentVideoIndex]}
+                                            autoPlay
+                                            muted
+                                            playsInline
+                                            loop
+                                            preload="auto"
+                                            className="hero-monitor__video"
+                                            aria-label="Hero showcase reel"
+                                        />
+                                        <div className="hero-monitor__overlay" />
+                                        <div className="hero-monitor__scanlines" />
+                                        <div className="hero-monitor__noise" />
+                                        <div className="hero-monitor__glow" />
+                                    </div>
+
+                                    <div className="hero-monitor__chin">
+                                        <span>Demos & Projects</span>
+                                        <span>{String(currentVideoIndex + 1).padStart(2, '0')}/{String(heroVideos.length).padStart(2, '0')}</span>
+                                    </div>
+                                </div>
+
+                                <div className="hero-monitor__stand" aria-hidden="true">
+                                    <div className="hero-monitor__neck" />
+                                    <div className="hero-monitor__base" />
+                                </div>
+                            </div>
+                            {/* Deco circles around hero display */}
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-white/5 rounded-full -z-10 animate-[spin_10s_linear_infinite]"></div>
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] border border-white/5 rounded-full -z-10 animate-[spin_15s_linear_infinite_reverse]"></div>
                         </motion.div>
