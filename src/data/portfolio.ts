@@ -134,25 +134,25 @@ export const portfolio = {
             }
         },
         {
-            id: "gotaste",
-            title: "GoTaste - Website đặt đồ ăn & thức uống (Đồ án)",
-            category: "E-commerce / Food Delivery",
-            tech: ["React", "NodeJS", "MongoDB", "Express"],
-            color: "from-amber-400 to-orange-500",
-            image: "/images/gotaste-preview.png",
+            id: "lasante",
+            title: "Lasante - Landing page 3D cho chăn ga gối đệm cao cấp",
+            category: "3D Landing / Luxury Brand",
+            tech: ["React", "Vite", "Three.js", "Motion Design"],
+            color: "from-amber-300 to-stone-500",
+            image: "/images/lasante-preview.png",
             stats: {
-                role: "Full Stack Developer",
-                timeline: "4 weeks",
+                role: "Creative Frontend Developer",
+                timeline: "2 weeks",
             },
-            highlights: ["Real-time Order", "Location Based", "Payment Integration"],
+            highlights: ["3D Storytelling", "Luxury Visual Direction", "Immersive Scroll Experience"],
             caseStudy: {
-                problem: "Students and office workers need a quick way to order from nearby cafes.",
-                solution: "A food delivery platform specifically for cafes with real-time tracking.",
-                features: ["Menu Customization", "Real-time Tracking", "Reviews & Ratings"],
-                outcome: "Successfully deployed as a university capstone project.",
+                problem: "Premium bedding brands need a landing page that conveys softness and elegance without feeling generic.",
+                solution: "A 3D-first landing experience focused on atmosphere, tactile visuals, and refined brand storytelling.",
+                features: ["Immersive Hero", "Editorial Layout", "Premium Product Narrative"],
+                outcome: "Created a distinct branded experience that feels high-end from the first screen.",
             },
             links: {
-                demo: "#",
+                demo: "https://lasante.vercel.app",
                 source: "#"
             }
         }

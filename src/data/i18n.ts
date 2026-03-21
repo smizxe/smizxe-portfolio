@@ -119,9 +119,9 @@ export const i18n = {
                     tags: ["n8n", "OpenAI"]
                 },
                 {
-                    title: "GoTaste - Website đặt đồ ăn & thức uống (Đồ án)",
-                    desc: "Website đặt món từ các quán cafe",
-                    tags: ["E-commerce", "NodeJS"]
+                    title: "Lasante - Landing page 3D cho chăn ga gối đệm cao cấp",
+                    desc: "Landing page 3D mang tinh thần sang trọng, kể câu chuyện thương hiệu bằng cảm giác mềm mại, tinh tế và giàu chiều sâu thị giác.",
+                    tags: ["3D Landing", "Luxury Brand"]
                 }
             ]
         },
@@ -317,9 +317,9 @@ export const i18n = {
                     tags: ["n8n", "OpenAI"]
                 },
                 {
-                    title: "GoTaste - Food & Drink Delivery Website",
-                    desc: "Food ordering website from cafes",
-                    tags: ["E-commerce", "NodeJS"]
+                    title: "Lasante - 3D Landing Page for Premium Bedding",
+                    desc: "A premium 3D landing page designed to translate softness, elegance, and refined brand storytelling into an immersive browsing experience.",
+                    tags: ["3D Landing", "Luxury Brand"]
                 }
             ]
         },

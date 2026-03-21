@@ -531,12 +531,13 @@ function App() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.3 }}
                             className="group cursor-pointer"
+                            onClick={() => window.open('https://lasante.vercel.app', '_blank')}
                         >
                             <div className="h-64 bg-surface rounded-lg border border-white/5 overflow-hidden relative mb-6">
                                 <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-500">
                                     <img
-                                        src="/images/gotaste-preview.png"
-                                        alt="GoTaste"
+                                        src="/images/lasante-preview.png"
+                                        alt="Lasante"
                                         className="w-full h-full object-cover"
                                     />
                                     <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
@@ -550,8 +551,8 @@ function App() {
                                 <ArrowUpRight className="text-white/30 group-hover:text-white transition-colors" width={20} />
                             </div>
                             <div className="flex gap-2 mt-3">
-                                <span className="text-[10px] uppercase tracking-wider border border-white/10 px-2 py-0.5 rounded text-secondary">E-commerce</span>
-                                <span className="text-[10px] uppercase tracking-wider border border-amber-500/20 px-2 py-0.5 rounded text-amber-400">NodeJS</span>
+                                <span className="text-[10px] uppercase tracking-wider border border-white/10 px-2 py-0.5 rounded text-secondary">3D Landing</span>
+                                <span className="text-[10px] uppercase tracking-wider border border-amber-500/20 px-2 py-0.5 rounded text-amber-400">Luxury Brand</span>
                             </div>
                         </motion.div>
 
