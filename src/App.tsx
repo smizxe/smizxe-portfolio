@@ -16,15 +16,7 @@ import LeadForm from './components/LeadForm';
 import ContactLinks from './components/ContactLinks';
 import { feedbackImages } from './data/feedbackImages';
 import { i18n } from './data/i18n';
-
-declare global {
-  interface Window {
-    UnicornStudio?: {
-      init?: () => void;
-      isInitialized?: boolean;
-    };
-  }
-}
+import { FluidParticlesBackground } from './components/ui/fluid-particles-background';
 
 const heroVideos = [
   new URL('../video hero/2026-03-21 23-22-14.mp4', import.meta.url).href,
@@ -92,31 +84,6 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    const existingScript = document.querySelector(
-      'script[data-unicorn-loader="true"]',
-    ) as HTMLScriptElement | null;
-
-    const initUnicorn = () => {
-      if (window.UnicornStudio?.init && !window.UnicornStudio.isInitialized) {
-        window.UnicornStudio.init();
-        window.UnicornStudio.isInitialized = true;
-      }
-    };
-
-    if (existingScript) {
-      initUnicorn();
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.src =
-      'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js';
-    script.async = true;
-    script.dataset.unicornLoader = 'true';
-    script.onload = initUnicorn;
-    document.head.appendChild(script);
-  }, []);
 
   const scrollToId = (id: string) => {
     const element = document.getElementById(id);
@@ -135,9 +102,7 @@ function App() {
   return (
     <div className="agency-page min-h-screen overflow-x-hidden text-white">
       <div className="agency-background" aria-hidden="true">
-        <div className="unicorn-mask">
-          <div className="unicorn-canvas" data-us-project="uFY4IYPs2LU8fWm96Im2" />
-        </div>
+        <FluidParticlesBackground className="bg-transparent absolute inset-0 h-full" particleCount={1200} forceDark />
         <div className="background-glow-field">
           <div className="background-line" />
           <div className="background-orb background-orb--center" />

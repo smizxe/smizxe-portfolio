@@ -52,19 +52,6 @@ button {
   pointer-events: none;
 }
 
-.unicorn-mask {
-  position: absolute;
-  inset: 0;
-  opacity: 0.72;
-  mix-blend-mode: screen;
-  mask-image: linear-gradient(to bottom, transparent, black 5%, black 84%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 84%, transparent);
-}
-
-.unicorn-canvas {
-  position: absolute;
-  inset: 0;
-}
 
 .background-glow-field {
   position: absolute;
