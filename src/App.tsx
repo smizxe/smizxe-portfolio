@@ -1,596 +1,567 @@
-
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-    ArrowDownRight, Layers, Cpu, Lightbulb, Search, Zap,
-    HeartHandshake, Monitor, Check, Bot, ArrowUpRight,
-    Smartphone, Globe
+  ArrowRight,
+  Bot,
+  Globe,
+  Layers3,
+  MonitorPlay,
+  MoveRight,
+  Sparkles,
+  Workflow,
 } from 'lucide-react';
-import avatar from './assets/smizxe-chu-tich.jpg';
 
-import Testimonials from './components/Testimonials';
-import ContactForm from './components/ContactForm';
+import storyImage from './assets/smizxe-ngoi.jpg';
 import LeadForm from './components/LeadForm';
-import BackgroundDecoration from './components/BackgroundDecoration';
 import ContactLinks from './components/ContactLinks';
-import Story from './components/Story';
-import Navbar from './components/Navbar';
+import { feedbackImages } from './data/feedbackImages';
 import { i18n } from './data/i18n';
 
+declare global {
+  interface Window {
+    UnicornStudio?: {
+      init?: () => void;
+      isInitialized?: boolean;
+    };
+  }
+}
+
 const heroVideos = [
-    new URL('../video hero/2026-03-21 23-22-14.mp4', import.meta.url).href,
-    new URL('../video hero/2026-03-21 23-22-49.mp4', import.meta.url).href,
-    new URL('../video hero/2026-03-21 23-24-13.mp4', import.meta.url).href,
-    new URL('../video hero/2026-03-21 23-24-43.mp4', import.meta.url).href,
-    new URL('../video hero/2026-03-21 23-25-48.mp4', import.meta.url).href,
+  new URL('../video hero/2026-03-21 23-22-14.mp4', import.meta.url).href,
+  new URL('../video hero/2026-03-21 23-22-49.mp4', import.meta.url).href,
+  new URL('../video hero/2026-03-21 23-24-13.mp4', import.meta.url).href,
+  new URL('../video hero/2026-03-21 23-24-43.mp4', import.meta.url).href,
+  new URL('../video hero/2026-03-21 23-25-48.mp4', import.meta.url).href,
+];
+
+const projectMeta = [
+  {
+    image: '/images/rentino-preview.png',
+    href: 'https://rentino.vn',
+  },
+  {
+    image: '/images/educhill-preview.png',
+    href: 'https://educhill.net',
+  },
+  {
+    image: '/images/personal-agent-preview.png',
+    href: '#',
+  },
+  {
+    image: '/images/lasante-preview.png',
+    href: 'https://lasante.vercel.app',
+  },
 ];
 
 function App() {
-    const [lang, setLang] = useState<'vi' | 'en'>('vi');
-    const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-    const [glitchBeat, setGlitchBeat] = useState(0);
-    const t = i18n[lang];
+  const [lang, setLang] = useState<'vi' | 'en'>('en');
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const [glitchBeat, setGlitchBeat] = useState(0);
+  const t = i18n[lang];
 
-    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-        e.preventDefault();
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
+  useEffect(() => {
+    const transitionGapMs = 6400;
+    let timeoutIds: number[] = [];
+
+    const cycleVideo = () => {
+      [1, 2, 3, 4, 5].forEach((beat, index) => {
+        const timeoutId = window.setTimeout(() => {
+          setGlitchBeat(beat);
+        }, index * 85);
+        timeoutIds.push(timeoutId);
+      });
+
+      timeoutIds.push(
+        window.setTimeout(() => {
+          setCurrentVideoIndex((prev) => (prev + 1) % heroVideos.length);
+        }, 260),
+      );
+
+      timeoutIds.push(
+        window.setTimeout(() => {
+          setGlitchBeat(0);
+        }, 720),
+      );
     };
 
-    useEffect(() => {
-        const transitionGapMs = 6400;
-        let timeoutIds: number[] = [];
+    const intervalId = window.setInterval(cycleVideo, transitionGapMs);
 
-        const cycleVideo = () => {
-            [1, 2, 3, 4, 5].forEach((beat, index) => {
-                const timeoutId = window.setTimeout(() => {
-                    setGlitchBeat(beat);
-                }, index * 85);
-                timeoutIds.push(timeoutId);
-            });
+    return () => {
+      window.clearInterval(intervalId);
+      timeoutIds.forEach((id) => window.clearTimeout(id));
+    };
+  }, []);
 
-            timeoutIds.push(window.setTimeout(() => {
-                setCurrentVideoIndex((prev) => (prev + 1) % heroVideos.length);
-            }, 260));
+  useEffect(() => {
+    const existingScript = document.querySelector(
+      'script[data-unicorn-loader="true"]',
+    ) as HTMLScriptElement | null;
 
-            timeoutIds.push(window.setTimeout(() => {
-                setGlitchBeat(0);
-            }, 720));
-        };
+    const initUnicorn = () => {
+      if (window.UnicornStudio?.init && !window.UnicornStudio.isInitialized) {
+        window.UnicornStudio.init();
+        window.UnicornStudio.isInitialized = true;
+      }
+    };
 
-        const intervalId = window.setInterval(cycleVideo, transitionGapMs);
+    if (existingScript) {
+      initUnicorn();
+      return;
+    }
 
-        return () => {
-            window.clearInterval(intervalId);
-            timeoutIds.forEach((id) => window.clearTimeout(id));
-        };
-    }, []);
+    const script = document.createElement('script');
+    script.src =
+      'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js';
+    script.async = true;
+    script.dataset.unicornLoader = 'true';
+    script.onload = initUnicorn;
+    document.head.appendChild(script);
+  }, []);
 
-    return (
-        <div className="bg-background text-primary font-sans antialiased selection:bg-white/20 selection:text-white min-h-screen">
+  const scrollToId = (id: string) => {
+    const element = document.getElementById(id);
+    if (!element) {
+      return;
+    }
 
-            {/* Background Grid Effect */}
-            <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.07] bg-grid bg-grid-pattern"></div>
+    const offset = 92;
+    const bodyRect = document.body.getBoundingClientRect().top;
+    const elementRect = element.getBoundingClientRect().top;
+    const position = elementRect - bodyRect - offset;
 
-            {/* Global Scattered Shapes */}
-            <BackgroundDecoration />
+    window.scrollTo({ top: position, behavior: 'smooth' });
+  };
 
-            {/* Navbar */}
-            <Navbar lang={lang} />
+  return (
+    <div className="agency-page min-h-screen overflow-x-hidden text-white">
+      <div className="agency-background" aria-hidden="true">
+        <div className="unicorn-mask">
+          <div className="unicorn-canvas" data-us-project="uFY4IYPs2LU8fWm96Im2" />
+        </div>
+        <div className="background-glow-field">
+          <div className="background-line" />
+          <div className="background-orb background-orb--center" />
+          <div className="background-ring background-ring--outer" />
+          <div className="background-ring background-ring--inner" />
+          <div className="background-orb background-orb--left" />
+          <div className="background-orb background-orb--right" />
+        </div>
+      </div>
 
-            {/* Floating Language Switcher */}
-            <motion.button
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => setLang(lang === 'vi' ? 'en' : 'vi')}
-                className="fixed bottom-6 right-6 z-50 p-3 bg-neutral-900/80 border border-white/10 backdrop-blur-md rounded-full shadow-2xl hover:bg-neutral-800 transition-all group"
-                aria-label="Switch Language"
+      <header className="fixed inset-x-0 top-0 z-50 px-6 pt-6 md:px-12">
+        <div className="mx-auto flex max-w-[1320px] items-center justify-between rounded-full border border-white/10 bg-black/45 px-5 py-3 backdrop-blur-md">
+          <button
+            onClick={() => scrollToId('top')}
+            className="flex items-center gap-3 text-left transition-opacity hover:opacity-85"
+          >
+            <img
+              src="/logo.png"
+              alt="Yangai logo"
+              className="h-10 w-10 object-contain sm:h-11 sm:w-11"
+            />
+            <div className="hidden sm:block">
+              <p className="font-display text-base tracking-tight text-white">Agency Yangai</p>
+              <p className="text-xs text-zinc-400">{t.nav.brandTagline}</p>
+            </div>
+          </button>
+
+          <nav className="hidden items-center gap-10 text-sm text-zinc-400 lg:flex">
+            <button onClick={() => scrollToId('services')} className="nav-link">
+              {t.nav.services}
+            </button>
+            <button onClick={() => scrollToId('work')} className="nav-link">
+              {t.nav.work}
+            </button>
+            <button onClick={() => scrollToId('story')} className="nav-link">
+              {t.nav.story}
+            </button>
+            <button onClick={() => scrollToId('testimonials')} className="nav-link">
+              {t.nav.testimonials}
+            </button>
+            <button onClick={() => scrollToId('contact')} className="nav-link">
+              {t.nav.contact}
+            </button>
+          </nav>
+
+          <div className="flex items-center gap-3">
+            <div className="inline-flex items-center rounded-full border border-white/10 bg-black/30 p-1">
+              <button
+                onClick={() => setLang('en')}
+                className={`lang-switch ${lang === 'en' ? 'lang-switch--active' : ''}`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLang('vi')}
+                className={`lang-switch ${lang === 'vi' ? 'lang-switch--active' : ''}`}
+              >
+                VI
+              </button>
+            </div>
+            <button
+              onClick={() => scrollToId('contact')}
+              className="nav-cta hidden md:inline-flex"
             >
-                <div className="flex items-center justify-center w-6 h-6 relative">
-                    <Globe width={24} className="text-white" strokeWidth={1.5} />
-                </div>
-                <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-                    {lang === 'vi' ? 'Switch to English' : 'Chuyển sang Tiếng Việt'}
-                </div>
-            </motion.button>
+              {t.hero.secondaryCta}
+            </button>
+          </div>
+        </div>
+      </header>
 
-            {/* Hero Section */}
-            <main className="relative z-10 pt-24 pb-16 md:pt-36 md:pb-24 px-6 overflow-hidden">
-                <div className="max-w-6xl mx-auto relative">
+      <main id="top" className="relative z-10">
+        <section className="mx-auto flex max-w-[1320px] flex-col justify-center px-6 pb-14 pt-32 md:px-12 md:pb-18">
+          <div className="grid min-h-[72vh] grid-cols-1 items-center gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:gap-16">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75 }}
+              className="flex max-w-[540px] flex-col gap-7"
+            >
+              <h1 className="hero-title hero-title--refined">{t.hero.title}</h1>
 
-                    {/* Abstract Deco Element */}
-                    <div className="absolute -top-20 -right-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none mix-blend-screen"></div>
-                    <div className="absolute top-40 -left-20 w-72 h-72 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none mix-blend-screen"></div>
+              <p className="hero-description hero-description--compact">
+                {t.hero.description}
+              </p>
 
-                    <div className="flex flex-col md:flex-row items-center gap-12">
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="flex-1 text-center md:text-left"
-                        >
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-[10px] md:text-xs tracking-wide text-secondary mb-8">
-                                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-                                {t.hero.status}
-                            </div>
+              <div className="flex flex-wrap items-center gap-4">
+                <button
+                  onClick={() => scrollToId('work')}
+                  className="hero-cta hero-cta--primary"
+                >
+                  {t.hero.primaryCta}
+                  <ArrowRight size={18} />
+                </button>
+                <button
+                  onClick={() => scrollToId('contact')}
+                  className="hero-cta hero-cta--secondary"
+                >
+                  {t.hero.secondaryCta}
+                </button>
+              </div>
 
-                            <h1 className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tighter text-white leading-[1.1] mb-8 text-glow">
-                                {t.hero.headline}
-                            </h1>
+            </motion.div>
 
-                            <p className="text-base md:text-lg text-secondary font-light max-w-2xl leading-relaxed mb-10 md:pr-10 mx-auto md:mx-0">
-                                {t.hero.subheadline}
-                            </p>
-
-                            <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
-                                <a href="#projects" onClick={(e) => handleScroll(e, 'projects')} className="w-full sm:w-auto px-6 py-3 bg-white text-black text-sm font-medium rounded hover:bg-white/90 transition-colors flex items-center justify-center gap-2">
-                                    {t.hero.ctaProjects}
-                                    <ArrowDownRight width={16} strokeWidth={2} />
-                                </a>
-                                <a href="#contact" onClick={(e) => handleScroll(e, 'contact')} className="w-full sm:w-auto px-6 py-3 border border-white/10 text-white text-sm font-medium rounded hover:bg-white/5 transition-colors text-center">
-                                    {t.hero.ctaContact}
-                                </a>
-                            </div>
-                        </motion.div>
-
-                        {/* Hero Display Area */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="flex-1 relative flex justify-center md:justify-end"
-                        >
-                            <div className="hidden">
-                                <img
-                                    src={avatar}
-                                    alt="Vương Hoàng Giang"
-                                    className="w-full h-full object-cover"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
-                            </div>
-                            <div className="hero-monitor-shell relative w-[330px] md:w-[520px]">
-                                <div className={`hero-monitor ${glitchBeat > 0 ? `hero-monitor--glitch hero-monitor--beat-${glitchBeat}` : ''}`}>
-                                    <div className="hero-monitor__header">
-                                        <div className="hero-monitor__traffic">
-                                            <span className="bg-[#ff5f57]" />
-                                            <span className="bg-[#ffbd2f]" />
-                                            <span className="bg-[#28c840]" />
-                                        </div>
-                                        <div className="hero-monitor__camera" />
-                                        <div className="hero-monitor__label">yangai.display</div>
-                                    </div>
-
-                                    <div className="hero-monitor__screen">
-                                        <video
-                                            key={heroVideos[currentVideoIndex]}
-                                            src={heroVideos[currentVideoIndex]}
-                                            autoPlay
-                                            muted
-                                            playsInline
-                                            loop
-                                            preload="auto"
-                                            className="hero-monitor__video"
-                                            aria-label="Hero showcase reel"
-                                        />
-                                        <div className="hero-monitor__overlay" />
-                                        <div className="hero-monitor__scanlines" />
-                                        <div className="hero-monitor__noise" />
-                                        <div className="hero-monitor__glow" />
-                                    </div>
-
-                                    <div className="hero-monitor__chin">
-                                        <span>Demos & Projects</span>
-                                        <span>{String(currentVideoIndex + 1).padStart(2, '0')}/{String(heroVideos.length).padStart(2, '0')}</span>
-                                    </div>
-                                </div>
-
-                                <div className="hero-monitor__stand" aria-hidden="true">
-                                    <div className="hero-monitor__neck" />
-                                    <div className="hero-monitor__base" />
-                                </div>
-                            </div>
-                            {/* Deco circles around hero display */}
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-white/5 rounded-full -z-10 animate-[spin_10s_linear_infinite]"></div>
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] border border-white/5 rounded-full -z-10 animate-[spin_15s_linear_infinite_reverse]"></div>
-                        </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
+              className="hero-stage hero-stage--clean"
+            >
+              <div className="hero-stage__monitor-glow" aria-hidden="true" />
+              <div className="hero-monitor-shell hero-monitor-shell--centered">
+                <div
+                  className={`hero-monitor ${
+                    glitchBeat > 0
+                      ? `hero-monitor--glitch hero-monitor--beat-${glitchBeat}`
+                      : ''
+                  }`}
+                >
+                  <div className="hero-monitor__header">
+                    <div className="hero-monitor__traffic">
+                      <span className="bg-[#ff5f57]" />
+                      <span className="bg-[#ffbd2f]" />
+                      <span className="bg-[#28c840]" />
                     </div>
+                    <div className="hero-monitor__camera" />
+                    <div className="hero-monitor__label">agency.yangai</div>
+                  </div>
 
-                    {/* Quick Trust Indicators */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                        className="mt-16 pt-8 border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-6 text-xs md:text-sm text-secondary"
-                    >
-                        <div className="flex items-center gap-3 justify-start">
-                            <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-white shrink-0">
-                                <Layers width={16} strokeWidth={1.5} />
-                            </div>
-                            <span>{t.hero.trust.fullPackage}</span>
-                        </div>
-                        <div className="flex items-center gap-3 justify-start">
-                            <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-white shrink-0">
-                                <Cpu width={16} strokeWidth={1.5} />
-                            </div>
-                            <span>{t.hero.trust.cost}</span>
-                        </div>
-                        <div className="flex items-center gap-3 justify-start">
-                            <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-white shrink-0">
-                                <Lightbulb width={16} strokeWidth={1.5} />
-                            </div>
-                            <span>{t.hero.trust.support}</span>
-                        </div>
-                    </motion.div>
+                  <div className="hero-monitor__screen">
+                    <video
+                      key={heroVideos[currentVideoIndex]}
+                      src={heroVideos[currentVideoIndex]}
+                      autoPlay
+                      muted
+                      playsInline
+                      loop
+                      preload="auto"
+                      className="hero-monitor__video"
+                      aria-label="Agency Yangai showcase reel"
+                    />
+                    <div className="hero-monitor__overlay" />
+                    <div className="hero-monitor__scanlines" />
+                    <div className="hero-monitor__noise" />
+                    <div className="hero-monitor__glow" />
+                  </div>
 
-                    {/* Quick Contact Form */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.6 }}
-                        className="mt-16"
-                    >
-                        <LeadForm
-                            lang={lang}
-                            className="max-w-3xl mx-auto"
-                            title={t.leadForm.title}
-                            description={t.leadForm.description}
-                        />
-                        <ContactLinks lang={lang} className="mt-8" />
-                    </motion.div>
+                  <div className="hero-monitor__chin">
+                    <span>{t.hero.reelLabel}</span>
+                    <span>
+                      {String(currentVideoIndex + 1).padStart(2, '0')}/
+                      {String(heroVideos.length).padStart(2, '0')}
+                    </span>
+                  </div>
                 </div>
-            </main>
 
-            {/* Why Choose Me Section */}
-            <section className="py-20 bg-surface border-y border-white/5 relative">
-                <div className="max-w-6xl mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-start">
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
-                            className="md:sticky md:top-32"
-                        >
-                            <h2 className="text-2xl md:text-3xl font-medium tracking-tight mb-4">{t.whyChoose.title}</h2>
-                            <p className="text-secondary font-light text-sm md:text-base leading-relaxed mb-6">
-                                {t.whyChoose.description}
-                            </p>
-                            <div className="h-px w-20 bg-white/20"></div>
-                        </motion.div>
-
-                        <div className="space-y-8">
-                            <motion.div
-                                initial={{ opacity: 0, x: 30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6 }}
-                                whileHover={{ scale: 1.02 }}
-                                className="group hover:bg-white/5 p-6 rounded-lg transition-all duration-300 border border-transparent hover:border-white/5"
-                            >
-                                <Search className="text-white mb-4" width={24} strokeWidth={1.5} />
-                                <h3 className="text-lg font-medium text-white mb-2">{t.whyChoose.items[0].title}</h3>
-                                <p className="text-sm text-secondary leading-relaxed">{t.whyChoose.items[0].desc}</p>
-                            </motion.div>
-
-                            <motion.div
-                                initial={{ opacity: 0, x: 30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6, delay: 0.1 }}
-                                whileHover={{ scale: 1.02 }}
-                                className="group hover:bg-white/5 p-6 rounded-lg transition-all duration-300 border border-transparent hover:border-white/5"
-                            >
-                                <Zap className="text-white mb-4" width={24} strokeWidth={1.5} />
-                                <h3 className="text-lg font-medium text-white mb-2">{t.whyChoose.items[1].title}</h3>
-                                <p className="text-sm text-secondary leading-relaxed">{t.whyChoose.items[1].desc}</p>
-                            </motion.div>
-
-                            <motion.div
-                                initial={{ opacity: 0, x: 30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6, delay: 0.2 }}
-                                whileHover={{ scale: 1.02 }}
-                                className="group hover:bg-white/5 p-6 rounded-lg transition-all duration-300 border border-transparent hover:border-white/5"
-                            >
-                                <HeartHandshake className="text-white mb-4" width={24} strokeWidth={1.5} />
-                                <h3 className="text-lg font-medium text-white mb-2">{t.whyChoose.items[2].title}</h3>
-                                <p className="text-sm text-secondary leading-relaxed">{t.whyChoose.items[2].desc}</p>
-                            </motion.div>
-                        </div>
-                    </div>
+                <div className="hero-monitor__stand" aria-hidden="true">
+                  <div className="hero-monitor__neck" />
+                  <div className="hero-monitor__base" />
                 </div>
-            </section>
+              </div>
+            </motion.div>
+          </div>
 
-            {/* About & Services Grid (Bento Style) */}
-            <section id="services" className="py-24 px-6 max-w-6xl mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 auto-rows-min">
+        </section>
 
-                    {/* About Block */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="lg:col-span-7 bg-surface border border-border p-8 md:p-10 rounded-xl flex flex-col justify-between"
-                    >
-                        <div>
-                            <h2 className="text-xs font-medium uppercase tracking-widest text-secondary mb-6">{t.aboutServices.aboutTitle}</h2>
-                            <p className="text-lg md:text-xl font-light text-white/90 leading-relaxed mb-6">
-                                {t.aboutServices.aboutDesc}
-                            </p>
-                        </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-white/5">
-                            <div className="text-xs text-secondary">
-                                <span className="block text-white font-medium mb-1">{t.aboutServices.metrics.cost.label}</span>
-                                {t.aboutServices.metrics.cost.value}
-                            </div>
-                            <div className="text-xs text-secondary">
-                                <span className="block text-white font-medium mb-1">{t.aboutServices.metrics.time.label}</span>
-                                {t.aboutServices.metrics.time.value}
-                            </div>
-                            <div className="text-xs text-secondary">
-                                <span className="block text-white font-medium mb-1">{t.aboutServices.metrics.support.label}</span>
-                                {t.aboutServices.metrics.support.value}
-                            </div>
-                        </div>
-                    </motion.div>
+        <section id="services" className="mx-auto max-w-[1320px] px-6 py-16 md:px-12 md:py-20">
+          <div className="section-head">
+            <p className="section-label">{t.services.label}</p>
+            <h2 className="section-title">{t.services.title}</h2>
+            <p className="section-copy">{t.services.description}</p>
+          </div>
 
-                    {/* Service 1 */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        whileHover={{ y: -5 }}
-                        className="lg:col-span-5 bg-neutral-900 border border-border p-8 rounded-xl hover:border-white/20 transition-colors group"
-                    >
-                        <div className="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-white mb-6 group-hover:bg-white group-hover:text-black transition-colors">
-                            <Monitor width={20} strokeWidth={1.5} />
-                        </div>
-                        <h3 className="text-lg font-medium text-white mb-2">{t.aboutServices.services[0].title}</h3>
-                        <ul className="space-y-2 mt-4 text-sm text-secondary">
-                            {t.aboutServices.services[0].items.map((item, i) => (
-                                <li key={i} className="flex items-center gap-2"><Check width={14} /> {item}</li>
-                            ))}
-                        </ul>
-                    </motion.div>
-
-                    {/* Service 2 */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        whileHover={{ y: -5 }}
-                        className="lg:col-span-6 bg-neutral-900 border border-border p-8 rounded-xl hover:border-indigo-500/30 transition-colors group relative overflow-hidden"
-                    >
-                        <div className="absolute -right-10 -top-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl group-hover:bg-indigo-500/20 transition-colors"></div>
-                        <div className="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-white mb-6 relative z-10 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
-                            <Smartphone width={20} strokeWidth={1.5} />
-                        </div>
-                        <h3 className="text-lg font-medium text-white mb-2 relative z-10">{t.aboutServices.services[1].title}</h3>
-                        <ul className="space-y-2 mt-4 text-sm text-secondary relative z-10">
-                            {t.aboutServices.services[1].items.map((item, i) => (
-                                <li key={i} className="flex items-center gap-2"><Check width={14} /> {item}</li>
-                            ))}
-                        </ul>
-                    </motion.div>
-
-                    {/* Service 3 */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                        whileHover={{ y: -5 }}
-                        className="lg:col-span-6 bg-neutral-900 border border-border p-8 rounded-xl hover:border-emerald-500/30 transition-colors group relative overflow-hidden"
-                    >
-                        <div className="absolute -right-10 -top-10 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-colors"></div>
-                        <div className="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-white mb-6 relative z-10 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
-                            <Bot width={20} strokeWidth={1.5} />
-                        </div>
-                        <h3 className="text-lg font-medium text-white mb-2 relative z-10">{t.aboutServices.services[2].title}</h3>
-                        <ul className="space-y-2 mt-4 text-sm text-secondary relative z-10">
-                            {t.aboutServices.services[2].items.map((item, i) => (
-                                <li key={i} className="flex items-center gap-2"><Check width={14} /> {item}</li>
-                            ))}
-                        </ul>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* Projects Section */}
-            <section id="projects" className="py-20 bg-background border-t border-white/5">
-                <div className="max-w-6xl mx-auto px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
-                    >
-                        <div>
-                            <h2 className="text-3xl font-medium tracking-tight text-white mb-4">{t.projects.title}</h2>
-                            <p className="text-secondary text-sm max-w-lg">
-                                {t.projects.description}
-                            </p>
-                        </div>
-                        <div className="hidden md:block h-px flex-1 bg-white/10 mx-8 mb-2"></div>
-                        <span className="text-xs font-mono text-secondary/50 border border-white/10 px-2 py-1 rounded">{t.projects.label}</span>
-                    </motion.div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-                        {/* Project 1 */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
-                            className="group cursor-pointer"
-                            onClick={() => window.open('https://rentino.vn', '_blank')}
-                        >
-                            <div className="h-64 bg-surface rounded-lg border border-white/5 overflow-hidden relative mb-6">
-                                <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-500">
-                                    <img
-                                        src="/images/rentino-preview.png"
-                                        alt="Rentino"
-                                        className="w-full h-full object-cover"
-                                    />
-                                    {/* Overlay gradient for better text contrast if needed, but image is cover */}
-                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
-                                </div>
-                            </div>
-                            <div className="flex justify-between items-start">
-                                <div>
-                                    <h3 className="text-lg font-medium text-white group-hover:text-orange-500 transition-colors">{t.projects.list[0].title}</h3>
-                                    <p className="text-sm text-secondary mt-1">{t.projects.list[0].desc}</p>
-                                </div>
-                                <ArrowUpRight className="text-white/30 group-hover:text-white transition-colors" width={20} />
-                            </div>
-                            <div className="flex gap-2 mt-3">
-                                <span className="text-[10px] uppercase tracking-wider border border-white/10 px-2 py-0.5 rounded text-secondary">Fintech</span>
-                                <span className="text-[10px] uppercase tracking-wider border border-orange-500/20 px-2 py-0.5 rounded text-orange-500">AI Integration</span>
-                            </div>
-                        </motion.div>
-
-                        {/* Project 2 */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.1 }}
-                            className="group cursor-pointer"
-                            onClick={() => window.open('https://educhill.net', '_blank')}
-                        >
-                            <div className="h-64 bg-surface rounded-lg border border-white/5 overflow-hidden relative mb-6">
-                                <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-500">
-                                    <img
-                                        src="/images/educhill-preview.png"
-                                        alt="Educhill"
-                                        className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
-                                </div>
-                            </div>
-                            <div className="flex justify-between items-start">
-                                <div>
-                                    <h3 className="text-lg font-medium text-white group-hover:text-indigo-400 transition-colors">{t.projects.list[1].title}</h3>
-                                    <p className="text-sm text-secondary mt-1">{t.projects.list[1].desc}</p>
-                                </div>
-                                <ArrowUpRight className="text-white/30 group-hover:text-white transition-colors" width={20} />
-                            </div>
-                            <div className="flex gap-2 mt-3">
-                                <span className="text-[10px] uppercase tracking-wider border border-white/10 px-2 py-0.5 rounded text-secondary">Web App</span>
-                                <span className="text-[10px] uppercase tracking-wider border border-indigo-500/20 px-2 py-0.5 rounded text-indigo-400">AI Agent</span>
-                            </div>
-                        </motion.div>
-
-                        {/* Project 3 */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                            className="group cursor-pointer"
-                        >
-                            <div className="h-64 bg-surface rounded-lg border border-white/5 overflow-hidden relative mb-6">
-                                <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-500">
-                                    <img
-                                        src="/images/personal-agent-preview.png"
-                                        alt="Personal Life AI Agent"
-                                        className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
-                                </div>
-                            </div>
-                            <div className="flex justify-between items-start">
-                                <div>
-                                    <h3 className="text-lg font-medium text-white group-hover:text-blue-400 transition-colors">{t.projects.list[2].title}</h3>
-                                    <p className="text-sm text-secondary mt-1">{t.projects.list[2].desc}</p>
-                                </div>
-                                <ArrowUpRight className="text-white/30 group-hover:text-white transition-colors" width={20} />
-                            </div>
-                            <div className="flex gap-2 mt-3">
-                                <span className="text-[10px] uppercase tracking-wider border border-white/10 px-2 py-0.5 rounded text-secondary">n8n</span>
-                                <span className="text-[10px] uppercase tracking-wider border border-blue-500/20 px-2 py-0.5 rounded text-blue-400">OpenAI</span>
-                            </div>
-                        </motion.div>
-
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.3 }}
-                            className="group cursor-pointer"
-                            onClick={() => window.open('https://lasante.vercel.app', '_blank')}
-                        >
-                            <div className="h-64 bg-surface rounded-lg border border-white/5 overflow-hidden relative mb-6">
-                                <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-500">
-                                    <img
-                                        src="/images/lasante-preview.png"
-                                        alt="Lasante"
-                                        className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
-                                </div>
-                            </div>
-                            <div className="flex justify-between items-start">
-                                <div>
-                                    <h3 className="text-lg font-medium text-white group-hover:text-amber-400 transition-colors">{t.projects.list[3].title}</h3>
-                                    <p className="text-sm text-secondary mt-1">{t.projects.list[3].desc}</p>
-                                </div>
-                                <ArrowUpRight className="text-white/30 group-hover:text-white transition-colors" width={20} />
-                            </div>
-                            <div className="flex gap-2 mt-3">
-                                <span className="text-[10px] uppercase tracking-wider border border-white/10 px-2 py-0.5 rounded text-secondary">3D Landing</span>
-                                <span className="text-[10px] uppercase tracking-wider border border-amber-500/20 px-2 py-0.5 rounded text-amber-400">Luxury Brand</span>
-                            </div>
-                        </motion.div>
-
-                    </div>
-                </div>
-            </section>
-
-
-            {/* Story Section (Replaces Process) */}
-            <Story lang={lang} />
-
-            {/* Testimonials */}
-            <Testimonials lang={lang} />
-
-            {/* CTA / Contact Section */}
-            <ContactForm lang={lang} />
-
-            {/* Footer */}
-            <motion.footer
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {[
+              { icon: <MonitorPlay size={22} />, ...t.services.items[0] },
+              { icon: <Layers3 size={22} />, ...t.services.items[1] },
+              { icon: <Bot size={22} />, ...t.services.items[2] },
+            ].map((item, index) => (
+              <motion.article
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="py-12 px-6 border-t border-white/5 bg-black text-center md:text-left"
-            >
-                <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div>
-                        <p className="text-xs text-white/40 uppercase tracking-widest font-medium mb-2">yangai</p>
-                        <p className="text-xs text-secondary">{t.footer.copyright}</p>
-                    </div>
-                    <div className="text-xs text-secondary/50 max-w-md text-center md:text-right">
-                        <p>{t.footer.disclaimer}</p>
-                    </div>
-                </div>
-            </motion.footer>
+                transition={{ duration: 0.55, delay: index * 0.08 }}
+                className="surface-card surface-card--feature"
+              >
+                <div className="surface-icon">{item.icon}</div>
+                <h3 className="surface-card__title">{item.title}</h3>
+                <p className="surface-card__copy">{item.description}</p>
+              </motion.article>
+            ))}
+          </div>
+        </section>
 
-        </div >
-    );
+        <section id="work" className="mx-auto max-w-[1320px] px-6 py-16 md:px-12 md:py-20">
+          <div className="section-head section-head--split">
+            <div>
+              <p className="section-label">{t.projects.label}</p>
+              <h2 className="section-title">{t.projects.title}</h2>
+              <p className="section-copy">{t.projects.description}</p>
+            </div>
+            <div className="section-meta">2024 - 2026</div>
+          </div>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {t.projects.list.map((project, index) => (
+              <motion.a
+                key={project.title}
+                href={projectMeta[index].href}
+                target={projectMeta[index].href.startsWith('http') ? '_blank' : undefined}
+                rel={projectMeta[index].href.startsWith('http') ? 'noreferrer' : undefined}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: index * 0.08 }}
+                className="surface-card project-card group"
+              >
+                <div className="project-card__media">
+                  <img
+                    src={projectMeta[index].image}
+                    alt={project.title}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="project-card__veil" />
+                </div>
+                <div className="project-card__body">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="surface-card__title">{project.title}</h3>
+                      <p className="surface-card__copy">{project.desc}</p>
+                    </div>
+                    <MoveRight className="mt-1 shrink-0 text-white/40 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" />
+                  </div>
+
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="project-tag">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        </section>
+
+        <section id="story" className="mx-auto max-w-[1320px] px-6 py-16 md:px-12 md:py-20">
+          <div className="story-shell">
+            <motion.figure
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.04 }}
+              className="story-media"
+            >
+              <div className="story-card__image-wrap">
+                <img src={storyImage} alt={t.story.title} className="story-card__image" />
+                <div className="story-card__overlay">
+                  <p className="story-card__name">{t.story.name}</p>
+                  <p className="story-card__role">{t.story.overlay}</p>
+                </div>
+              </div>
+            </motion.figure>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="story-narrative"
+            >
+              <div className="story-content">
+                <p className="section-label">{t.story.label}</p>
+                <h2 className="story-title">{t.story.title}</h2>
+                <p className="story-copy">{t.story.description}</p>
+              </div>
+
+              <div className="story-timeline-wrap">
+                <div className="story-timeline">
+                  {t.story.timeline.map((item, index) => (
+                    <div key={item.year} className="story-timeline__item">
+                      <div
+                        className={`story-timeline__dot ${
+                          index === t.story.timeline.length - 1
+                            ? 'story-timeline__dot--active'
+                            : ''
+                        }`}
+                      />
+                      <div>
+                        <div className="story-timeline__header">
+                          <span className="story-timeline__year">{item.year}</span>
+                          <h3 className="line-item__title">{item.title}</h3>
+                        </div>
+                        <p className="line-item__copy">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        <section id="process" className="mx-auto max-w-[1320px] px-6 py-16 md:px-12 md:py-20">
+          <div className="surface-card surface-card--large">
+            <div className="section-head">
+              <p className="section-label">{t.process.label}</p>
+              <h2 className="section-title section-title--compact">{t.process.title}</h2>
+              <p className="section-copy section-copy--compact">{t.process.description}</p>
+            </div>
+
+            <div className="mt-8 grid gap-5 md:grid-cols-3">
+              {[
+                { icon: <Sparkles size={18} />, ...t.process.steps[0] },
+                { icon: <Workflow size={18} />, ...t.process.steps[1] },
+                { icon: <Globe size={18} />, ...t.process.steps[2] },
+              ].map((step, index) => (
+                <div key={step.title} className="process-column">
+                  <div className="surface-icon">{step.icon}</div>
+                  <div className="process-line__eyebrow mt-5">
+                    {t.process.stepPrefix} 0{index + 1}
+                  </div>
+                  <h3 className="line-item__title mt-3">{step.title}</h3>
+                  <p className="line-item__copy">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="testimonials"
+          className="mx-auto max-w-[1320px] px-6 py-16 md:px-12 md:py-20"
+        >
+          <div className="section-head">
+            <p className="section-label">{t.testimonials.label}</p>
+            <h2 className="section-title">{t.testimonials.title}</h2>
+            <p className="section-copy">{t.testimonials.subtitle}</p>
+          </div>
+
+          <div className="mt-8 space-y-5">
+            <div className="marquee-shell">
+              <div className="animate-marquee flex min-w-max gap-5 py-2 hover:[animation-play-state:paused]">
+                {[...t.testimonials.items, ...t.testimonials.items].map((item, index) => (
+                  <article key={`${item.author}-${index}`} className="surface-card quote-card">
+                    <p className="quote-card__copy">{item.text}</p>
+                    <div className="quote-card__footer">
+                      <p className="quote-card__author">{item.author}</p>
+                      <p className="quote-card__role">{item.role}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <div className="marquee-shell">
+              <div
+                className="animate-marquee flex min-w-max gap-4 py-2 hover:[animation-play-state:paused]"
+                style={{ animationDirection: 'reverse' }}
+              >
+                {[...feedbackImages, ...feedbackImages].map((src, index) => (
+                  <div key={`${src}-${index}`} className="proof-image">
+                    <img
+                      src={src}
+                      alt="Client feedback proof"
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="contact"
+          className="mx-auto max-w-[1320px] px-6 pb-20 pt-16 md:px-12 md:pb-24 md:pt-20"
+        >
+          <div className="grid gap-6 lg:grid-cols-[0.82fr_1.18fr]">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="surface-card surface-card--large"
+            >
+              <p className="section-label">{t.nav.contact}</p>
+              <h2 className="section-title section-title--compact">{t.contact.title}</h2>
+              <p className="section-copy section-copy--compact">{t.contact.subtitle}</p>
+
+              <div className="contact-subpanel">
+                <p className="contact-subpanel__title">{t.contact.noteTitle}</p>
+                <p className="contact-subpanel__copy">{t.contact.noteDescription}</p>
+                <ContactLinks lang={lang} className="mt-6" mobileLayout="vertical" />
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.08 }}
+            >
+              <LeadForm lang={lang} />
+            </motion.div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="relative z-10 border-t border-white/8 px-6 py-8 md:px-12">
+        <div className="mx-auto flex max-w-[1320px] flex-col gap-4 text-sm text-white/45 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="font-display uppercase tracking-[0.28em] text-white/85">
+              Agency Yangai
+            </p>
+            <p className="mt-2">{t.footer.copyright}</p>
+          </div>
+          <p className="max-w-2xl leading-7">{t.footer.disclaimer}</p>
+        </div>
+      </footer>
+    </div>
+  );
 }
 
 export default App;
