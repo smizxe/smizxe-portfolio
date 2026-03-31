@@ -6,7 +6,7 @@ export const i18n = {
       story: 'Câu chuyện',
       testimonials: 'Đánh giá',
       contact: 'Liên hệ',
-      brandTagline: 'Build Web, App và AI cho doanh nghiệp đang tăng trưởng',
+      brandTagline: 'Agency chuyên build Web, App, Mobile & AI cho doanh nghiệp',
     },
     hero: {
       badge: 'Agency Yangai / build web, app và AI cho thương hiệu cần tăng trưởng rõ ràng hơn',
@@ -48,9 +48,9 @@ export const i18n = {
             'Cho doanh nghiệp cần một mặt tiền số nhìn premium hơn, kể chuyện rõ hơn và đưa khách đến đúng CTA thay vì chỉ lướt rồi thoát.',
         },
         {
-          title: 'Web app và sản phẩm digital',
+          title: 'App & Mobile',
           description:
-            'Cho bài toán cần trải nghiệm gọn, dễ dùng và logic rõ ràng, từ dashboard nội bộ đến sản phẩm có người dùng thật.',
+            'Cho những team cần một sản phẩm người dùng thật sự dùng được — web app, mobile app hoặc tool nội bộ được build để phục vụ vận hành, không chỉ để có.',
         },
         {
           title: 'AI và automation layer',
@@ -225,7 +225,7 @@ export const i18n = {
       story: 'Story',
       testimonials: 'Reviews',
       contact: 'Contact',
-      brandTagline: 'Building Web, App, and AI systems for growing teams',
+      brandTagline: 'Agency specialized in Web, App, Mobile & AI systems',
     },
     hero: {
       badge: 'Agency Yangai / building Web, App, and AI for brands that need clearer growth',
@@ -267,9 +267,9 @@ export const i18n = {
             'For businesses that need a digital front door that feels more premium, explains the offer more clearly, and guides visitors toward the right CTA.',
         },
         {
-          title: 'Web apps and digital products',
+          title: 'App & Mobile products',
           description:
-            'For products that need a cleaner, calmer, and more usable experience, from internal dashboards to customer-facing flows.',
+            'For teams building something people actually use — web apps, mobile apps, or internal tools that handle real operations without friction.',
         },
         {
           title: 'AI and automation layer',

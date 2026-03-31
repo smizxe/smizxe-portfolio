@@ -125,7 +125,7 @@ function App() {
               className="h-10 w-10 object-contain sm:h-11 sm:w-11"
             />
             <div className="hidden sm:block">
-              <p className="font-display text-base tracking-tight text-white">Agency Yangai</p>
+              <p className="font-display text-base tracking-tight text-white">Yangai</p>
               <p className="text-xs text-zinc-400">{t.nav.brandTagline}</p>
             </div>
           </button>
