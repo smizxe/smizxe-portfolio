@@ -125,7 +125,7 @@ function App() {
               className="h-10 w-10 object-contain sm:h-11 sm:w-11"
             />
             <div className="hidden sm:block">
-              <p className="font-display text-base tracking-tight text-white">Yangai</p>
+              <p className="brand-name font-display text-base tracking-tight">Yangai</p>
               <p className="text-xs text-zinc-400">{t.nav.brandTagline}</p>
             </div>
           </button>
@@ -182,7 +182,10 @@ function App() {
               transition={{ duration: 0.75 }}
               className="flex max-w-[540px] flex-col gap-7"
             >
-              <h1 className="hero-title hero-title--refined">{t.hero.title}</h1>
+              <h1 className="hero-title hero-title--refined">
+                <span className="hero-title__lead">{t.hero.titleLead}</span>
+                <span className="hero-title__tail">{t.hero.titleTail}</span>
+              </h1>
 
               <p className="hero-description hero-description--compact">
                 {t.hero.description}

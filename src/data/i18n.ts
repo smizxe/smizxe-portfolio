@@ -6,13 +6,15 @@ export const i18n = {
       story: 'Câu chuyện',
       testimonials: 'Đánh giá',
       contact: 'Liên hệ',
-      brandTagline: 'Agency chuyên build Web, App, Mobile & AI cho doanh nghiệp',
+      brandTagline: 'Agency chuyên thiết kế & phát triển Web, App, Mobile, AI cho doanh nghiệp',
     },
     hero: {
-      badge: 'Agency Yangai / build web, app và AI cho thương hiệu cần tăng trưởng rõ ràng hơn',
-      title: 'Web, App và AI được build gọn, rõ và đủ lực để doanh nghiệp đi xa hơn.',
+      badge: 'Yangai · thiết kế & phát triển Web, App, Mobile, AI cho thương hiệu muốn phát triển nghiêm túc',
+      titleLead: 'Web · App · AI',
+      titleTail: 'Đúng thứ doanh nghiệp bạn cần để phát triển.',
+      title: 'Web, App và AI — đúng thứ doanh nghiệp bạn cần để phát triển.',
       description:
-        'Yangai là đơn vị nhận build website, web app và AI workflow cho những team cần sản phẩm nhìn đáng tin, chạy mượt và giải quyết được bài toán thật.',
+        'Yangai là một studio nhỏ, gọn và tập trung. Bọn mình thiết kế và phát triển website, app, AI workflow nhìn sắc nét, chạy mượt và giải quyết đúng vấn đề thật của doanh nghiệp.',
       primaryCta: 'Xem dự án tiêu biểu',
       secondaryCta: 'Gửi brief cho Yangai',
       reelLabel: 'Showreel website đã thực hiện',
@@ -38,32 +40,32 @@ export const i18n = {
     },
     services: {
       label: 'Năng lực chính',
-      title: 'Yangai build những gì doanh nghiệp cần để hiện diện tốt hơn và vận hành tốt hơn',
+      title: 'Ba mảng sản phẩm Yangai làm trọn từ đầu đến cuối',
       description:
-        'Từ website giới thiệu, web app phục vụ vận hành đến AI workflow giảm tải công việc lặp lại, Yangai đi từ góc nhìn business trước rồi mới tới phần giao diện.',
+        'Chọn một mảng, hoặc kết hợp cả ba. Mỗi mảng đều được làm với cùng một mức chăm chút về sự rõ ràng, tốc độ và khả năng dùng thật trong vận hành hằng ngày.',
       items: [
         {
-          title: 'Landing page và website thương hiệu',
+          title: 'Website & Landing page',
           description:
-            'Cho doanh nghiệp cần một mặt tiền số nhìn premium hơn, kể chuyện rõ hơn và đưa khách đến đúng CTA thay vì chỉ lướt rồi thoát.',
+            'Một mặt tiền số giải thích sản phẩm và dịch vụ của bạn trong vài giây, tạo cảm giác đáng tin với khách hàng mới và đưa họ thẳng tới hành động tiếp theo thay vì lướt qua rồi rời đi.',
         },
         {
           title: 'App & Mobile',
           description:
-            'Cho những team cần một sản phẩm người dùng thật sự dùng được — web app, mobile app hoặc tool nội bộ được build để phục vụ vận hành, không chỉ để có.',
+            'Web app, mobile app và công cụ nội bộ — được xây dựng quanh quy trình thật của đội ngũ, để người dùng không phải vật lộn với giao diện mỗi ngày.',
         },
         {
-          title: 'AI và automation layer',
+          title: 'AI & Automation',
           description:
-            'Khi có cơ hội giảm tải vận hành hoặc tăng tỷ lệ xử lý lead, Yangai có thể gắn thêm chatbot, OpenAI hoặc workflow automation.',
+            'Chatbot, OpenAI workflow và automation âm thầm xử lý các tác vụ lặp đi lặp lại, để đội ngũ của bạn dồn thời gian vào phần thật sự cần đến con người.',
         },
       ],
     },
     projects: {
       label: 'Dự án tiêu biểu',
-      title: 'Những dự án cho thấy Yangai nhìn web như một hệ thống niềm tin và chuyển đổi',
+      title: 'Những dự án gần đây Yangai đã hoàn thành',
       description:
-        'Case study được viết lại theo góc nhìn agency: không chỉ nói đã làm gì, mà giải thích vấn đề thương hiệu hoặc trải nghiệm nào đã được xử lý.',
+        'Mỗi dự án đều bắt đầu từ cùng một câu hỏi: thương hiệu này thật sự muốn đi đến đâu, và sản phẩm có thể giúp họ tới đó nhanh hơn, sắc nét hơn và ít trở ngại hơn ra sao.',
       list: [
         {
           title: 'Rentino',
@@ -89,10 +91,10 @@ export const i18n = {
     },
     story: {
       label: 'The Story of Yangai',
-      title: 'Yangai bắt đầu từ một founder trẻ đang lớn lên cùng những bài toán thật của khách hàng.',
+      title: 'Một studio nhỏ do một founder tự code, tự thiết kế và tự hoàn thiện.',
       kicker: 'Founder · Developer',
       description:
-        'Ở tuổi 20, Giang đang xây Yangai như một đơn vị gọn để build Web, App và AI cho những doanh nghiệp cần thứ rõ ràng hơn, dùng được hơn và sát vận hành thật hơn. Không phải để phô diễn hiệu ứng, mà để giúp khách hàng có sản phẩm đủ tốt để dùng, bán và phát triển tiếp.',
+        'Vương Hoàng Giang lập Yangai ở tuổi 20 để xây dựng các sản phẩm Web, App và AI bám sát vấn đề thật của doanh nghiệp. Không qua nhiều lớp account manager, không dùng template chung — chỉ là làm việc trực tiếp, hoàn thiện gọn gàng, với chính founder ngồi ở bàn phím từ đầu đến cuối.',
       name: 'Vương Hoàng Giang (Yangai)',
       overlay: 'Founder, Developer',
       timeline: [
@@ -115,33 +117,33 @@ export const i18n = {
     },
     process: {
       label: 'Cách làm việc',
-      title: 'Quy trình gọn, nhưng đủ sâu để brief đi tới một website có định hướng rõ',
+      title: 'Ba bước từ ý tưởng đến sản phẩm',
       description:
-        'Yangai không kéo dài dự án bằng những bước rườm rà. Bọn mình giữ quy trình lean, nhưng mỗi bước đều có lý do và gắn trực tiếp với kết quả cuối cùng.',
+        'Quy trình gọn nhưng đủ sâu để giữ tốc độ mà không bỏ qua những câu hỏi quan trọng. Mỗi bước đều gắn trực tiếp với chất lượng cuối cùng của sản phẩm.',
       stepPrefix: 'Bước',
       steps: [
         {
-          title: 'Chốt pain point và hướng hình ảnh',
+          title: 'Khoá mục tiêu và hướng hình ảnh',
           description:
-            'Bắt đầu từ mục tiêu kinh doanh, điểm nghẽn hiện tại và cảm giác thương hiệu cần truyền ra để khóa một hướng đủ đúng ngay từ đầu.',
+            'Bắt đầu từ mục tiêu kinh doanh, đối tượng khách hàng và cảm giác thương hiệu cần truyền tải — để dự án có hướng đi rõ ràng ngay từ ngày đầu tiên.',
         },
         {
-          title: 'Thiết kế và build đi cùng nhau',
+          title: 'Thiết kế song song với phát triển',
           description:
-            'Không tách phần đẹp và phần chạy. Layout, copy, responsive, motion và CTA được cân trong lúc implementation để đỡ lệch khi lên thật.',
+            'Layout, copy, responsive, motion và logic CTA được hình thành đồng thời ngay trong code. Cái bạn duyệt chính là cái sẽ ra sản phẩm cuối.',
         },
         {
-          title: 'Launch gọn, bàn giao rõ, tiếp tục hỗ trợ',
+          title: 'Bàn giao gọn và tiếp tục đồng hành',
           description:
-            'Sau khi lên live, Yangai vẫn đồng hành để tinh chỉnh, sửa các điểm phát sinh và mở đường cho đợt nâng cấp tiếp theo nếu cần.',
+            'Sau khi sản phẩm lên sóng, Yangai vẫn ở gần để tinh chỉnh chi tiết, xử lý các điểm phát sinh và mở đường cho phiên bản tiếp theo khi cần.',
         },
       ],
     },
     testimonials: {
       label: 'Bằng chứng',
-      title: 'Phản hồi thực tế sau khi dự án lên live',
+      title: 'Khách hàng nói gì sau khi dự án lên sóng',
       subtitle:
-        'Điểm khách hàng nhắc nhiều không chỉ là web đẹp, mà là cách Yangai làm việc rõ, có trách nhiệm và giải quyết được vấn đề thật.',
+        'Điều khách hàng nhắc đến nhiều nhất không chỉ là website đẹp — mà là cách Yangai làm việc rõ ràng, có trách nhiệm và thật sự giải quyết được vấn đề của họ.',
       items: [
         {
           text: 'Ban đầu mình chỉ tính làm web đơn giản thôi, nhưng Giang hỏi rất kỹ nên lộ ra hàng loạt vấn đề vận hành mà trước đó mình chưa nhìn thấy. Làm xong thấy nhẹ đầu hẳn.',
@@ -201,9 +203,9 @@ export const i18n = {
         'Cảm ơn bạn. Bên mình sẽ phản hồi sớm để đề xuất hướng làm web phù hợp với mục tiêu của bạn.',
     },
     contact: {
-      title: 'Nếu doanh nghiệp của bạn đang cần build Web, App hoặc AI theo cách gọn mà đủ chắc, Yangai có thể giúp.',
+      title: 'Có dự án trong đầu? Nói với Yangai một câu.',
       subtitle:
-        'Agency Yangai nhận brief cho landing page, website doanh nghiệp, web app và các bài toán cần thêm AI hoặc automation khi có ích thật.',
+        'Kể cho Yangai về dự án của bạn — một website, một app hay một AI workflow — và bạn sẽ nhận lại một hướng đi cụ thể, không phải một báo giá chung chung.',
       noteTitle: 'Liên hệ trực tiếp',
       noteDescription:
         'Nếu muốn trao đổi nhanh, bạn có thể gọi điện, nhắn Zalo hoặc gửi email trực tiếp để Yangai xem brief trước.',
@@ -228,10 +230,12 @@ export const i18n = {
       brandTagline: 'Agency specialized in Web, App, Mobile & AI systems',
     },
     hero: {
-      badge: 'Agency Yangai / building Web, App, and AI for brands that need clearer growth',
-      title: 'Web, App, and AI builds that feel clear, sharp, and useful to the business.',
+      badge: 'Yangai · building Web, App, Mobile and AI for brands that need clearer growth',
+      titleLead: 'Web · App · AI',
+      titleTail: 'Built the way your business actually needs.',
+      title: 'Web, App and AI built the way your business actually needs.',
       description:
-        'Yangai helps teams build websites, web apps, and AI workflows that look trustworthy, run smoothly, and solve a real business problem.',
+        'Yangai is a focused build studio. We ship websites, apps and AI workflows that look sharp, run fast and solve a real problem for the team behind them.',
       primaryCta: 'View selected works',
       secondaryCta: 'Send Yangai a brief',
       reelLabel: 'Website showcase reel',
@@ -256,33 +260,33 @@ export const i18n = {
       ],
     },
     services: {
-      label: 'Core offers',
-      title: 'Yangai builds what teams need to present better and operate better',
+      label: 'Core capabilities',
+      title: 'Three product layers Yangai ships end to end',
       description:
-        'From brand websites and operational web apps to AI workflows that reduce repetitive work, Yangai starts from the business problem before the interface layer.',
+        'Pick one layer or stack all three. Each one is shipped with the same care for clarity, speed and real-world usability inside the team that owns it.',
       items: [
         {
-          title: 'Landing pages and brand websites',
+          title: 'Websites & Landing pages',
           description:
-            'For businesses that need a digital front door that feels more premium, explains the offer more clearly, and guides visitors toward the right CTA.',
+            'A digital front door that explains the offer in seconds, earns trust from first-time visitors and routes them straight to the right next step.',
         },
         {
           title: 'App & Mobile products',
           description:
-            'For teams building something people actually use — web apps, mobile apps, or internal tools that handle real operations without friction.',
+            'Web apps, mobile apps and internal tools — built around the way your team actually works, so the people using them stop fighting the interface.',
         },
         {
-          title: 'AI and automation layer',
+          title: 'AI & Automation',
           description:
-            'When it can reduce operational load or improve lead handling, Yangai can add chatbots, OpenAI workflows, or automation systems.',
+            'Chatbots, OpenAI workflows and automation that quietly remove repetitive work, so the team can focus on the part that still needs a human.',
         },
       ],
     },
     projects: {
       label: 'Selected works',
-      title: 'Projects that show how Yangai treats the web as a trust and conversion system',
+      title: 'Recent builds shipped for real teams',
       description:
-        'The work is framed as agency case studies, not just a personal portfolio grid, so each project points back to a real brand or UX problem being solved.',
+        'Every project starts from the same question: where is this brand really trying to go — and how can the build help them get there faster, sharper and with less friction.',
       list: [
         {
           title: 'Rentino',
@@ -308,10 +312,10 @@ export const i18n = {
     },
     story: {
       label: 'The Story of Yangai',
-      title: 'Yangai started with a young founder growing through real client problems.',
+      title: 'A small studio led by one founder who codes, designs and ships.',
       kicker: 'Founder · Developer',
       description:
-        'At 20, Giang is building Yangai as a lean unit for teams that need clearer, more useful, and more practical Web, App, and AI products. The work is not about showing effects. It is about helping clients ship something good enough to use, sell, and grow from.',
+        'Vuong Hoang Giang started Yangai at 20 to build Web, App and AI products that stay close to real business problems. No layers of account managers, no recycled templates — just direct work, shipped clean, with the founder still at the keyboard from start to finish.',
       name: 'Vuong Hoang Giang (Yangai)',
       overlay: 'Founder, Developer',
       timeline: [
@@ -334,33 +338,33 @@ export const i18n = {
     },
     process: {
       label: 'How we work',
-      title: 'A lean process, but deep enough to turn a brief into a website with real direction',
+      title: 'Three steps from brief to launch',
       description:
-        'Yangai does not stretch projects with unnecessary ceremony. The process stays compact, but every step is tied to the quality of the final outcome.',
+        'A lean process built to keep momentum without skipping the questions that matter. Every step is tied directly to the quality of what finally ships.',
       stepPrefix: 'Step',
       steps: [
         {
-          title: 'Lock the pain point and visual direction',
+          title: 'Lock the goal and visual direction',
           description:
-            'Start with the business goal, the current friction, and the brand feeling that needs to come through so the direction is clear from day one.',
+            'We start from the business goal, the audience and the brand feeling that needs to come through — so the build has a clear direction from day one.',
         },
         {
-          title: 'Design and build together',
+          title: 'Design while building',
           description:
-            'The visual layer is not separated from the working layer. Layout, copy, responsiveness, motion, and CTA logic are shaped inside implementation.',
+            'Layout, copy, motion and CTA logic are shaped together inside the actual code. What you review is what ships, not a flat mockup.',
         },
         {
-          title: 'Launch cleanly and keep supporting',
+          title: 'Launch clean and stay close',
           description:
-            'After launch, Yangai stays available to refine details, handle post-launch feedback, and prepare for the next upgrade when needed.',
+            'After launch, Yangai stays around to refine details, handle post-launch feedback and prepare the next iteration when it makes sense.',
         },
       ],
     },
     testimonials: {
       label: 'Proof',
-      title: 'What clients say after the work goes live',
+      title: 'What clients say after the build goes live',
       subtitle:
-        'The feedback is not only about aesthetics. It is usually about clarity, responsibility, and the feeling that the project was handled with care.',
+        'The feedback is rarely just about aesthetics. It is usually about clarity, ownership and the feeling that the project was handled with real care.',
       items: [
         {
           text: 'At first I only planned to build a simple site, but Giang asked the right questions and uncovered operational issues I had not even noticed. The final result made the whole business feel easier to run.',
@@ -420,9 +424,9 @@ export const i18n = {
         'Thank you. We will reach out soon with the most suitable next direction for your project.',
     },
     contact: {
-      title: 'If your team needs Web, App, or AI built in a way that stays lean but solid, Yangai can help.',
+      title: 'Have a build in mind? Tell Yangai in one line.',
       subtitle:
-        'Agency Yangai takes on landing pages, company websites, web apps, and projects that benefit from an added AI or automation layer when it truly helps.',
+        'Send Yangai your project — a website, an app or an AI workflow — and you will get a thoughtful direction back, not a generic quote.',
       noteTitle: 'Direct contact',
       noteDescription:
         'If you prefer a quicker conversation, call, message on Zalo, or send an email so Yangai can review the brief first.',
