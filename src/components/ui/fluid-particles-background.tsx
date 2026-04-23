@@ -131,9 +131,8 @@ const FluidParticlesBackgroundInner = ({
 }: CyberBackgroundProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const noise = useMemo(() => createNoise(), []);
-  // Ref for particleSize so changes don't trigger useEffect restart
-  const particleSizeRef = useRef(particleSize);
-  particleSizeRef.current = particleSize;
+  const minParticleSize = particleSize.min;
+  const maxParticleSize = particleSize.max;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -158,8 +157,8 @@ const FluidParticlesBackgroundInner = ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       size:
-        Math.random() * (particleSizeRef.current.max - particleSizeRef.current.min) +
-        particleSizeRef.current.min,
+        Math.random() * (maxParticleSize - minParticleSize) +
+        minParticleSize,
       velocity: { x: 0, y: 0 },
       life: Math.random() * 100,
       maxLife: 100 + Math.random() * 50,
@@ -229,7 +228,7 @@ const FluidParticlesBackgroundInner = ({
       window.removeEventListener("resize", handleResize);
       cancelAnimationFrame(animFrameId);
     };
-  }, [particleCount, noiseIntensity, noise]);
+  }, [forceDark, maxParticleSize, minParticleSize, particleCount, noiseIntensity, noise]);
 
   return (
     <div

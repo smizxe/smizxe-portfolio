@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -11,7 +13,6 @@ import {
   Workflow,
 } from 'lucide-react';
 
-import storyImage from './assets/smizxe-ngoi.jpg';
 import LeadForm from './components/LeadForm';
 import ContactLinks from './components/ContactLinks';
 import { feedbackImages } from './data/feedbackImages';
@@ -19,11 +20,11 @@ import { i18n } from './data/i18n';
 import { FluidParticlesBackground } from './components/ui/fluid-particles-background';
 
 const heroVideos = [
-  new URL('../video hero/2026-03-21 23-22-14.mp4', import.meta.url).href,
-  new URL('../video hero/2026-03-21 23-22-49.mp4', import.meta.url).href,
-  new URL('../video hero/2026-03-21 23-24-13.mp4', import.meta.url).href,
-  new URL('../video hero/2026-03-21 23-24-43.mp4', import.meta.url).href,
-  new URL('../video hero/2026-03-21 23-25-48.mp4', import.meta.url).href,
+  '/videos/2026-03-21 23-22-14.mp4',
+  '/videos/2026-03-21 23-22-49.mp4',
+  '/videos/2026-03-21 23-24-13.mp4',
+  '/videos/2026-03-21 23-24-43.mp4',
+  '/videos/2026-03-21 23-25-48.mp4',
 ];
 
 const projectMeta = [
@@ -53,7 +54,7 @@ function App() {
 
   useEffect(() => {
     const transitionGapMs = 6400;
-    let timeoutIds: number[] = [];
+    const timeoutIds: number[] = [];
 
     const cycleVideo = () => {
       [1, 2, 3, 4, 5].forEach((beat, index) => {
@@ -363,7 +364,7 @@ function App() {
               className="story-media"
             >
               <div className="story-card__image-wrap">
-                <img src={storyImage} alt={t.story.title} className="story-card__image" />
+                <img src="/images/smizxe-ngoi.jpg" alt={t.story.title} className="story-card__image" />
                 <div className="story-card__overlay">
                   <p className="story-card__name">{t.story.name}</p>
                   <p className="story-card__role">{t.story.overlay}</p>

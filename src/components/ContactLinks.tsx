@@ -1,8 +1,9 @@
+'use client';
+
 import { useState } from 'react';
 import { Facebook, Mail, MessageCircle, Phone, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import zaloQr from '../assets/anh-zalo.jpg';
 import { i18n } from '../data/i18n';
 
 interface ContactLinksProps {
@@ -95,7 +96,7 @@ export default function ContactLinks({
               <p className="mt-3 text-sm leading-7 text-white/58">{t.zalo.instruction}</p>
 
               <div className="mt-6 overflow-hidden rounded-[1.5rem] border border-white/8">
-                <img src={zaloQr} alt="Zalo QR" className="h-full w-full object-cover" />
+                <img src="/images/anh-zalo.jpg" alt="Zalo QR" className="h-full w-full object-cover" />
               </div>
 
               <p className="mt-5 text-center text-base font-semibold tracking-[0.18em] text-white/88">
