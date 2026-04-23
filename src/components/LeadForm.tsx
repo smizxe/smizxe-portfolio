@@ -6,8 +6,7 @@ import { motion } from 'framer-motion';
 
 import { i18n } from '../data/i18n';
 
-const GOOGLE_SHEET_URL =
-  'https://script.google.com/macros/s/AKfycbz6dakmk79skVct-ppVYdQ804EsbtjHsTeC50p-RVHx-_AuqyhBG4hL_RUC0ULG7qhX/exec';
+const LEAD_FORM_ENDPOINT = process.env.NEXT_PUBLIC_LEAD_FORM_ENDPOINT;
 
 interface LeadFormProps {
   lang: 'vi' | 'en';
@@ -58,7 +57,11 @@ export default function LeadForm({
       data.append('message', formData.message);
       data.append('timestamp', new Date().toISOString());
 
-      await fetch(GOOGLE_SHEET_URL, {
+      if (!LEAD_FORM_ENDPOINT) {
+        throw new Error('Missing NEXT_PUBLIC_LEAD_FORM_ENDPOINT');
+      }
+
+      await fetch(LEAD_FORM_ENDPOINT, {
         method: 'POST',
         mode: 'no-cors',
         body: data,
