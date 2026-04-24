@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   ArrowRight,
   Bot,
@@ -420,19 +420,10 @@ function App() {
               <button
                 key={i}
                 className={`project-carousel__dot ${i === activeProject ? 'project-carousel__dot--active' : ''}`}
-                onClick={() => { setSlideDir(i > activeProject ? 1 : -1); setActiveProject(i); }}
-                aria-label={`Go to project ${i + 1}`}
-              />
-            ))}
-          </div>
-
-          {/* Dot indicators */}
-          <div className="project-carousel__dots">
-            {projectMeta.map((_, i) => (
-              <button
-                key={i}
-                className={`project-carousel__dot ${i === activeProject ? 'project-carousel__dot--active' : ''}`}
-                onClick={() => { setSlideDir(i > activeProject ? 1 : -1); setActiveProject(i); }}
+                onClick={() => {
+                  setSlideDir(i > activeProject ? 1 : -1);
+                  setActiveProject(i);
+                }}
                 aria-label={`Go to project ${i + 1}`}
               />
             ))}
