@@ -336,78 +336,94 @@ function App() {
             </div>
           </div>
 
-          <div className="project-carousel mt-10">
-            <motion.div
-              className="project-carousel__track"
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }} // We'll handle constraints manually for better feel
-              dragElastic={0.2}
-              onDragEnd={(_, info) => {
-                const swipeThreshold = 50;
-                if (info.offset.x < -swipeThreshold) {
-                  goNextProject();
-                } else if (info.offset.x > swipeThreshold) {
-                  goPrevProject();
-                }
-              }}
-              animate={{
-                x: `calc(-${activeProject * (typeof window !== 'undefined' && window.innerWidth < 768 ? 88 + 1.25/0.88*100 : 860 + 32)}px)`,
-              }}
-              // Actually, since viewport width varies, let's use a simpler calculation in pixels
-              // or use a ref. But for now, let's use a standard CSS calc approach if possible
-              // or just use state-based translateX
-              style={{
-                x: `calc(-${activeProject} * (var(--card-width) + var(--card-gap)))`
-              }}
-            >
-              {/* Note: I'll use inline styles for the track variables to make it perfectly responsive */}
-              <div 
-                className="flex items-stretch gap-[var(--card-gap)]"
-                style={{
-                  '--card-width': 'min(85vw, 860px)',
-                  '--card-gap': '2rem',
-                  transform: `translateX(calc(-${activeProject} * (min(85vw, 860px) + 2rem)))`,
-                  transition: 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)'
-                } as any}
-              >
-                {projectMeta.map((project, index) => (
-                  <div key={index} className="project-carousel__item">
-                    <a
-                      href={project.href}
-                      target={project.href.startsWith('http') ? '_blank' : undefined}
-                      rel={project.href.startsWith('http') ? 'noreferrer' : undefined}
-                      className={`surface-card project-card project-carousel__center group transition-opacity duration-500 ${
-                        index === activeProject ? 'opacity-100' : 'opacity-30 scale-[0.96]'
-                      }`}
-                      style={{ transition: 'opacity 0.5s, transform 0.5s' }}
+          <div className="project-carousel mt-10 overflow-visible">
+            <div className="mx-auto w-full max-w-[1320px] px-6 md:px-12">
+              <div className="relative">
+                <motion.div
+                  drag="x"
+                  dragConstraints={{ left: -((projectMeta.length - 1) * (typeof window !== 'undefined' && window.innerWidth < 768 ? window.innerWidth * 0.88 + 20 : 860 + 32)), right: 0 }}
+                  dragElastic={0.15}
+                  onDragEnd={(_, info) => {
+                    const isMobile = window.innerWidth < 768;
+                    const cardWidth = isMobile ? window.innerWidth * 0.88 : 860;
+                    const gap = isMobile ? 20 : 32;
+                    const step = cardWidth + gap;
+                    
+                    const threshold = step / 4;
+                    const velocity = info.velocity.x;
+                    const offset = info.offset.x;
+
+                    if (offset < -threshold || velocity < -500) {
+                      goNextProject();
+                    } else if (offset > threshold || velocity > 500) {
+                      goPrevProject();
+                    }
+                  }}
+                  animate={{
+                    x: -activeProject * (typeof window !== 'undefined' && window.innerWidth < 768 ? window.innerWidth * 0.88 + 20 : 860 + 32)
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 28
+                  }}
+                  className="flex cursor-grab items-stretch active:cursor-grabbing"
+                  style={{ gap: typeof window !== 'undefined' && window.innerWidth < 768 ? '20px' : '32px' }}
+                >
+                  {projectMeta.map((project, index) => (
+                    <div 
+                      key={index} 
+                      className="project-carousel__item flex-shrink-0"
+                      style={{ width: typeof window !== 'undefined' && window.innerWidth < 768 ? '88vw' : '860px' }}
                     >
-                      <div className="project-card__media">
-                        <img
-                          src={project.image}
-                          alt={t.projects.list[index].title}
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <div className="project-card__veil" />
-                      </div>
-                      <div className="project-card__body">
-                        <div className="flex items-start justify-between gap-4">
-                          <div>
-                            <h3 className="surface-card__title">{t.projects.list[index].title}</h3>
-                            <p className="surface-card__copy">{t.projects.list[index].desc}</p>
+                      <a
+                        href={project.href}
+                        target={project.href.startsWith('http') ? '_blank' : undefined}
+                        rel={project.href.startsWith('http') ? 'noreferrer' : undefined}
+                        className={`surface-card project-card project-carousel__center group block h-full transition-all duration-500 ${
+                          index === activeProject ? 'opacity-100' : 'opacity-30 scale-[0.96] pointer-events-none'
+                        }`}
+                      >
+                        <div className="project-card__media">
+                          <img
+                            src={project.image}
+                            alt={t.projects.list[index].title}
+                            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                          <div className="project-card__veil" />
+                        </div>
+                        <div className="project-card__body">
+                          <div className="flex items-start justify-between gap-4">
+                            <div>
+                              <h3 className="surface-card__title">{t.projects.list[index].title}</h3>
+                              <p className="surface-card__copy">{t.projects.list[index].desc}</p>
+                            </div>
+                            <MoveRight className="mt-1 shrink-0 text-white/40 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" />
                           </div>
-                          <MoveRight className="mt-1 shrink-0 text-white/40 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" />
+                          <div className="mt-5 flex flex-wrap gap-2">
+                            {t.projects.list[index].tags.map((tag) => (
+                              <span key={tag} className="project-tag">{tag}</span>
+                            ))}
+                          </div>
                         </div>
-                        <div className="mt-5 flex flex-wrap gap-2">
-                          {t.projects.list[index].tags.map((tag) => (
-                            <span key={tag} className="project-tag">{tag}</span>
-                          ))}
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                ))}
+                      </a>
+                    </div>
+                  ))}
+                </motion.div>
               </div>
-            </motion.div>
+            </div>
+          </div>
+
+          {/* Dot indicators */}
+          <div className="project-carousel__dots">
+            {projectMeta.map((_, i) => (
+              <button
+                key={i}
+                className={`project-carousel__dot ${i === activeProject ? 'project-carousel__dot--active' : ''}`}
+                onClick={() => { setSlideDir(i > activeProject ? 1 : -1); setActiveProject(i); }}
+                aria-label={`Go to project ${i + 1}`}
+              />
+            ))}
           </div>
 
           {/* Dot indicators */}
