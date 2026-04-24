@@ -333,80 +333,78 @@ function App() {
           </div>
 
           <div className="project-carousel mt-10 overflow-visible">
-            <div className="mx-auto w-full max-w-[1320px] px-6 md:px-12">
-              <div className="relative">
-                <motion.div
-                  drag="x"
-                  dragConstraints={{ left: -((projectMeta.length - 1) * (typeof window !== 'undefined' && window.innerWidth < 768 ? window.innerWidth * 0.88 + 20 : 860 + 32)), right: 0 }}
-                  dragElastic={0.15}
-                  onDragEnd={(_, info) => {
-                    const isMobile = window.innerWidth < 768;
-                    const cardWidth = isMobile ? window.innerWidth * 0.88 : 860;
-                    const gap = isMobile ? 20 : 32;
-                    const step = cardWidth + gap;
-                    
-                    const threshold = step / 4;
-                    const velocity = info.velocity.x;
-                    const offset = info.offset.x;
+            <div className="relative">
+              <motion.div
+                drag="x"
+                dragConstraints={{ left: -((projectMeta.length - 1) * (typeof window !== 'undefined' && window.innerWidth < 768 ? window.innerWidth * 0.88 + 20 : 760 + 32)), right: 0 }}
+                dragElastic={0.15}
+                onDragEnd={(_, info) => {
+                  const isMobile = window.innerWidth < 768;
+                  const cardWidth = isMobile ? window.innerWidth * 0.88 : 760;
+                  const gap = isMobile ? 20 : 32;
+                  const step = cardWidth + gap;
+                  
+                  const threshold = step / 4;
+                  const velocity = info.velocity.x;
+                  const offset = info.offset.x;
 
-                    if (offset < -threshold || velocity < -500) {
-                      goNextProject();
-                    } else if (offset > threshold || velocity > 500) {
-                      goPrevProject();
-                    }
-                  }}
-                  animate={{
-                    x: -activeProject * (typeof window !== 'undefined' && window.innerWidth < 768 ? window.innerWidth * 0.88 + 20 : 860 + 32)
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 260,
-                    damping: 28
-                  }}
-                  className="flex cursor-grab items-stretch active:cursor-grabbing"
-                  style={{ gap: typeof window !== 'undefined' && window.innerWidth < 768 ? '20px' : '32px' }}
-                >
-                  {projectMeta.map((project, index) => (
-                    <div 
-                      key={index} 
-                      className="project-carousel__item flex-shrink-0"
-                      style={{ width: typeof window !== 'undefined' && window.innerWidth < 768 ? '88vw' : '860px' }}
+                  if (offset < -threshold || velocity < -500) {
+                    goNextProject();
+                  } else if (offset > threshold || velocity > 500) {
+                    goPrevProject();
+                  }
+                }}
+                animate={{
+                  x: -activeProject * (typeof window !== 'undefined' && window.innerWidth < 768 ? window.innerWidth * 0.88 + 20 : 760 + 32)
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 28
+                }}
+                className="project-carousel__track flex cursor-grab items-stretch active:cursor-grabbing"
+                style={{ gap: typeof window !== 'undefined' && window.innerWidth < 768 ? '20px' : '32px' }}
+              >
+                {projectMeta.map((project, index) => (
+                  <div 
+                    key={index} 
+                    className="project-carousel__item flex-shrink-0"
+                    style={{ width: typeof window !== 'undefined' && window.innerWidth < 768 ? '88vw' : '760px' }}
+                  >
+                    <a
+                      href={project.href}
+                      target={project.href.startsWith('http') ? '_blank' : undefined}
+                      rel={project.href.startsWith('http') ? 'noreferrer' : undefined}
+                      className={`surface-card project-card project-carousel__center group block h-full transition-all duration-500 ${
+                        index === activeProject ? 'opacity-100 scale-100' : 'opacity-25 scale-[0.9] pointer-events-none'
+                      }`}
                     >
-                      <a
-                        href={project.href}
-                        target={project.href.startsWith('http') ? '_blank' : undefined}
-                        rel={project.href.startsWith('http') ? 'noreferrer' : undefined}
-                        className={`surface-card project-card project-carousel__center group block h-full transition-all duration-500 ${
-                          index === activeProject ? 'opacity-100' : 'opacity-30 scale-[0.96] pointer-events-none'
-                        }`}
-                      >
-                        <div className="project-card__media">
-                          <img
-                            src={project.image}
-                            alt={t.projects.list[index].title}
-                            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          />
-                          <div className="project-card__veil" />
-                        </div>
-                        <div className="project-card__body">
-                          <div className="flex items-start justify-between gap-4">
-                            <div>
-                              <h3 className="surface-card__title">{t.projects.list[index].title}</h3>
-                              <p className="surface-card__copy">{t.projects.list[index].desc}</p>
-                            </div>
-                            <MoveRight className="mt-1 shrink-0 text-white/40 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" />
+                      <div className="project-card__media">
+                        <img
+                          src={project.image}
+                          alt={t.projects.list[index].title}
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="project-card__veil" />
+                      </div>
+                      <div className="project-card__body">
+                        <div className="flex items-start justify-between gap-4">
+                          <div>
+                            <h3 className="surface-card__title">{t.projects.list[index].title}</h3>
+                            <p className="surface-card__copy">{t.projects.list[index].desc}</p>
                           </div>
-                          <div className="mt-5 flex flex-wrap gap-2">
-                            {t.projects.list[index].tags.map((tag) => (
-                              <span key={tag} className="project-tag">{tag}</span>
-                            ))}
-                          </div>
+                          <MoveRight className="mt-1 shrink-0 text-white/40 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" />
                         </div>
-                      </a>
-                    </div>
-                  ))}
-                </motion.div>
-              </div>
+                        <div className="mt-5 flex flex-wrap gap-2">
+                          {t.projects.list[index].tags.map((tag) => (
+                            <span key={tag} className="project-tag">{tag}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                ))}
+              </motion.div>
             </div>
           </div>
 

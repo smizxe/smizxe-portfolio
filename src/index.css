@@ -778,7 +778,7 @@ button {
 }
 
 .project-carousel__item {
-  flex: 0 0 min(85vw, 860px);
+  flex: 0 0 min(85vw, 760px);
   scroll-snap-align: center;
 }
 
@@ -791,7 +791,7 @@ button {
 
 @media (min-width: 1024px) {
   .project-carousel__track {
-    padding: 0 calc(50vw - 430px); /* Center the active card */
+    padding: 0 calc(50vw - 380px); /* Center the 760px card */
   }
 }
 
