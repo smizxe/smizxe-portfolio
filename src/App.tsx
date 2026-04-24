@@ -53,15 +53,11 @@ function App() {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [glitchBeat, setGlitchBeat] = useState(0);
   const [activeProject, setActiveProject] = useState(0);
-  const [slideDir, setSlideDir] = useState<1 | -1>(1);
   const t = i18n[lang];
-
   const goNextProject = () => {
-    setSlideDir(1);
     setActiveProject((i) => (i + 1) % projectMeta.length);
   };
   const goPrevProject = () => {
-    setSlideDir(-1);
     setActiveProject((i) => (i - 1 + projectMeta.length) % projectMeta.length);
   };
 
@@ -421,7 +417,6 @@ function App() {
                 key={i}
                 className={`project-carousel__dot ${i === activeProject ? 'project-carousel__dot--active' : ''}`}
                 onClick={() => {
-                  setSlideDir(i > activeProject ? 1 : -1);
                   setActiveProject(i);
                 }}
                 aria-label={`Go to project ${i + 1}`}
