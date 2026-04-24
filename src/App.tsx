@@ -343,21 +343,20 @@ function App() {
               onClick={goPrevProject}
               aria-label="Previous project"
             >
-              <AnimatePresence mode="wait" initial={false}>
+              <AnimatePresence mode="popLayout" initial={false}>
                 <motion.div
                   key={(activeProject - 1 + projectMeta.length) % projectMeta.length}
                   className="project-carousel__peek-inner"
-                  initial={{ x: `${slideDir * 55}%`, opacity: 0 }}
-                  animate={{ x: '0%', opacity: 1 }}
-                  exit={{ x: `${slideDir * -55}%`, opacity: 0 }}
-                  transition={{ duration: 0.36, ease: [0.25, 0.1, 0.25, 1] }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.45, ease: "easeOut" }}
                 >
                   <img
                     src={projectMeta[(activeProject - 1 + projectMeta.length) % projectMeta.length].image}
                     alt=""
                     className="h-full w-full object-cover"
                   />
-                  <div className="project-carousel__peek-veil project-carousel__peek-veil--left" />
                   <p className="project-carousel__peek-title">
                     {t.projects.list[(activeProject - 1 + projectMeta.length) % projectMeta.length].title}
                   </p>
@@ -370,14 +369,25 @@ function App() {
               <AnimatePresence mode="wait" initial={false}>
                 <motion.a
                   key={activeProject}
-                  initial={{ x: `${slideDir * 110}%`, opacity: 0, scale: 0.95 }}
-                  animate={{ x: '0%', opacity: 1, scale: 1 }}
-                  exit={{ x: `${slideDir * -110}%`, opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.36, ease: [0.25, 0.1, 0.25, 1] }}
+                  initial={{ x: `${slideDir * 20}%`, opacity: 0 }}
+                  animate={{ x: '0%', opacity: 1 }}
+                  exit={{ x: `${slideDir * -20}%`, opacity: 0 }}
+                  transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.15}
+                  onDragEnd={(_, info) => {
+                    const swipeThreshold = 50;
+                    if (info.offset.x < -swipeThreshold) {
+                      goNextProject();
+                    } else if (info.offset.x > swipeThreshold) {
+                      goPrevProject();
+                    }
+                  }}
                   href={projectMeta[activeProject].href}
                   target={projectMeta[activeProject].href.startsWith('http') ? '_blank' : undefined}
                   rel={projectMeta[activeProject].href.startsWith('http') ? 'noreferrer' : undefined}
-                  className="surface-card project-card project-carousel__center group"
+                  className="surface-card project-card project-carousel__center group cursor-grab active:cursor-grabbing"
                 >
                   <div className="project-card__media">
                     <img
@@ -411,21 +421,20 @@ function App() {
               onClick={goNextProject}
               aria-label="Next project"
             >
-              <AnimatePresence mode="wait" initial={false}>
+              <AnimatePresence mode="popLayout" initial={false}>
                 <motion.div
                   key={(activeProject + 1) % projectMeta.length}
                   className="project-carousel__peek-inner"
-                  initial={{ x: `${slideDir * 55}%`, opacity: 0 }}
-                  animate={{ x: '0%', opacity: 1 }}
-                  exit={{ x: `${slideDir * -55}%`, opacity: 0 }}
-                  transition={{ duration: 0.36, ease: [0.25, 0.1, 0.25, 1] }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.45, ease: "easeOut" }}
                 >
                   <img
                     src={projectMeta[(activeProject + 1) % projectMeta.length].image}
                     alt=""
                     className="h-full w-full object-cover"
                   />
-                  <div className="project-carousel__peek-veil project-carousel__peek-veil--right" />
                   <p className="project-carousel__peek-title">
                     {t.projects.list[(activeProject + 1) % projectMeta.length].title}
                   </p>

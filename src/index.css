@@ -758,77 +758,78 @@ button {
 
 /* ── Project Carousel ── */
 .project-carousel {
-  display: grid;
-  grid-template-columns: 1fr 2.4fr 1fr;
-  gap: 1rem;
-  align-items: stretch;
-  /* Break out of parent padding to use full viewport width */
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  padding-left: clamp(1rem, 3vw, 3rem);
-  padding-right: clamp(1rem, 3vw, 3rem);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2.5rem;
+  overflow: visible;
 }
 
 .project-carousel__center-wrap {
+  width: min(90vw, 860px);
   position: relative;
-  min-height: 0;
-  overflow: hidden;
+  z-index: 2;
 }
 
 .project-carousel__center {
   display: block;
+  width: 100%;
   height: 100%;
   text-decoration: none;
 }
 
 .project-carousel__peek {
-  position: relative;
-  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(200px, 20vw, 400px);
+  height: 80%;
   border-radius: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.06);
   cursor: pointer;
-  opacity: 0.45;
+  opacity: 0.25;
   transition: opacity 320ms ease, transform 320ms ease;
   background: none;
   padding: 0;
-  text-align: left;
+  overflow: hidden;
+  display: none; /* Hidden by default on mobile, shown on desktop */
+}
+
+@media (min-width: 1024px) {
+  .project-carousel__peek {
+    display: block;
+  }
+}
+
+.project-carousel__peek--left {
+  left: calc(50% - min(45vw, 430px) - clamp(120px, 12vw, 240px));
+}
+
+.project-carousel__peek--right {
+  right: calc(50% - min(45vw, 430px) - clamp(120px, 12vw, 240px));
 }
 
 .project-carousel__peek:hover {
-  opacity: 0.72;
-  transform: scale(1.015);
-}
-
-.project-carousel__peek-veil {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.project-carousel__peek-veil--left {
-  background: linear-gradient(to right, rgba(5, 5, 7, 0.7) 0%, rgba(5, 5, 7, 0.2) 65%, transparent 100%);
-}
-
-.project-carousel__peek-veil--right {
-  background: linear-gradient(to left, rgba(5, 5, 7, 0.7) 0%, rgba(5, 5, 7, 0.2) 65%, transparent 100%);
+  opacity: 0.5;
+  transform: translateY(-50%) scale(1.02);
 }
 
 .project-carousel__peek-inner {
-  position: absolute;
-  inset: 0;
-  will-change: transform, opacity;
+  width: 100%;
+  height: 100%;
 }
 
 .project-carousel__peek-title {
   position: absolute;
-  bottom: 1.25rem;
-  left: 1.25rem;
-  right: 1.25rem;
+  bottom: 1.5rem;
+  left: 1.5rem;
   font-family: 'Sora', sans-serif;
-  font-size: 0.98rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 0.72);
+  color: white;
+  z-index: 2;
 }
 
 .project-carousel__controls {
@@ -895,11 +896,13 @@ button {
 
 @media (max-width: 767px) {
   .project-carousel {
-    grid-template-columns: 0.7fr 1fr 0.7fr;
-    gap: 0.6rem;
+    display: block;
+    padding: 0;
   }
-  .project-carousel__peek-title {
-    display: none;
+  .project-carousel__center-wrap {
+    width: 100%;
+    padding: 0 1.25rem;
+    margin: 0 auto;
   }
 }
 
@@ -919,8 +922,15 @@ button {
 
 .project-card__media {
   position: relative;
-  height: 18rem;
+  width: 100%;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .project-card__media {
+    aspect-ratio: 16 / 9; /* More rectangular on mobile */
+  }
 }
 
 .project-card__veil {
