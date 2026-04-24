@@ -337,110 +337,77 @@ function App() {
           </div>
 
           <div className="project-carousel mt-10">
-            {/* Left peek */}
-            <button
-              className="project-carousel__peek project-carousel__peek--left"
-              onClick={goPrevProject}
-              aria-label="Previous project"
+            <motion.div
+              className="project-carousel__track"
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }} // We'll handle constraints manually for better feel
+              dragElastic={0.2}
+              onDragEnd={(_, info) => {
+                const swipeThreshold = 50;
+                if (info.offset.x < -swipeThreshold) {
+                  goNextProject();
+                } else if (info.offset.x > swipeThreshold) {
+                  goPrevProject();
+                }
+              }}
+              animate={{
+                x: `calc(-${activeProject * (typeof window !== 'undefined' && window.innerWidth < 768 ? 88 + 1.25/0.88*100 : 860 + 32)}px)`,
+              }}
+              // Actually, since viewport width varies, let's use a simpler calculation in pixels
+              // or use a ref. But for now, let's use a standard CSS calc approach if possible
+              // or just use state-based translateX
+              style={{
+                x: `calc(-${activeProject} * (var(--card-width) + var(--card-gap)))`
+              }}
             >
-              <AnimatePresence mode="popLayout" initial={false}>
-                <motion.div
-                  key={(activeProject - 1 + projectMeta.length) % projectMeta.length}
-                  className="project-carousel__peek-inner"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.45, ease: "easeOut" }}
-                >
-                  <img
-                    src={projectMeta[(activeProject - 1 + projectMeta.length) % projectMeta.length].image}
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                  <p className="project-carousel__peek-title">
-                    {t.projects.list[(activeProject - 1 + projectMeta.length) % projectMeta.length].title}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-            </button>
-
-            {/* Center card */}
-            <div className="project-carousel__center-wrap">
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.a
-                  key={activeProject}
-                  initial={{ x: `${slideDir * 20}%`, opacity: 0 }}
-                  animate={{ x: '0%', opacity: 1 }}
-                  exit={{ x: `${slideDir * -20}%`, opacity: 0 }}
-                  transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
-                  drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.15}
-                  onDragEnd={(_, info) => {
-                    const swipeThreshold = 50;
-                    if (info.offset.x < -swipeThreshold) {
-                      goNextProject();
-                    } else if (info.offset.x > swipeThreshold) {
-                      goPrevProject();
-                    }
-                  }}
-                  href={projectMeta[activeProject].href}
-                  target={projectMeta[activeProject].href.startsWith('http') ? '_blank' : undefined}
-                  rel={projectMeta[activeProject].href.startsWith('http') ? 'noreferrer' : undefined}
-                  className="surface-card project-card project-carousel__center group cursor-grab active:cursor-grabbing"
-                >
-                  <div className="project-card__media">
-                    <img
-                      src={projectMeta[activeProject].image}
-                      alt={t.projects.list[activeProject].title}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="project-card__veil" />
-                  </div>
-                  <div className="project-card__body">
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <h3 className="surface-card__title">{t.projects.list[activeProject].title}</h3>
-                        <p className="surface-card__copy">{t.projects.list[activeProject].desc}</p>
+              {/* Note: I'll use inline styles for the track variables to make it perfectly responsive */}
+              <div 
+                className="flex items-stretch gap-[var(--card-gap)]"
+                style={{
+                  '--card-width': 'min(85vw, 860px)',
+                  '--card-gap': '2rem',
+                  transform: `translateX(calc(-${activeProject} * (min(85vw, 860px) + 2rem)))`,
+                  transition: 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)'
+                } as any}
+              >
+                {projectMeta.map((project, index) => (
+                  <div key={index} className="project-carousel__item">
+                    <a
+                      href={project.href}
+                      target={project.href.startsWith('http') ? '_blank' : undefined}
+                      rel={project.href.startsWith('http') ? 'noreferrer' : undefined}
+                      className={`surface-card project-card project-carousel__center group transition-opacity duration-500 ${
+                        index === activeProject ? 'opacity-100' : 'opacity-30 scale-[0.96]'
+                      }`}
+                      style={{ transition: 'opacity 0.5s, transform 0.5s' }}
+                    >
+                      <div className="project-card__media">
+                        <img
+                          src={project.image}
+                          alt={t.projects.list[index].title}
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="project-card__veil" />
                       </div>
-                      <MoveRight className="mt-1 shrink-0 text-white/40 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" />
-                    </div>
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {t.projects.list[activeProject].tags.map((tag) => (
-                        <span key={tag} className="project-tag">{tag}</span>
-                      ))}
-                    </div>
+                      <div className="project-card__body">
+                        <div className="flex items-start justify-between gap-4">
+                          <div>
+                            <h3 className="surface-card__title">{t.projects.list[index].title}</h3>
+                            <p className="surface-card__copy">{t.projects.list[index].desc}</p>
+                          </div>
+                          <MoveRight className="mt-1 shrink-0 text-white/40 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" />
+                        </div>
+                        <div className="mt-5 flex flex-wrap gap-2">
+                          {t.projects.list[index].tags.map((tag) => (
+                            <span key={tag} className="project-tag">{tag}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </a>
                   </div>
-                </motion.a>
-              </AnimatePresence>
-            </div>
-
-            {/* Right peek */}
-            <button
-              className="project-carousel__peek project-carousel__peek--right"
-              onClick={goNextProject}
-              aria-label="Next project"
-            >
-              <AnimatePresence mode="popLayout" initial={false}>
-                <motion.div
-                  key={(activeProject + 1) % projectMeta.length}
-                  className="project-carousel__peek-inner"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.45, ease: "easeOut" }}
-                >
-                  <img
-                    src={projectMeta[(activeProject + 1) % projectMeta.length].image}
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                  <p className="project-carousel__peek-title">
-                    {t.projects.list[(activeProject + 1) % projectMeta.length].title}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-            </button>
+                ))}
+              </div>
+            </motion.div>
           </div>
 
           {/* Dot indicators */}
