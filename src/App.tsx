@@ -53,7 +53,22 @@ function App() {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [glitchBeat, setGlitchBeat] = useState(0);
   const [activeProject, setActiveProject] = useState(0);
+  const [slideDir, setSlideDir] = useState<1 | -1>(1);
   const t = i18n[lang];
+
+  const goNextProject = () => {
+    setSlideDir(1);
+    setActiveProject((i) => (i + 1) % projectMeta.length);
+  };
+  const goPrevProject = () => {
+    setSlideDir(-1);
+    setActiveProject((i) => (i - 1 + projectMeta.length) % projectMeta.length);
+  };
+  const cardVariants = {
+    enter: (dir: number) => ({ x: dir > 0 ? '108%' : '-108%', opacity: 0, scale: 0.95 }),
+    center: { x: 0, opacity: 1, scale: 1 },
+    exit: (dir: number) => ({ x: dir > 0 ? '-108%' : '108%', opacity: 0, scale: 0.95 }),
+  };
 
   useEffect(() => {
     const transitionGapMs = 6400;
@@ -304,31 +319,25 @@ function App() {
           </div>
         </section>
 
-        <section id="work" className="mx-auto max-w-[1320px] px-6 py-16 md:px-12 md:py-20">
-          <div className="section-head section-head--split">
-            <div>
-              <p className="section-label">{t.projects.label}</p>
-              <h2 className="section-title">{t.projects.title}</h2>
-              <p className="section-copy">{t.projects.description}</p>
-            </div>
-            <div className="project-carousel__controls">
-              <button
-                className="project-carousel__arrow"
-                onClick={() => setActiveProject((i) => (i - 1 + projectMeta.length) % projectMeta.length)}
-                aria-label="Previous project"
-              >
-                <ChevronLeft size={20} />
-              </button>
-              <span className="project-carousel__counter">
-                {String(activeProject + 1).padStart(2, '0')} / {String(projectMeta.length).padStart(2, '0')}
-              </span>
-              <button
-                className="project-carousel__arrow"
-                onClick={() => setActiveProject((i) => (i + 1) % projectMeta.length)}
-                aria-label="Next project"
-              >
-                <ChevronRight size={20} />
-              </button>
+        <section id="work" className="py-16 md:py-20 overflow-hidden">
+          <div className="mx-auto max-w-[1320px] px-6 md:px-12">
+            <div className="section-head section-head--split">
+              <div>
+                <p className="section-label">{t.projects.label}</p>
+                <h2 className="section-title">{t.projects.title}</h2>
+                <p className="section-copy">{t.projects.description}</p>
+              </div>
+              <div className="project-carousel__controls">
+                <button className="project-carousel__arrow" onClick={goPrevProject} aria-label="Previous project">
+                  <ChevronLeft size={20} />
+                </button>
+                <span className="project-carousel__counter">
+                  {String(activeProject + 1).padStart(2, '0')} / {String(projectMeta.length).padStart(2, '0')}
+                </span>
+                <button className="project-carousel__arrow" onClick={goNextProject} aria-label="Next project">
+                  <ChevronRight size={20} />
+                </button>
+              </div>
             </div>
           </div>
 
@@ -336,7 +345,7 @@ function App() {
             {/* Left peek */}
             <button
               className="project-carousel__peek project-carousel__peek--left"
-              onClick={() => setActiveProject((i) => (i - 1 + projectMeta.length) % projectMeta.length)}
+              onClick={goPrevProject}
               aria-label="Previous project"
             >
               <img
@@ -352,17 +361,19 @@ function App() {
 
             {/* Center card */}
             <div className="project-carousel__center-wrap">
-              <AnimatePresence mode="wait">
+              <AnimatePresence mode="wait" custom={slideDir}>
                 <motion.a
                   key={activeProject}
+                  custom={slideDir}
+                  variants={cardVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.38, ease: [0.25, 0.1, 0.25, 1] }}
                   href={projectMeta[activeProject].href}
                   target={projectMeta[activeProject].href.startsWith('http') ? '_blank' : undefined}
                   rel={projectMeta[activeProject].href.startsWith('http') ? 'noreferrer' : undefined}
                   className="surface-card project-card project-carousel__center group"
-                  initial={{ opacity: 0, y: 18 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -18 }}
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
                 >
                   <div className="project-card__media">
                     <img
@@ -393,7 +404,7 @@ function App() {
             {/* Right peek */}
             <button
               className="project-carousel__peek project-carousel__peek--right"
-              onClick={() => setActiveProject((i) => (i + 1) % projectMeta.length)}
+              onClick={goNextProject}
               aria-label="Next project"
             >
               <img
@@ -414,7 +425,7 @@ function App() {
               <button
                 key={i}
                 className={`project-carousel__dot ${i === activeProject ? 'project-carousel__dot--active' : ''}`}
-                onClick={() => setActiveProject(i)}
+                onClick={() => { setSlideDir(i > activeProject ? 1 : -1); setActiveProject(i); }}
                 aria-label={`Go to project ${i + 1}`}
               />
             ))}

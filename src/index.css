@@ -759,14 +759,20 @@ button {
 /* ── Project Carousel ── */
 .project-carousel {
   display: grid;
-  grid-template-columns: 1fr 2.2fr 1fr;
+  grid-template-columns: 1fr 2.4fr 1fr;
   gap: 1rem;
   align-items: stretch;
+  /* Break out of parent padding to use full viewport width */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding-left: clamp(1rem, 3vw, 3rem);
+  padding-right: clamp(1rem, 3vw, 3rem);
 }
 
 .project-carousel__center-wrap {
   position: relative;
   min-height: 0;
+  overflow: hidden;
 }
 
 .project-carousel__center {
