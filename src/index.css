@@ -756,6 +756,142 @@ button {
   color: rgba(212, 212, 216, 0.66);
 }
 
+/* ── Project Carousel ── */
+.project-carousel {
+  display: grid;
+  grid-template-columns: 1fr 2.2fr 1fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.project-carousel__center-wrap {
+  position: relative;
+  min-height: 0;
+}
+
+.project-carousel__center {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+}
+
+.project-carousel__peek {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  opacity: 0.45;
+  transition: opacity 320ms ease, transform 320ms ease;
+  background: none;
+  padding: 0;
+  text-align: left;
+}
+
+.project-carousel__peek:hover {
+  opacity: 0.72;
+  transform: scale(1.015);
+}
+
+.project-carousel__peek-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.project-carousel__peek-veil--left {
+  background: linear-gradient(to right, rgba(5, 5, 7, 0.7) 0%, rgba(5, 5, 7, 0.2) 65%, transparent 100%);
+}
+
+.project-carousel__peek-veil--right {
+  background: linear-gradient(to left, rgba(5, 5, 7, 0.7) 0%, rgba(5, 5, 7, 0.2) 65%, transparent 100%);
+}
+
+.project-carousel__peek-title {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.project-carousel__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  align-self: flex-end;
+  padding-bottom: 0.25rem;
+}
+
+.project-carousel__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.72);
+  cursor: pointer;
+  transition: background 220ms ease, border-color 220ms ease, color 220ms ease, transform 220ms ease;
+}
+
+.project-carousel__arrow:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #fff;
+  transform: scale(1.08);
+}
+
+.project-carousel__counter {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(161, 161, 170, 0.72);
+  min-width: 3.5rem;
+  text-align: center;
+}
+
+.project-carousel__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 1.75rem;
+}
+
+.project-carousel__dot {
+  width: 0.44rem;
+  height: 0.44rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 220ms ease, transform 220ms ease, width 220ms ease;
+}
+
+.project-carousel__dot--active {
+  width: 1.6rem;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+@media (max-width: 767px) {
+  .project-carousel {
+    grid-template-columns: 0.7fr 1fr 0.7fr;
+    gap: 0.6rem;
+  }
+  .project-carousel__peek-title {
+    display: none;
+  }
+}
+
+/* ── Project Card ── */
 .project-card {
   transition:
     transform 280ms ease,

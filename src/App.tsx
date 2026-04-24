@@ -1,10 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   ArrowRight,
   Bot,
+  ChevronLeft,
+  ChevronRight,
   Globe,
   Layers3,
   MonitorPlay,
@@ -50,6 +52,7 @@ function App() {
   const [lang, setLang] = useState<'vi' | 'en'>('en');
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [glitchBeat, setGlitchBeat] = useState(0);
+  const [activeProject, setActiveProject] = useState(0);
   const t = i18n[lang];
 
   useEffect(() => {
@@ -308,48 +311,112 @@ function App() {
               <h2 className="section-title">{t.projects.title}</h2>
               <p className="section-copy">{t.projects.description}</p>
             </div>
-            <div className="section-meta">2024 - 2026</div>
+            <div className="project-carousel__controls">
+              <button
+                className="project-carousel__arrow"
+                onClick={() => setActiveProject((i) => (i - 1 + projectMeta.length) % projectMeta.length)}
+                aria-label="Previous project"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <span className="project-carousel__counter">
+                {String(activeProject + 1).padStart(2, '0')} / {String(projectMeta.length).padStart(2, '0')}
+              </span>
+              <button
+                className="project-carousel__arrow"
+                onClick={() => setActiveProject((i) => (i + 1) % projectMeta.length)}
+                aria-label="Next project"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
           </div>
 
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {t.projects.list.map((project, index) => (
-              <motion.a
-                key={project.title}
-                href={projectMeta[index].href}
-                target={projectMeta[index].href.startsWith('http') ? '_blank' : undefined}
-                rel={projectMeta[index].href.startsWith('http') ? 'noreferrer' : undefined}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: index * 0.08 }}
-                className="surface-card project-card group"
-              >
-                <div className="project-card__media">
-                  <img
-                    src={projectMeta[index].image}
-                    alt={project.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="project-card__veil" />
-                </div>
-                <div className="project-card__body">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <h3 className="surface-card__title">{project.title}</h3>
-                      <p className="surface-card__copy">{project.desc}</p>
-                    </div>
-                    <MoveRight className="mt-1 shrink-0 text-white/40 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" />
-                  </div>
+          <div className="project-carousel mt-10">
+            {/* Left peek */}
+            <button
+              className="project-carousel__peek project-carousel__peek--left"
+              onClick={() => setActiveProject((i) => (i - 1 + projectMeta.length) % projectMeta.length)}
+              aria-label="Previous project"
+            >
+              <img
+                src={projectMeta[(activeProject - 1 + projectMeta.length) % projectMeta.length].image}
+                alt=""
+                className="h-full w-full object-cover"
+              />
+              <div className="project-carousel__peek-veil project-carousel__peek-veil--left" />
+              <p className="project-carousel__peek-title">
+                {t.projects.list[(activeProject - 1 + projectMeta.length) % projectMeta.length].title}
+              </p>
+            </button>
 
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="project-tag">
-                        {tag}
-                      </span>
-                    ))}
+            {/* Center card */}
+            <div className="project-carousel__center-wrap">
+              <AnimatePresence mode="wait">
+                <motion.a
+                  key={activeProject}
+                  href={projectMeta[activeProject].href}
+                  target={projectMeta[activeProject].href.startsWith('http') ? '_blank' : undefined}
+                  rel={projectMeta[activeProject].href.startsWith('http') ? 'noreferrer' : undefined}
+                  className="surface-card project-card project-carousel__center group"
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -18 }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                >
+                  <div className="project-card__media">
+                    <img
+                      src={projectMeta[activeProject].image}
+                      alt={t.projects.list[activeProject].title}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="project-card__veil" />
                   </div>
-                </div>
-              </motion.a>
+                  <div className="project-card__body">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <h3 className="surface-card__title">{t.projects.list[activeProject].title}</h3>
+                        <p className="surface-card__copy">{t.projects.list[activeProject].desc}</p>
+                      </div>
+                      <MoveRight className="mt-1 shrink-0 text-white/40 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" />
+                    </div>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {t.projects.list[activeProject].tags.map((tag) => (
+                        <span key={tag} className="project-tag">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.a>
+              </AnimatePresence>
+            </div>
+
+            {/* Right peek */}
+            <button
+              className="project-carousel__peek project-carousel__peek--right"
+              onClick={() => setActiveProject((i) => (i + 1) % projectMeta.length)}
+              aria-label="Next project"
+            >
+              <img
+                src={projectMeta[(activeProject + 1) % projectMeta.length].image}
+                alt=""
+                className="h-full w-full object-cover"
+              />
+              <div className="project-carousel__peek-veil project-carousel__peek-veil--right" />
+              <p className="project-carousel__peek-title">
+                {t.projects.list[(activeProject + 1) % projectMeta.length].title}
+              </p>
+            </button>
+          </div>
+
+          {/* Dot indicators */}
+          <div className="project-carousel__dots">
+            {projectMeta.map((_, i) => (
+              <button
+                key={i}
+                className={`project-carousel__dot ${i === activeProject ? 'project-carousel__dot--active' : ''}`}
+                onClick={() => setActiveProject(i)}
+                aria-label={`Go to project ${i + 1}`}
+              />
             ))}
           </div>
         </section>
