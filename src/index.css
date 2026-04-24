@@ -813,6 +813,12 @@ button {
   background: linear-gradient(to left, rgba(5, 5, 7, 0.7) 0%, rgba(5, 5, 7, 0.2) 65%, transparent 100%);
 }
 
+.project-carousel__peek-inner {
+  position: absolute;
+  inset: 0;
+  will-change: transform, opacity;
+}
+
 .project-carousel__peek-title {
   position: absolute;
   bottom: 1.25rem;
