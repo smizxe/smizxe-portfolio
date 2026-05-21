@@ -46,6 +46,10 @@ const projectMeta = [
     image: '/images/lasante-preview.png',
     href: 'https://lasante.vercel.app',
   },
+  {
+    image: '/images/emfulfill-preview.png',
+    href: 'https://emfulfill.com',
+  },
 ];
 
 function App() {

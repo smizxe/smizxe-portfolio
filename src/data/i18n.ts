@@ -87,6 +87,11 @@ export const i18n = {
           desc: 'Landing page premium thiên về cảm giác vật liệu, chiều sâu thị giác và brand storytelling cho một thương hiệu cần chất riêng.',
           tags: ['3D Landing', 'Brand Feel'],
         },
+        {
+          title: 'Emfulfill',
+          desc: 'Nền tảng fulfillment cho POD & Dropshipping hàng thêu (embroidery) — tích hợp QR tracking, ví nạp tiền trả trước, nhập đơn hàng loạt bằng Excel và đồng bộ tồn kho theo thời gian thực. Giúp chủ shop tập trung bán hàng, bỏ toàn bộ khâu vận hành.',
+          tags: ['Fulfillment Platform', 'Shopify', 'Etsy', 'TikTok Shop'],
+        },
       ],
     },
     story: {
@@ -307,6 +312,11 @@ export const i18n = {
           title: 'Lasante',
           desc: 'A premium landing page built around material feel, visual depth, and brand storytelling for a business that needed a stronger atmosphere.',
           tags: ['3D Landing', 'Brand Feel'],
+        },
+        {
+          title: 'Emfulfill',
+          desc: 'A fulfillment platform built for POD & Dropshipping embroidery sellers — with QR-based production tracking, prepaid wallet control, bulk Excel order import, and real-time inventory sync across Shopify, Etsy, TikTok Shop and Amazon. Sellers focus on selling; the platform handles the rest.',
+          tags: ['Fulfillment Platform', 'Shopify', 'Etsy', 'TikTok Shop'],
         },
       ],
     },
