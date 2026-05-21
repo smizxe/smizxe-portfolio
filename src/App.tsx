@@ -33,27 +33,51 @@ const projectMeta = [
   {
     image: '/images/rentino-preview.png',
     href: 'https://rentino.vn',
+    alt: 'Rentino fintech landing page — phone rental, pawn and upgrade platform built by Agency Yangai',
   },
   {
     image: '/images/educhill-preview.png',
     href: 'https://educhill.net',
+    alt: 'Educhill education web app with AI support — daily operations dashboard by Agency Yangai',
   },
   {
     image: '/images/personal-agent-preview.png',
-    href: '#',
+    href: '#work',
+    alt: 'Personal Life AI Agent — task, schedule and finance orchestration system by Agency Yangai',
   },
   {
     image: '/images/lasante-preview.png',
     href: 'https://lasante.vercel.app',
+    alt: 'Lasante premium 3D landing page — material brand storytelling by Agency Yangai',
   },
   {
     image: '/images/emfulfill-preview.png',
     href: 'https://emfulfill.com',
+    alt: 'Emfulfill POD and Dropshipping fulfillment platform — Shopify, Etsy, TikTok Shop integration by Agency Yangai',
   },
 ];
 
 function App() {
-  const [lang, setLang] = useState<'vi' | 'en'>('en');
+  const [lang, setLang] = useState<'vi' | 'en'>('vi');
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const queryLang = params.get('lang');
+    if (queryLang === 'en' || queryLang === 'vi') {
+      setLang(queryLang);
+      return;
+    }
+    const browserLang = navigator.language?.toLowerCase() ?? '';
+    if (browserLang.startsWith('vi')) setLang('vi');
+    else setLang('en');
+  }, []);
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = lang === 'vi' ? 'vi' : 'en';
+    }
+  }, [lang]);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [glitchBeat, setGlitchBeat] = useState(0);
   const [activeProject, setActiveProject] = useState(0);
@@ -135,7 +159,9 @@ function App() {
           >
             <img
               src="/logo.png"
-              alt="Yangai logo"
+              alt="Agency Yangai logo — Web, App and AI build studio"
+              width={44}
+              height={44}
               className="h-10 w-10 object-contain sm:h-11 sm:w-11"
             />
             <div className="hidden sm:block">
@@ -378,7 +404,7 @@ function App() {
                     <a
                       href={project.href}
                       target={project.href.startsWith('http') ? '_blank' : undefined}
-                      rel={project.href.startsWith('http') ? 'noreferrer' : undefined}
+                      rel={project.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                       className={`surface-card project-card project-carousel__center group block h-full transition-all duration-500 ${
                         index === activeProject ? 'opacity-100 scale-100' : 'opacity-25 scale-[0.9] pointer-events-none'
                       }`}
@@ -386,7 +412,10 @@ function App() {
                       <div className="project-card__media">
                         <img
                           src={project.image}
-                          alt={t.projects.list[index].title}
+                          alt={project.alt}
+                          loading="lazy"
+                          width={760}
+                          height={460}
                           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="project-card__veil" />
@@ -437,7 +466,14 @@ function App() {
               className="story-media"
             >
               <div className="story-card__image-wrap">
-                <img src="/images/smizxe-ngoi.jpg" alt={t.story.title} className="story-card__image" />
+                <img
+                  src="/images/smizxe-ngoi.jpg"
+                  alt="Vuong Hoang Giang — founder and developer of Agency Yangai"
+                  loading="lazy"
+                  width={720}
+                  height={900}
+                  className="story-card__image"
+                />
                 <div className="story-card__overlay">
                   <p className="story-card__name">{t.story.name}</p>
                   <p className="story-card__role">{t.story.overlay}</p>
@@ -541,16 +577,19 @@ function App() {
                 className="animate-marquee flex min-w-max gap-4 py-2 hover:[animation-play-state:paused]"
                 style={{ animationDirection: 'reverse' }}
               >
-                {[...feedbackImages, ...feedbackImages].map((src, index) => (
-                  <div key={`${src}-${index}`} className="proof-image">
-                    <img
-                      src={src}
-                      alt="Client feedback proof"
-                      className="h-full w-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                ))}
+                {[...feedbackImages, ...feedbackImages].map((src, index) => {
+                  const slot = (index % feedbackImages.length) + 1;
+                  return (
+                    <div key={`${src}-${index}`} className="proof-image">
+                      <img
+                        src={src}
+                        alt={`Client feedback screenshot ${slot} — Agency Yangai delivered project review`}
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

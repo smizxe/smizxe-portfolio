@@ -1,9 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://yangai.site/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <loc>https://yangai.tech/</loc>
+    <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://yangai.tech/?lang=vi"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://yangai.tech/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yangai.tech/"/>
+    <image:image>
+      <image:loc>https://yangai.tech/og-image.png</image:loc>
+      <image:title>Agency Yangai — Web, App & AI build studio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://yangai.tech/images/rentino-preview.png</image:loc>
+      <image:title>Rentino fintech landing — built by Agency Yangai</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://yangai.tech/images/educhill-preview.png</image:loc>
+      <image:title>Educhill education web app with AI support — Agency Yangai</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://yangai.tech/images/lasante-preview.png</image:loc>
+      <image:title>Lasante premium 3D landing page — Agency Yangai</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://yangai.tech/images/emfulfill-preview.png</image:loc>
+      <image:title>Emfulfill POD &amp; Dropshipping platform — Agency Yangai</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://yangai.tech/images/personal-agent-preview.png</image:loc>
+      <image:title>Personal Life AI Agent — Agency Yangai</image:title>
+    </image:image>
   </url>
 </urlset>

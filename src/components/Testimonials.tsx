@@ -83,7 +83,7 @@ export default function Testimonials({ lang }: TestimonialsProps) {
                         <div key={idx} className="w-[180px] flex-shrink-0 rounded-xl overflow-hidden relative">
                             <img
                                 src={src}
-                                alt="Feedback proof"
+                                alt={`Client feedback screenshot ${(idx % feedbackImages.length) + 1} — Agency Yangai delivered project`}
                                 className="w-full h-auto object-cover opacity-60 hover:opacity-100 transition-opacity duration-300"
                                 loading="lazy"
                             />

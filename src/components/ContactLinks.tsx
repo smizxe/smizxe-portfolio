@@ -96,7 +96,12 @@ export default function ContactLinks({
               <p className="mt-3 text-sm leading-7 text-white/58">{t.zalo.instruction}</p>
 
               <div className="mt-6 overflow-hidden rounded-[1.5rem] border border-white/8">
-                <img src="/images/anh-zalo.jpg" alt="Zalo QR" className="h-full w-full object-cover" />
+                <img
+                  src="/images/anh-zalo.jpg"
+                  alt="Zalo QR code to contact Agency Yangai — phone 0388 307 551"
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
               </div>
 
               <p className="mt-5 text-center text-base font-semibold tracking-[0.18em] text-white/88">

@@ -1,11 +1,11 @@
-# SEO Checklist & Tips cho yangai.site
+# SEO Checklist & Tips cho yangai.tech
 
 ## ✅ Đã hoàn thành
 
 ### 1. Meta Tags & Structured Data
 - ✅ Title tag tối ưu với brand "yangai" ở đầu
 - ✅ Meta description hấp dẫn với CTA và keywords
-- ✅ Keywords meta bao gồm: yangai, yangai.site, vương hoàng giang
+- ✅ Keywords meta bao gồm: yangai, yangai.tech, vương hoàng giang
 - ✅ Open Graph tags đầy đủ (Facebook/LinkedIn sharing)
 - ✅ Twitter Card tags
 - ✅ JSON-LD structured data (ProfessionalService + WebSite schema)
@@ -28,14 +28,14 @@
 
 ### A. Submit lên Google Search Console (QUAN TRỌNG!)
 1. Truy cập: https://search.google.com/search-console
-2. Thêm property: yangai.site
+2. Thêm property: yangai.tech
 3. Xác thực quyền sở hữu (DNS hoặc HTML file verification)
-4. Submit sitemap: https://yangai.site/sitemap.xml
-5. Yêu cầu index URL chính: https://yangai.site/
+4. Submit sitemap: https://yangai.tech/sitemap.xml
+5. Yêu cầu index URL chính: https://yangai.tech/
 
 ### B. Backlinks & Citations (Tăng Domain Authority)
 1. **Tạo profiles trên các nền tảng uy tín:**
-   - GitHub: thêm link yangai.site vào profile
+   - GitHub: thêm link yangai.tech vào profile
    - LinkedIn: đặt link trong phần website
    - Facebook Page: tạo page chuyên nghiệp
    - Google Business Profile (nếu có địa chỉ kinh doanh cụ thể)
