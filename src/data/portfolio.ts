@@ -123,9 +123,9 @@ export const portfolio = {
             },
             highlights: ["Dark Aesthetic Direction", "Immersive Storefront", "Limited-Run Brand Identity"],
             caseStudy: {
-                problem: "Dark fashion brands are underserved by generic e-commerce templates that flatten their visual identity into something safe and forgettable.",
-                solution: "A fully custom Shopify storefront built around the Kage Noir brand — opium aesthetics, Rick Owens sensibility, cathedral atmosphere rendered as a buying experience.",
-                features: ["Custom Shopify Theme", "Editorial Product Pages", "Atmospheric Visual Direction"],
+                problem: "Dark fashion brands are killed by generic storefronts that flatten their identity into something safe and forgettable.",
+                solution: "A storefront built entirely around the Kage Noir world — opium aesthetics, Rick Owens sensibility, cathedral atmosphere rendered as a buying experience.",
+                features: ["Atmospheric Visual Direction", "Editorial Product Pages", "Dark Brand Identity"],
                 outcome: "A storefront that feels like a world, not a shop — designed to hold attention and convert on brand alone.",
             },
             links: {

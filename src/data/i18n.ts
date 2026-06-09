@@ -79,7 +79,7 @@ export const i18n = {
         },
         {
           title: 'Kage Noir',
-          desc: 'Storefront thương mại điện tử cho thương hiệu thời trang tối — opium aesthetic, phong cách Rick Owens, xây bằng Shopify custom theme với visual direction hoàn toàn riêng.',
+          desc: 'Storefront thời trang tối — opium aesthetic, hơi thở Rick Owens, visual direction hoàn toàn riêng. Một thế giới để bước vào, không phải một shop để lướt qua.',
           tags: ['E-Commerce', 'Dark Fashion'],
         },
         {
@@ -305,7 +305,7 @@ export const i18n = {
         },
         {
           title: 'Kage Noir',
-          desc: 'A custom Shopify storefront for a dark fashion brand — opium aesthetics, Rick Owens sensibility, built as a world you enter rather than a shop you scroll.',
+          desc: 'A dark fashion storefront — opium aesthetics, Rick Owens sensibility, a visual direction built entirely from scratch. A world you enter, not a shop you scroll.',
           tags: ['E-Commerce', 'Dark Fashion'],
         },
         {
