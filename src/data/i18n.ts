@@ -78,9 +78,9 @@ export const i18n = {
           tags: ['Web App', 'AI Support'],
         },
         {
-          title: 'Personal Life AI Agent',
-          desc: 'Một bài toán orchestration cho công việc, lịch trình và tài chính, thể hiện năng lực nối nhiều flow thành một trải nghiệm hữu ích.',
-          tags: ['Automation', 'OpenAI'],
+          title: 'Kage Noir',
+          desc: 'Storefront thương mại điện tử cho thương hiệu thời trang tối — opium aesthetic, phong cách Rick Owens, xây bằng Shopify custom theme với visual direction hoàn toàn riêng.',
+          tags: ['E-Commerce', 'Dark Fashion'],
         },
         {
           title: 'Lasante',
@@ -304,9 +304,9 @@ export const i18n = {
           tags: ['Web App', 'AI Support'],
         },
         {
-          title: 'Personal Life AI Agent',
-          desc: 'An orchestration system for tasks, schedules, and finance that demonstrates how multiple flows can be turned into one useful experience.',
-          tags: ['Automation', 'OpenAI'],
+          title: 'Kage Noir',
+          desc: 'A custom Shopify storefront for a dark fashion brand — opium aesthetics, Rick Owens sensibility, built as a world you enter rather than a shop you scroll.',
+          tags: ['E-Commerce', 'Dark Fashion'],
         },
         {
           title: 'Lasante',

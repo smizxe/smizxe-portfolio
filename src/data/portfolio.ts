@@ -111,25 +111,25 @@ export const portfolio = {
             }
         },
         {
-            id: "personal-agent",
-            title: "Personal Life AI Agent",
-            category: "Automation / AI Assistant",
-            tech: ["n8n", "OpenAI", "Google Workspace", "Telegram"],
-            color: "from-blue-400 to-indigo-500",
-            image: "/images/personal-agent-preview.png",
+            id: "kagenoir",
+            title: "Kage Noir — Dark Fashion E-Commerce",
+            category: "E-Commerce / Brand Identity",
+            tech: ["Shopify", "Liquid", "Custom Theme", "Motion Design"],
+            color: "from-zinc-700 to-stone-900",
+            image: "/images/kagenoir-preview.png",
             stats: {
-                role: "Automation Engineer",
-                timeline: "3 weeks",
+                role: "Creative Developer & Brand Designer",
+                timeline: "4 weeks",
             },
-            highlights: ["Task Orchestration", "Smart Decision Making", "Multi-Service Integration"],
+            highlights: ["Dark Aesthetic Direction", "Immersive Storefront", "Limited-Run Brand Identity"],
             caseStudy: {
-                problem: "Managing personal tasks, calendar, emails, and finances across multiple apps is fragmented and time-consuming.",
-                solution: "A centralized AI agent that communicates via Telegram to orchestrate all personal life aspects.",
-                features: ["Context Aware Memory", "Expense Tracking", "Auto-Scheduling"],
-                outcome: "Saved 10+ hours per week on life admin tasks.",
+                problem: "Dark fashion brands are underserved by generic e-commerce templates that flatten their visual identity into something safe and forgettable.",
+                solution: "A fully custom Shopify storefront built around the Kage Noir brand — opium aesthetics, Rick Owens sensibility, cathedral atmosphere rendered as a buying experience.",
+                features: ["Custom Shopify Theme", "Editorial Product Pages", "Atmospheric Visual Direction"],
+                outcome: "A storefront that feels like a world, not a shop — designed to hold attention and convert on brand alone.",
             },
             links: {
-                demo: "#",
+                demo: "https://www.kagenoir.co",
                 source: "#"
             }
         },
