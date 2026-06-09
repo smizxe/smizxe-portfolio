@@ -41,9 +41,9 @@ const projectMeta = [
     alt: 'Educhill education web app with AI support — daily operations dashboard by Agency Yangai',
   },
   {
-    image: '/images/personal-agent-preview.png',
-    href: '#work',
-    alt: 'Personal Life AI Agent — task, schedule and finance orchestration system by Agency Yangai',
+    image: '/images/kagenoir-preview.png',
+    href: 'https://www.kagenoir.co',
+    alt: 'Kage Noir — dark fashion storefront with opium aesthetics by Agency Yangai',
   },
   {
     image: '/images/lasante-preview.png',
