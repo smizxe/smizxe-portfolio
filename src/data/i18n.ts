@@ -1,4 +1,4 @@
-export const i18n = {
+﻿export const i18n = {
   vi: {
     nav: {
       services: 'Năng lực',
@@ -331,38 +331,38 @@ export const i18n = {
       ],
     },
     story: {
-      label: ‘The Story of Yangai’,
-      title: ‘A passionate studio, a young founder, building close to the problem.’,
-      kicker: ‘Founder · Developer’,
+      label: 'The Story of Yangai',
+      title: 'A passionate studio, a young founder, building close to the problem.',
+      kicker: 'Founder · Developer',
       description:
-        ‘Yangai was founded by Vuong Hoang Giang while still a student at FPT University — a small but driven studio with a young founder at the helm. No middlemen, no recycled templates — direct work, shipped clean, always close to what each client actually needs.’,
-      name: ‘Vuong Hoang Giang (Yangai)’,
-      overlay: ‘Founder, Developer’,
+        'Yangai was founded by Vuong Hoang Giang while still a student at FPT University — a small but driven studio with a young founder at the helm. No middlemen, no recycled templates — direct work, shipped clean, always close to what each client actually needs.',
+      name: 'Vuong Hoang Giang (Yangai)',
+      overlay: 'Founder, Developer',
       timeline: [
         {
-          year: ‘2023’,
-          title: ‘Enrolled at FPT and started building the first real things’,
-          desc: ‘The first year at university was also the first year of taking code seriously. Learning inside and outside the classroom — building small products, testing them, and figuring out that useful beats polished.’,
+          year: '2023',
+          title: 'Enrolled at FPT and started building the first real things',
+          desc: 'The first year at university was also the first year of taking code seriously. Learning inside and outside the classroom — building small products, testing them, and figuring out that useful beats polished.',
         },
         {
-          year: ‘2024’,
-          title: ‘Found the real passion and a clearer direction’,
-          desc: ‘Real project briefs made the direction clear: not just clean code, but being close enough to the problem to turn what clients need into something they can actually use.’,
+          year: '2024',
+          title: 'Found the real passion and a clearer direction',
+          desc: 'Real project briefs made the direction clear: not just clean code, but being close enough to the problem to turn what clients need into something they can actually use.',
         },
         {
-          year: ‘2025’,
-          title: ‘Delivering for clients and sharpening the craft’,
-          desc: ‘Yangai helped more clients across Web, App, and AI — and kept refining how it works, holding speed without losing the quality that makes each project matter.’,
+          year: '2025',
+          title: 'Delivering for clients and sharpening the craft',
+          desc: 'Yangai helped more clients across Web, App, and AI — and kept refining how it works, holding speed without losing the quality that makes each project matter.',
         },
         {
-          year: ‘2026’,
-          title: ‘Raising the bar and building more professionally’,
-          desc: ‘Yangai is holding itself to a higher standard — tighter processes, deeper product thinking, and a clearer commitment to quality on every engagement.’,
+          year: '2026',
+          title: 'Raising the bar and building more professionally',
+          desc: 'Yangai is holding itself to a higher standard — tighter processes, deeper product thinking, and a clearer commitment to quality on every engagement.',
         },
         {
-          year: ‘2026’,
-          title: ‘Reaching beyond Vietnam, going global’,
-          desc: ‘Not stopping at the local market. Yangai is moving toward international clients and projects — bringing the same drive and directness to bigger stages.’,
+          year: '2026',
+          title: 'Reaching beyond Vietnam, going global',
+          desc: 'Not stopping at the local market. Yangai is moving toward international clients and projects — bringing the same drive and directness to bigger stages.',
         },
       ],
     },
