@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Facebook, Mail, MessageCircle, Phone, X } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { Phone, EnvelopeSimple, ChatCircleDots, FacebookLogo, X } from '@phosphor-icons/react';
+import { AnimatePresence, motion } from 'motion/react';
 
 import { i18n } from '../data/i18n';
 
@@ -11,6 +11,11 @@ interface ContactLinksProps {
   className?: string;
   mobileLayout?: 'default' | 'vertical';
 }
+
+const linkClass =
+  'group inline-flex items-center gap-2.5 text-[14px] text-ink transition-colors hover:text-accent';
+const iconClass =
+  'flex h-8 w-8 items-center justify-center border border-ink/15 text-ink transition-colors group-hover:border-accent group-hover:text-accent';
 
 export default function ContactLinks({
   lang,
@@ -29,41 +34,37 @@ export default function ContactLinks({
             : 'flex-wrap items-center gap-4'
         } ${className}`}
       >
-        <a href="tel:0388307551" className="contact-link">
-          <span className="contact-link__icon">
-            <Phone size={16} />
+        <a href="tel:0388307551" className={linkClass}>
+          <span className={iconClass}>
+            <Phone size={15} weight="bold" />
           </span>
           <span>0388 307 551</span>
         </a>
-
-        <a href="mailto:vuonghoanggiang0811@gmail.com" className="contact-link">
-          <span className="contact-link__icon">
-            <Mail size={16} />
-          </span>
-          <span>vuonghoanggiang0811@gmail.com</span>
-        </a>
-
-        <button
-          onClick={() => setIsZaloOpen(true)}
-          className="contact-link border-0 bg-transparent p-0"
-          type="button"
-        >
-          <span className="contact-link__icon">
-            <MessageCircle size={16} />
-          </span>
-          <span>Zalo</span>
-        </button>
 
         <a
           href="https://www.facebook.com/smizxe/"
           target="_blank"
           rel="noreferrer"
-          className="contact-link"
+          className={linkClass}
         >
-          <span className="contact-link__icon">
-            <Facebook size={16} />
+          <span className={iconClass}>
+            <FacebookLogo size={15} weight="bold" />
           </span>
           <span>Facebook</span>
+        </a>
+
+        <button onClick={() => setIsZaloOpen(true)} className={linkClass} type="button">
+          <span className={iconClass}>
+            <ChatCircleDots size={15} weight="bold" />
+          </span>
+          <span>Zalo</span>
+        </button>
+
+        <a href="mailto:vuonghoanggiang0811@gmail.com" className={linkClass}>
+          <span className={iconClass}>
+            <EnvelopeSimple size={15} weight="bold" />
+          </span>
+          <span>vuonghoanggiang0811@gmail.com</span>
         </a>
       </div>
 
@@ -73,38 +74,41 @@ export default function ContactLinks({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4 backdrop-blur-xl"
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 p-4"
             onClick={() => setIsZaloOpen(false)}
           >
             <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.96 }}
+              initial={{ opacity: 0, y: 16, scale: 0.97 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.96 }}
-              className="relative w-full max-w-sm rounded-[2rem] border border-white/10 bg-[#0b0b0b]/90 p-6 shadow-[0_40px_80px_rgba(0,0,0,0.45)]"
+              exit={{ opacity: 0, y: 16, scale: 0.97 }}
+              className="relative w-full max-w-sm border border-ink/15 bg-paper-raised p-6"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => setIsZaloOpen(false)}
-                className="absolute right-5 top-5 text-white/55 transition-colors hover:text-white"
+                className="absolute right-4 top-4 text-muted transition-colors hover:text-ink"
                 type="button"
+                aria-label="Close"
               >
-                <X size={18} />
+                <X size={18} weight="bold" />
               </button>
 
-              <p className="section-label">Zalo</p>
-              <h3 className="mt-5 font-display text-3xl tracking-[-0.05em] text-white">{t.zalo.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-white/58">{t.zalo.instruction}</p>
+              <p className="eyebrow">Zalo</p>
+              <h3 className="mt-4 font-display text-[clamp(1.5rem,3vw,2rem)] font-bold tracking-[-0.03em] text-ink">
+                {t.zalo.title}
+              </h3>
+              <p className="mt-2 text-[14px] leading-7 text-muted">{t.zalo.instruction}</p>
 
-              <div className="mt-6 overflow-hidden rounded-[1.5rem] border border-white/8">
+              <div className="mt-6 overflow-hidden border border-ink/12">
                 <img
                   src="/images/anh-zalo.jpg"
-                  alt="Zalo QR code to contact Agency Yangai — phone 0388 307 551"
+                  alt="Zalo QR code to contact Agency Yangai at 0388 307 551"
                   loading="lazy"
                   className="h-full w-full object-cover"
                 />
               </div>
 
-              <p className="mt-5 text-center text-base font-semibold tracking-[0.18em] text-white/88">
+              <p className="mt-5 text-center font-mono text-[15px] font-semibold tracking-[0.16em] text-ink">
                 0388 307 551
               </p>
             </motion.div>

@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 export default {
+    darkMode: ['selector', '[data-theme="dark"]'],
     content: [
         "./app/**/*.{js,ts,jsx,tsx,mdx}",
         "./src/**/*.{js,ts,jsx,tsx}",
@@ -8,29 +9,41 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: '#ededed',
-                secondary: '#a1a1aa',
-                accent: '#3b82f6', // Subtle blue for AI
-                background: '#0a0a0a',
-                surface: '#171717',
-                border: '#262626',
-                dark: "#0F172A", // Keeping original dark just in case
+                // Semantic tokens driven by CSS variables (see src/index.css).
+                // Stored as "R G B" triplets so Tailwind alpha modifiers work.
+                paper: 'rgb(var(--paper) / <alpha-value>)',
+                'paper-raised': 'rgb(var(--paper-raised) / <alpha-value>)',
+                ink: 'rgb(var(--ink) / <alpha-value>)',
+                muted: 'rgb(var(--muted) / <alpha-value>)',
+                line: 'rgb(var(--line) / <alpha-value>)',
+                accent: 'rgb(var(--accent) / <alpha-value>)',
+                'accent-fg': 'rgb(var(--accent-fg) / <alpha-value>)',
+                cobalt: 'rgb(var(--cobalt) / <alpha-value>)',
             },
             fontFamily: {
-                sans: ['Inter', 'sans-serif'],
+                display: ['var(--font-display)', 'system-ui', 'sans-serif'],
+                sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+                mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
             },
-            backgroundImage: {
-                'grid-pattern': "linear-gradient(to right, #262626 1px, transparent 1px), linear-gradient(to bottom, #262626 1px, transparent 1px)",
+            borderRadius: {
+                // One near-sharp Swiss radius scale, locked.
+                none: '0',
+                sm: '2px',
+                DEFAULT: '3px',
+                md: '4px',
             },
-            animation: {
-                marquee: 'marquee 50s linear infinite',
+            maxWidth: {
+                shell: '1440px',
             },
             keyframes: {
                 marquee: {
-                    '0%': { transform: 'translateX(0%)' },
+                    '0%': { transform: 'translateX(0)' },
                     '100%': { transform: 'translateX(-50%)' },
-                }
-            }
+                },
+            },
+            animation: {
+                marquee: 'marquee 48s linear infinite',
+            },
         },
     },
     plugins: [],

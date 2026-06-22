@@ -1,8 +1,32 @@
 import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import type { ReactNode } from 'react';
+import { Bricolage_Grotesque, Inter_Tight, JetBrains_Mono } from 'next/font/google';
 
 import '../src/index.css';
+
+const display = Bricolage_Grotesque({
+  subsets: ['latin', 'latin-ext', 'vietnamese'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-display',
+  display: 'swap',
+});
+
+const sans = Inter_Tight({
+  subsets: ['latin', 'latin-ext', 'vietnamese'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const mono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-mono',
+  display: 'swap',
+});
+
+const fontVariables = `${display.variable} ${sans.variable} ${mono.variable}`;
 
 const siteUrl = 'https://yangai.tech';
 
@@ -95,8 +119,14 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#050505',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#F4F3EF' },
+    { media: '(prefers-color-scheme: dark)', color: '#0D0D0F' },
+  ],
 };
+
+// Set the theme before first paint to avoid a flash of the wrong mode.
+const themeInitScript = `(function(){try{var s=localStorage.getItem('yangai-theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;var t=s||(d?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`;
 
 const organizationSchema = {
   '@context': 'https://schema.org',
@@ -281,13 +311,14 @@ const faqSchema = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="vi">
+    <html lang="vi" className={fontVariables} suppressHydrationWarning>
       <head>
         <link rel="alternate" hrefLang="vi-VN" href={`${siteUrl}/?lang=vi`} />
         <link rel="alternate" hrefLang="en-US" href={`${siteUrl}/?lang=en`} />
         <link rel="alternate" hrefLang="x-default" href={siteUrl} />
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body>
+      <body className="font-sans antialiased">
         {children}
         <Script
           id="agency-yangai-organization-schema"

@@ -12,7 +12,8 @@
       badge: 'Yangai · thiết kế & phát triển Web, App, Mobile, AI cho thương hiệu muốn phát triển nghiêm túc',
       titleLead: 'Web · App · AI',
       titleTail: 'Đúng thứ doanh nghiệp bạn cần để phát triển.',
-      title: 'Web, App và AI — đúng thứ doanh nghiệp bạn cần để phát triển.',
+      lead: 'Studio nhỏ và tập trung. Thiết kế, phát triển website, app và AI chạy thật trong vận hành.',
+      title: 'Web, App và AI - đúng thứ doanh nghiệp bạn cần để phát triển.',
       description:
         'Yangai là một studio nhỏ, gọn và tập trung. Bọn mình thiết kế và phát triển website, app, AI workflow nhìn sắc nét, chạy mượt và giải quyết đúng vấn đề thật của doanh nghiệp.',
       primaryCta: 'Xem dự án tiêu biểu',
@@ -52,7 +53,7 @@
         {
           title: 'App & Mobile',
           description:
-            'Web app, mobile app và công cụ nội bộ — được xây dựng quanh quy trình thật của đội ngũ, để người dùng không phải vật lộn với giao diện mỗi ngày.',
+            'Web app, mobile app và công cụ nội bộ - được xây dựng quanh quy trình thật của đội ngũ, để người dùng không phải vật lộn với giao diện mỗi ngày.',
         },
         {
           title: 'AI & Automation',
@@ -79,7 +80,7 @@
         },
         {
           title: 'Kage Noir',
-          desc: 'Storefront thời trang tối — opium aesthetic, hơi thở Rick Owens, visual direction hoàn toàn riêng. Một thế giới để bước vào, không phải một shop để lướt qua.',
+          desc: 'Storefront thời trang tối - opium aesthetic, hơi thở Rick Owens, visual direction hoàn toàn riêng. Một thế giới để bước vào, không phải một shop để lướt qua.',
           tags: ['E-Commerce', 'Dark Fashion'],
         },
         {
@@ -89,24 +90,24 @@
         },
         {
           title: 'Emfulfill',
-          desc: 'Nền tảng fulfillment cho POD & Dropshipping hàng thêu (embroidery) — tích hợp QR tracking, ví nạp tiền trả trước, nhập đơn hàng loạt bằng Excel và đồng bộ tồn kho theo thời gian thực. Giúp chủ shop tập trung bán hàng, bỏ toàn bộ khâu vận hành.',
+          desc: 'Nền tảng fulfillment cho POD & Dropshipping hàng thêu (embroidery) - tích hợp QR tracking, ví nạp tiền trả trước, nhập đơn hàng loạt bằng Excel và đồng bộ tồn kho theo thời gian thực. Giúp chủ shop tập trung bán hàng, bỏ toàn bộ khâu vận hành.',
           tags: ['Fulfillment Platform', 'Shopify', 'Etsy', 'TikTok Shop'],
         },
       ],
     },
     story: {
       label: 'The Story of Yangai',
-      title: 'Studio trẻ, nhiệt huyết — xây sản phẩm bám sát vấn đề thật.',
+      title: 'Studio trẻ, nhiệt huyết - xây sản phẩm bám sát vấn đề thật.',
       kicker: 'Founder · Developer',
       description:
-        'Yangai được lập bởi Vương Hoàng Giang khi còn là sinh viên FPT — một studio nhỏ nhưng nhiệt huyết, với founder trẻ tuổi dẫn đầu. Không qua nhiều lớp trung gian, không dùng template chung — làm việc trực tiếp, gọn gàng và luôn bám sát nhu cầu thật của từng khách hàng.',
+        'Yangai được lập bởi Vương Hoàng Giang khi còn là sinh viên FPT - một studio nhỏ nhưng nhiệt huyết, với founder trẻ tuổi dẫn đầu. Không qua nhiều lớp trung gian, không dùng template chung - làm việc trực tiếp, gọn gàng và luôn bám sát nhu cầu thật của từng khách hàng.',
       name: 'Vương Hoàng Giang (Yangai)',
       overlay: 'Founder, Developer',
       timeline: [
         {
           year: '2023',
           title: 'Vào FPT, tự học code và bắt đầu build những thứ đầu tiên',
-          desc: 'Năm đầu đại học cũng là năm bắt đầu code nghiêm túc. Học song song trong lẫn ngoài trường — tự làm sản phẩm nhỏ, tự test, và dần hiểu rằng thứ build ra phải hữu ích chứ không chỉ đẹp.',
+          desc: 'Năm đầu đại học cũng là năm bắt đầu code nghiêm túc. Học song song trong lẫn ngoài trường - tự làm sản phẩm nhỏ, tự test, và dần hiểu rằng thứ build ra phải hữu ích chứ không chỉ đẹp.',
         },
         {
           year: '2024',
@@ -116,17 +117,12 @@
         {
           year: '2025',
           title: 'Đồng hành cùng khách hàng và liên tục cải thiện',
-          desc: 'Yangai giúp nhiều khách hàng hơn trên cả Web, App và AI — và liên tục tinh chỉnh cách làm để vừa giữ được tốc độ, vừa đảm bảo chất lượng thật sự ở từng dự án.',
+          desc: 'Yangai giúp nhiều khách hàng hơn trên cả Web, App và AI - và liên tục tinh chỉnh cách làm để vừa giữ được tốc độ, vừa đảm bảo chất lượng thật sự ở từng dự án.',
         },
         {
           year: '2026',
           title: 'Nâng chuẩn làm việc, hướng tới chuyên nghiệp hơn',
-          desc: 'Yangai đang đặt tiêu chuẩn cao hơn cho chính mình — quy trình chặt chẽ hơn, tư duy sản phẩm sâu hơn, và cam kết chất lượng rõ ràng hơn với từng đối tác.',
-        },
-        {
-          year: '2026',
-          title: 'Mở rộng ra thị trường quốc tế',
-          desc: 'Không chỉ dừng lại ở trong nước. Yangai đang hướng tới các khách hàng và dự án toàn cầu — mang tinh thần làm việc nhiệt huyết đến những thị trường lớn hơn.',
+          desc: 'Yangai đang đặt tiêu chuẩn cao hơn cho chính mình - quy trình chặt chẽ hơn, tư duy sản phẩm sâu hơn, và cam kết chất lượng rõ ràng hơn với từng đối tác.',
         },
       ],
     },
@@ -140,7 +136,7 @@
         {
           title: 'Khoá mục tiêu và hướng hình ảnh',
           description:
-            'Bắt đầu từ mục tiêu kinh doanh, đối tượng khách hàng và cảm giác thương hiệu cần truyền tải — để dự án có hướng đi rõ ràng ngay từ ngày đầu tiên.',
+            'Bắt đầu từ mục tiêu kinh doanh, đối tượng khách hàng và cảm giác thương hiệu cần truyền tải - để dự án có hướng đi rõ ràng ngay từ ngày đầu tiên.',
         },
         {
           title: 'Thiết kế song song với phát triển',
@@ -158,7 +154,7 @@
       label: 'Bằng chứng',
       title: 'Khách hàng nói gì sau khi dự án lên sóng',
       subtitle:
-        'Điều khách hàng nhắc đến nhiều nhất không chỉ là website đẹp — mà là cách Yangai làm việc rõ ràng, có trách nhiệm và thật sự giải quyết được vấn đề của họ.',
+        'Điều khách hàng nhắc đến nhiều nhất không chỉ là website đẹp - mà là cách Yangai làm việc rõ ràng, có trách nhiệm và thật sự giải quyết được vấn đề của họ.',
       items: [
         {
           text: 'Ban đầu mình chỉ tính làm web đơn giản thôi, nhưng Giang hỏi rất kỹ nên lộ ra hàng loạt vấn đề vận hành mà trước đó mình chưa nhìn thấy. Làm xong thấy nhẹ đầu hẳn.',
@@ -220,7 +216,7 @@
     contact: {
       title: 'Có dự án trong đầu? Nói với Yangai một câu.',
       subtitle:
-        'Kể cho Yangai về dự án của bạn — một website, một app hay một AI workflow — và bạn sẽ nhận lại một hướng đi cụ thể, không phải một báo giá chung chung.',
+        'Kể cho Yangai về dự án của bạn - một website, một app hay một AI workflow - và bạn sẽ nhận lại một hướng đi cụ thể, không phải một báo giá chung chung.',
       noteTitle: 'Liên hệ trực tiếp',
       noteDescription:
         'Nếu muốn trao đổi nhanh, bạn có thể gọi điện, nhắn Zalo hoặc gửi email trực tiếp để Yangai xem brief trước.',
@@ -230,7 +226,7 @@
       },
     },
     footer: {
-      copyright: '© 2026 Agency Yangai. All rights reserved.',
+      copyright: '© 2026 Yangai. All rights reserved.',
       disclaimer:
         'Một số dự án trên website là demo hoặc case study có cấu trúc nhằm thể hiện cách Agency Yangai xử lý visual direction, UX và implementation.',
     },
@@ -248,6 +244,7 @@
       badge: 'Yangai · building Web, App, Mobile and AI for brands that need clearer growth',
       titleLead: 'Web · App · AI',
       titleTail: 'Built the way your business actually needs.',
+      lead: 'A focused build studio shipping websites, apps and AI that hold up in the real world.',
       title: 'Web, App and AI built the way your business actually needs.',
       description:
         'Yangai is a focused build studio. We ship websites, apps and AI workflows that look sharp, run fast and solve a real problem for the team behind them.',
@@ -288,7 +285,7 @@
         {
           title: 'App & Mobile products',
           description:
-            'Web apps, mobile apps and internal tools — built around the way your team actually works, so the people using them stop fighting the interface.',
+            'Web apps, mobile apps and internal tools - built around the way your team actually works, so the people using them stop fighting the interface.',
         },
         {
           title: 'AI & Automation',
@@ -301,7 +298,7 @@
       label: 'Selected works',
       title: 'Recent builds shipped for real teams',
       description:
-        'Every project starts from the same question: where is this brand really trying to go — and how can the build help them get there faster, sharper and with less friction.',
+        'Every project starts from the same question: where is this brand really trying to go - and how can the build help them get there faster, sharper and with less friction.',
       list: [
         {
           title: 'Rentino',
@@ -315,7 +312,7 @@
         },
         {
           title: 'Kage Noir',
-          desc: 'A dark fashion storefront — opium aesthetics, Rick Owens sensibility, a visual direction built entirely from scratch. A world you enter, not a shop you scroll.',
+          desc: 'A dark fashion storefront - opium aesthetics, Rick Owens sensibility, a visual direction built entirely from scratch. A world you enter, not a shop you scroll.',
           tags: ['E-Commerce', 'Dark Fashion'],
         },
         {
@@ -325,7 +322,7 @@
         },
         {
           title: 'Emfulfill',
-          desc: 'A fulfillment platform built for POD & Dropshipping embroidery sellers — with QR-based production tracking, prepaid wallet control, bulk Excel order import, and real-time inventory sync across Shopify, Etsy, TikTok Shop and Amazon. Sellers focus on selling; the platform handles the rest.',
+          desc: 'A fulfillment platform built for POD & Dropshipping embroidery sellers - with QR-based production tracking, prepaid wallet control, bulk Excel order import, and real-time inventory sync across Shopify, Etsy, TikTok Shop and Amazon. Sellers focus on selling; the platform handles the rest.',
           tags: ['Fulfillment Platform', 'Shopify', 'Etsy', 'TikTok Shop'],
         },
       ],
@@ -335,14 +332,14 @@
       title: 'A passionate studio, a young founder, building close to the problem.',
       kicker: 'Founder · Developer',
       description:
-        'Yangai was founded by Vuong Hoang Giang while still a student at FPT University — a small but driven studio with a young founder at the helm. No middlemen, no recycled templates — direct work, shipped clean, always close to what each client actually needs.',
+        'Yangai was founded by Vuong Hoang Giang while still a student at FPT University - a small but driven studio with a young founder at the helm. No middlemen, no recycled templates - direct work, shipped clean, always close to what each client actually needs.',
       name: 'Vuong Hoang Giang (Yangai)',
       overlay: 'Founder, Developer',
       timeline: [
         {
           year: '2023',
           title: 'Enrolled at FPT and started building the first real things',
-          desc: 'The first year at university was also the first year of taking code seriously. Learning inside and outside the classroom — building small products, testing them, and figuring out that useful beats polished.',
+          desc: 'The first year at university was also the first year of taking code seriously. Learning inside and outside the classroom - building small products, testing them, and figuring out that useful beats polished.',
         },
         {
           year: '2024',
@@ -352,17 +349,12 @@
         {
           year: '2025',
           title: 'Delivering for clients and sharpening the craft',
-          desc: 'Yangai helped more clients across Web, App, and AI — and kept refining how it works, holding speed without losing the quality that makes each project matter.',
+          desc: 'Yangai helped more clients across Web, App, and AI - and kept refining how it works, holding speed without losing the quality that makes each project matter.',
         },
         {
           year: '2026',
           title: 'Raising the bar and building more professionally',
-          desc: 'Yangai is holding itself to a higher standard — tighter processes, deeper product thinking, and a clearer commitment to quality on every engagement.',
-        },
-        {
-          year: '2026',
-          title: 'Reaching beyond Vietnam, going global',
-          desc: 'Not stopping at the local market. Yangai is moving toward international clients and projects — bringing the same drive and directness to bigger stages.',
+          desc: 'Yangai is holding itself to a higher standard - tighter processes, deeper product thinking, and a clearer commitment to quality on every engagement.',
         },
       ],
     },
@@ -376,7 +368,7 @@
         {
           title: 'Lock the goal and visual direction',
           description:
-            'We start from the business goal, the audience and the brand feeling that needs to come through — so the build has a clear direction from day one.',
+            'We start from the business goal, the audience and the brand feeling that needs to come through - so the build has a clear direction from day one.',
         },
         {
           title: 'Design while building',
@@ -456,7 +448,7 @@
     contact: {
       title: 'Have a build in mind? Tell Yangai in one line.',
       subtitle:
-        'Send Yangai your project — a website, an app or an AI workflow — and you will get a thoughtful direction back, not a generic quote.',
+        'Send Yangai your project - a website, an app or an AI workflow - and you will get a thoughtful direction back, not a generic quote.',
       noteTitle: 'Direct contact',
       noteDescription:
         'If you prefer a quicker conversation, call, message on Zalo, or send an email so Yangai can review the brief first.',
@@ -466,9 +458,12 @@
       },
     },
     footer: {
-      copyright: '© 2026 Agency Yangai. All rights reserved.',
+      copyright: '© 2026 Yangai. All rights reserved.',
       disclaimer:
         'Some projects on this website are demos or structured case studies used to show how Agency Yangai handles visual direction, UX, and implementation.',
     },
   },
 } as const;
+
+export type Lang = keyof typeof i18n;
+export type Dict = (typeof i18n)['vi'];

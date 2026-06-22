@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { ArrowRight, Loader2 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { ArrowRight, CircleNotch, Check } from '@phosphor-icons/react';
+import { motion } from 'motion/react';
 
 import { i18n } from '../data/i18n';
 
@@ -81,21 +81,23 @@ export default function LeadForm({
   };
 
   return (
-    <div className={`agency-form-panel ${className}`}>
+    <div className={`border border-ink/15 bg-paper-raised p-6 md:p-9 ${className}`}>
       {!submitted ? (
         <>
           <div className="mb-8">
-            <p className="section-label">{t.eyebrow}</p>
-            <h3 className="mt-5 font-display text-3xl tracking-[-0.05em] text-white">{resolvedTitle}</h3>
+            <p className="eyebrow">{t.eyebrow}</p>
+            <h3 className="mt-4 font-display text-[clamp(1.6rem,3vw,2.2rem)] font-bold tracking-[-0.03em] text-ink">
+              {resolvedTitle}
+            </h3>
             {resolvedDescription ? (
-              <p className="mt-4 max-w-xl text-sm leading-7 text-white/58 md:text-base">{resolvedDescription}</p>
+              <p className="mt-3 max-w-xl text-[15px] leading-7 text-muted">{resolvedDescription}</p>
             ) : null}
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid gap-5 md:grid-cols-2">
-              <div className="space-y-2">
-                <label htmlFor={`${formId}-name`} className="text-sm text-white/62">
+              <div className="flex flex-col gap-2">
+                <label htmlFor={`${formId}-name`} className="field-label">
                   {t.name}
                 </label>
                 <input
@@ -105,13 +107,13 @@ export default function LeadForm({
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="agency-field"
+                  className="field"
                   placeholder={t.namePlaceholder}
                 />
               </div>
 
-              <div className="space-y-2">
-                <label htmlFor={`${formId}-contact`} className="text-sm text-white/62">
+              <div className="flex flex-col gap-2">
+                <label htmlFor={`${formId}-contact`} className="field-label">
                   {t.contact}
                 </label>
                 <input
@@ -121,14 +123,14 @@ export default function LeadForm({
                   value={formData.contact}
                   onChange={handleChange}
                   required
-                  className="agency-field"
+                  className="field"
                   placeholder={t.contactPlaceholder}
                 />
               </div>
             </div>
 
-            <div className="space-y-2">
-              <label htmlFor={`${formId}-needs`} className="text-sm text-white/62">
+            <div className="flex flex-col gap-2">
+              <label htmlFor={`${formId}-needs`} className="field-label">
                 {t.needs}
               </label>
               <select
@@ -136,28 +138,18 @@ export default function LeadForm({
                 name="needs"
                 value={formData.needs}
                 onChange={handleChange}
-                className="agency-select"
+                className="field"
               >
-                <option value="" className="bg-[#0a0a0a]">
-                  {t.needsOptions.default}
-                </option>
-                <option value="web" className="bg-[#0a0a0a]">
-                  {t.needsOptions.web}
-                </option>
-                <option value="app" className="bg-[#0a0a0a]">
-                  {t.needsOptions.app}
-                </option>
-                <option value="ai" className="bg-[#0a0a0a]">
-                  {t.needsOptions.ai}
-                </option>
-                <option value="other" className="bg-[#0a0a0a]">
-                  {t.needsOptions.other}
-                </option>
+                <option value="">{t.needsOptions.default}</option>
+                <option value="web">{t.needsOptions.web}</option>
+                <option value="app">{t.needsOptions.app}</option>
+                <option value="ai">{t.needsOptions.ai}</option>
+                <option value="other">{t.needsOptions.other}</option>
               </select>
             </div>
 
-            <div className="space-y-2">
-              <label htmlFor={`${formId}-message`} className="text-sm text-white/62">
+            <div className="flex flex-col gap-2">
+              <label htmlFor={`${formId}-message`} className="field-label">
                 {t.message}
               </label>
               <textarea
@@ -166,21 +158,25 @@ export default function LeadForm({
                 value={formData.message}
                 onChange={handleChange}
                 rows={5}
-                className="agency-textarea resize-none"
+                className="field resize-none"
                 placeholder={t.messagePlaceholder}
               />
             </div>
 
-            <button type="submit" disabled={isSubmitting} className="agency-form-submit">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="inline-flex w-full items-center justify-center gap-2 bg-ink px-6 py-4 text-[15px] font-semibold text-paper transition-colors hover:bg-accent hover:text-accent-fg disabled:opacity-60 sm:w-auto"
+            >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="animate-spin" size={18} />
+                  <CircleNotch className="animate-spin" size={18} weight="bold" />
                   {t.submitting}
                 </>
               ) : (
                 <>
                   {t.submit}
-                  <ArrowRight size={18} />
+                  <ArrowRight size={18} weight="bold" />
                 </>
               )}
             </button>
@@ -190,13 +186,15 @@ export default function LeadForm({
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="py-10 text-center"
+          className="py-12 text-center"
         >
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-white/12 bg-white/8">
-            <ArrowRight className="rotate-[-40deg] text-white" size={26} />
+          <div className="mx-auto flex h-16 w-16 items-center justify-center border border-accent bg-accent text-accent-fg">
+            <Check size={26} weight="bold" />
           </div>
-          <h3 className="mt-6 font-display text-3xl tracking-[-0.05em] text-white">{t.successTitle}</h3>
-          <p className="mx-auto mt-4 max-w-md text-sm leading-7 text-white/60 md:text-base">{t.successDesc}</p>
+          <h3 className="mt-6 font-display text-[clamp(1.5rem,3vw,2rem)] font-bold tracking-[-0.03em] text-ink">
+            {t.successTitle}
+          </h3>
+          <p className="mx-auto mt-3 max-w-md text-[15px] leading-7 text-muted">{t.successDesc}</p>
         </motion.div>
       )}
     </div>
