@@ -10,9 +10,9 @@ export const heroVideos = [
 /** Visual + link metadata for the Work section. Copy lives in i18n (projects.list). */
 export const projects = [
   {
-    image: '/images/rentino-preview.png',
-    href: 'https://rentino.vn',
-    alt: 'Rentino fintech landing page, phone rental, pawn and upgrade platform built by Agency Yangai',
+    image: '/images/poa-preview.png',
+    href: 'https://thepoa.co',
+    alt: 'Piece of Art (POA), luxury fashion brand website with gallery-grade art direction by Agency Yangai',
   },
   {
     image: '/images/educhill-preview.png',

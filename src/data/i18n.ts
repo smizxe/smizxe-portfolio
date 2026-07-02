@@ -69,9 +69,9 @@
         'Mỗi dự án đều bắt đầu từ cùng một câu hỏi: thương hiệu này thật sự muốn đi đến đâu, và sản phẩm có thể giúp họ tới đó nhanh hơn, sắc nét hơn và ít trở ngại hơn ra sao.',
       list: [
         {
-          title: 'Rentino',
-          desc: 'Làm rõ lại bề mặt cho một nền tảng tài chính để dịch vụ cầm, thuê, nâng đời điện thoại bớt rối và tăng cảm giác đáng tin.',
-          tags: ['Fintech', 'Conversion'],
+          title: 'Piece of Art (POA)',
+          desc: 'Website thời trang luxury cho POA - art direction tối giản, tinh gọn và đắt tiền, biến mỗi thiết kế thành một tác phẩm để chiêm ngưỡng và sưu tầm, chứ không chỉ để mua.',
+          tags: ['Luxury Fashion', 'E-Commerce', 'Brand Site'],
         },
         {
           title: 'Educhill',
@@ -301,9 +301,9 @@
         'Every project starts from the same question: where is this brand really trying to go - and how can the build help them get there faster, sharper and with less friction.',
       list: [
         {
-          title: 'Rentino',
-          desc: 'A clearer, more trust-building front-end direction for a finance-related service covering pawn, rental, and phone upgrade flows.',
-          tags: ['Fintech', 'Conversion'],
+          title: 'Piece of Art (POA)',
+          desc: 'A luxury fashion storefront for POA - restrained, gallery-grade art direction that turns every piece into an object to admire and collect, not just buy.',
+          tags: ['Luxury Fashion', 'E-Commerce', 'Brand Site'],
         },
         {
           title: 'Educhill',
