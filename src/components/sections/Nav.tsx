@@ -13,7 +13,7 @@ interface NavProps {
   lang: Lang;
   setLang: (lang: Lang) => void;
   theme: Theme;
-  toggleTheme: () => void;
+  toggleTheme: (origin?: { x: number; y: number }) => void;
 }
 
 const SECTIONS = ['services', 'work', 'story', 'testimonials', 'contact'] as const;
@@ -81,7 +81,7 @@ export function Nav({ t, lang, setLang, theme, toggleTheme }: NavProps) {
           </div>
 
           <button
-            onClick={toggleTheme}
+            onClick={(e) => toggleTheme({ x: e.clientX, y: e.clientY })}
             className="flex h-9 w-9 items-center justify-center border border-ink/15 text-ink transition-colors hover:border-ink/40"
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
           >

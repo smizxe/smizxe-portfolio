@@ -133,6 +133,29 @@
   100% { transform: translate3d(4%, 2%, 0) rotate(2deg) scale(1.26); }
 }
 
+/* Lenis smooth scroll (recommended base styles) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* Theme toggle circular wipe: let the JS clip-path animation drive the reveal
+   instead of the default cross-fade. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 2;
+}
+
 /* Reduced motion: collapse everything that moves */
 @media (prefers-reduced-motion: reduce) {
   *,

@@ -4,6 +4,7 @@ import type { Dict, Lang } from '../../data/i18n';
 import LeadForm from '../LeadForm';
 import ContactLinks from '../ContactLinks';
 import { Reveal } from '../motion/Reveal';
+import { MaskText } from '../motion/MaskText';
 
 interface ContactProps {
   t: Dict;
@@ -16,9 +17,10 @@ export function Contact({ t, lang }: ContactProps) {
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <Reveal className="lg:col-span-5">
           <p className="eyebrow">{t.nav.contact}</p>
-          <h2 className="mt-5 max-w-[16ch] font-display text-[clamp(2.1rem,4.6vw,3.8rem)] font-bold leading-[1] tracking-[-0.035em] text-ink">
-            {t.contact.title}
-          </h2>
+          <MaskText
+            text={t.contact.title}
+            className="mt-5 max-w-[16ch] font-display text-[clamp(2.1rem,4.6vw,3.8rem)] font-bold leading-[1] tracking-[-0.035em] text-ink"
+          />
           <p className="mt-6 max-w-[48ch] text-[16px] leading-7 text-muted">{t.contact.subtitle}</p>
 
           <div className="mt-10 border-t border-ink/12 pt-8">

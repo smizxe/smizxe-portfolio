@@ -3,6 +3,7 @@
 import type { Dict } from '../../data/i18n';
 import { feedbackImages } from '../../data/feedbackImages';
 import { Reveal } from '../motion/Reveal';
+import { MaskText } from '../motion/MaskText';
 
 interface TestimonialsProps {
   t: Dict;
@@ -19,9 +20,10 @@ export function Testimonials({ t }: TestimonialsProps) {
       <div className="shell">
         <Reveal>
           <p className="eyebrow">{t.testimonials.label}</p>
-          <h2 className="mt-4 max-w-[24ch] font-display text-[clamp(1.5rem,2.8vw,2.3rem)] font-bold leading-[1.1] tracking-[-0.025em] text-ink">
-            {t.testimonials.title}
-          </h2>
+          <MaskText
+            text={t.testimonials.title}
+            className="mt-4 max-w-[24ch] font-display text-[clamp(1.5rem,2.8vw,2.3rem)] font-bold leading-[1.1] tracking-[-0.025em] text-ink"
+          />
           <p className="mt-4 max-w-[58ch] text-[15px] leading-7 text-muted">{t.testimonials.subtitle}</p>
         </Reveal>
       </div>

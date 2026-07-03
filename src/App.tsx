@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 
 import { i18n, type Dict, type Lang } from './data/i18n';
+import { SmoothScroll } from './components/motion/SmoothScroll';
+import { GrainOverlay } from './components/ui/grain-overlay';
 import { Nav } from './components/sections/Nav';
 import { Hero } from './components/sections/Hero';
 import { Services } from './components/sections/Services';
@@ -47,23 +49,53 @@ function App() {
     setTheme(current);
   }, []);
 
-  const toggleTheme = () => {
-    setTheme((prev) => {
-      const next: Theme = prev === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      try {
-        localStorage.setItem('yangai-theme', next);
-      } catch {
-        /* ignore storage failures (private mode) */
-      }
-      return next;
-    });
+  // Theme toggle with a circular wipe (View Transitions API) expanding from the
+  // toggle button. Falls back to the plain CSS color transition where the API is
+  // unavailable or reduced motion is requested.
+  const toggleTheme = (origin?: { x: number; y: number }) => {
+    const next: Theme = theme === 'dark' ? 'light' : 'dark';
+    const apply = () => document.documentElement.setAttribute('data-theme', next);
+
+    const doc = document as Document & {
+      startViewTransition?: (cb: () => void) => { ready: Promise<void> };
+    };
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (doc.startViewTransition && origin && !reduce) {
+      const transition = doc.startViewTransition(apply);
+      transition.ready.then(() => {
+        const r = Math.hypot(
+          Math.max(origin.x, window.innerWidth - origin.x),
+          Math.max(origin.y, window.innerHeight - origin.y),
+        );
+        document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(0px at ${origin.x}px ${origin.y}px)`,
+              `circle(${r}px at ${origin.x}px ${origin.y}px)`,
+            ],
+          },
+          { duration: 550, easing: 'cubic-bezier(0.4, 0, 0.2, 1)', pseudoElement: '::view-transition-new(root)' },
+        );
+      });
+    } else {
+      apply();
+    }
+
+    setTheme(next);
+    try {
+      localStorage.setItem('yangai-theme', next);
+    } catch {
+      /* ignore storage failures (private mode) */
+    }
   };
 
   const t = i18n[lang] as Dict;
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-paper text-ink">
+      <SmoothScroll />
+      <GrainOverlay />
       <Nav t={t} lang={lang} setLang={setLang} theme={theme} toggleTheme={toggleTheme} />
       <main>
         <Hero t={t} />

@@ -2,6 +2,7 @@
 
 import type { Dict } from '../../data/i18n';
 import { Reveal } from '../motion/Reveal';
+import { MaskText } from '../motion/MaskText';
 import { StickyStack } from '../motion/StickyStack';
 
 interface ProcessProps {
@@ -47,9 +48,10 @@ export function Process({ t }: ProcessProps) {
     <section id="process" className="py-24 md:py-32">
       <div className="shell">
         <Reveal>
-          <h2 className="max-w-[20ch] font-display text-[clamp(2rem,4.5vw,3.6rem)] font-bold leading-[1] tracking-[-0.035em] text-ink">
-            {t.process.title}
-          </h2>
+          <MaskText
+            text={t.process.title}
+            className="max-w-[20ch] font-display text-[clamp(2rem,4.5vw,3.6rem)] font-bold leading-[1] tracking-[-0.035em] text-ink"
+          />
           <p className="mt-6 max-w-[58ch] text-[16px] leading-7 text-muted">{t.process.description}</p>
         </Reveal>
       </div>

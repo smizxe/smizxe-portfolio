@@ -2,6 +2,7 @@
 
 import type { Dict } from '../../data/i18n';
 import { Reveal } from '../motion/Reveal';
+import { MaskText } from '../motion/MaskText';
 import GlowHorizon from '../ui/glow-horizon';
 
 interface StoryProps {
@@ -48,9 +49,10 @@ export function Story({ t }: StoryProps) {
         {/* Narrative + timeline */}
         <div className="lg:col-span-7">
           <Reveal>
-            <h2 className="max-w-[18ch] font-display text-[clamp(2rem,4.4vw,3.6rem)] font-bold leading-[1.02] tracking-[-0.035em] text-ink">
-              {t.story.title}
-            </h2>
+            <MaskText
+              text={t.story.title}
+              className="max-w-[18ch] font-display text-[clamp(2rem,4.4vw,3.6rem)] font-bold leading-[1.02] tracking-[-0.035em] text-ink"
+            />
             <p className="mt-6 max-w-[56ch] text-[16px] leading-7 text-muted">{t.story.description}</p>
           </Reveal>
 
