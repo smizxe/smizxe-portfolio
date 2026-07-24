@@ -93,6 +93,11 @@
           desc: 'Nền tảng fulfillment cho POD & Dropshipping hàng thêu (embroidery) - tích hợp QR tracking, ví nạp tiền trả trước, nhập đơn hàng loạt bằng Excel và đồng bộ tồn kho theo thời gian thực. Giúp chủ shop tập trung bán hàng, bỏ toàn bộ khâu vận hành.',
           tags: ['Fulfillment Platform', 'Shopify', 'Etsy', 'TikTok Shop'],
         },
+        {
+          title: 'TNG Trading',
+          desc: 'Website B2B cho công ty Hàn Quốc chuyên xuất khẩu mỹ phẩm y tế từ Seoul ra toàn cầu. Art direction trầm, sạch và chuẩn y khoa, đủ sức tạo niềm tin với nhà phân phối quốc tế ngay màn hình đầu tiên, với dòng filler độc quyền Glowline làm trung tâm.',
+          tags: ['Medical Aesthetic', 'B2B Export', 'Brand Site'],
+        },
       ],
     },
     story: {
@@ -324,6 +329,11 @@
           title: 'Emfulfill',
           desc: 'A fulfillment platform built for POD & Dropshipping embroidery sellers - with QR-based production tracking, prepaid wallet control, bulk Excel order import, and real-time inventory sync across Shopify, Etsy, TikTok Shop and Amazon. Sellers focus on selling; the platform handles the rest.',
           tags: ['Fulfillment Platform', 'Shopify', 'Etsy', 'TikTok Shop'],
+        },
+        {
+          title: 'TNG Trading',
+          desc: 'A B2B site for a Seoul-based company exporting Korean medical aesthetics worldwide. Restrained, clinical art direction that earns trust from international distributors on the first screen, built around their exclusive Glowline filler line.',
+          tags: ['Medical Aesthetic', 'B2B Export', 'Brand Site'],
         },
       ],
     },

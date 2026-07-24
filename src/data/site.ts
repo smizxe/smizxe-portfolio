@@ -34,4 +34,9 @@ export const projects = [
     href: 'https://emfulfill.com',
     alt: 'Emfulfill POD and Dropshipping fulfillment platform, Shopify, Etsy, TikTok Shop integration by Agency Yangai',
   },
+  {
+    image: '/images/tng-preview.png',
+    href: 'https://tngtrading.kr',
+    alt: 'TNG Trading, Seoul-based Korean medical aesthetics export site featuring the Glowline filler brand, by Agency Yangai',
+  },
 ];
